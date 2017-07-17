@@ -1,23 +1,73 @@
 <!DOCTYPE html>
-<html>
+<html lang="FR-fr">
     <head>
-        <title>{% block title '' %} - My Silex Application</title>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        
+        <title>{% block title '' %} Sportbook</title>
 
+        {% block stylesheets %}
         <link href="{{ asset('css/main.css') }}" rel="stylesheet" type="text/css" />
-
-        <script type="text/javascript">
-            var _gaq = _gaq || [];
-            _gaq.push(['_setAccount', 'UA-XXXXXXXX-X']);
-            _gaq.push(['_trackPageview']);
-
-            (function() {
-                var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
-                ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
-                var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
-            })();
-        </script>
+        {% endblock %}
     </head>
+    
     <body>
-        {% block content %}{% endblock %}
+        <nav>
+            <div>
+                <a>Menu admin</a>
+                <ul>
+                    <li>
+                        <a href="">Gestion membres</a>
+                    </li>
+                    <li>
+                        <a href="">Gestion programmes</a>
+                    </li>
+                </ul>
+            </div>
+        </nav>
+        <nav>
+            <div>
+                <a href="">SportBook</a>
+            </div>
+        </nav>
+        <div>
+            {# bloc d'affichage des messages flash #}
+            {% for type, flashes in app.session.flashbag.all %}
+                {% for flash in flashes %}
+                    {% if type == 'error' %}
+                        {% set type = 'danger' %}
+                    {% endif %}
+                    <div>
+                        {{ flash|raw }}
+                        {# filtre |raw pour afficher du Html mais pour ne pas que ça affiche les balises sur le site. Rend inactives les balises html #}
+                    </div>
+                {% endfor %}
+            {% endfor %}
+            {% block content %}{% endblock %}
+        </div>
+        
+        <footer>
+            <div>
+                <ul>
+                    <li>
+                        <a href="">CGU</a>
+                    </li>
+                    <li>
+                        <a href="">Contact</a>
+                    </li>
+                    <li>
+                        <a href="">Mentions Légales</a>
+                    </li>
+                    <li>
+                        <a href="">Plan de site</a>
+                    </li>
+                </ul>
+            </div>            
+        </footer>
+            
+        {% block javascripts %}
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+        {% endblock %}
     </body>
 </html>

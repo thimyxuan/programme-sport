@@ -6,12 +6,10 @@ use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\RedirectResponse;
 use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 
-//Request::setTrustedProxies(array('127.0.0.1'));
 
-$app->get('/', function () use ($app) {
-    return $app['twig']->render('index.html.twig', array());
-})
-->bind('homepage')
+/* FRONT */
+$app->get('/', 'index.controller:indexAction')
+    ->bind('homepage') // nom de la route
 ;
 
 $app->error(function (\Exception $e, Request $request, $code) use ($app) {
