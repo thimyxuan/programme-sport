@@ -1,6 +1,10 @@
 <?php
 
 use Controller\IndexController;
+use Controller\ObjectifController;
+use Controller\ProgrammeController;
+use Repository\ObjectifRepository;
+use Repository\ProgrammeRepository;
 use Silex\Application;
 use Silex\Provider\AssetServiceProvider;
 use Silex\Provider\DoctrineServiceProvider;
@@ -41,6 +45,26 @@ $app->register(new SessionServiceProvider());
 /* Déclaration des contrôleurs en service */
 $app['index.controller'] = function () use ($app) {
     return new IndexController($app);
+};
+
+$app['programme.controller'] = function () use ($app) 
+{
+    return new ProgrammeController($app);
+};
+
+$app['programme.repository'] = function () use ($app) 
+{
+    return new ProgrammeRepository($app['db']);    
+};
+
+$app['objectif.controller'] = function () use ($app) 
+{
+    return new ObjectifController($app);
+};
+
+$app['objectif.repository'] = function () use ($app) 
+{
+    return new ObjectifRepository($app['db']);    
 };
 
 return $app;
