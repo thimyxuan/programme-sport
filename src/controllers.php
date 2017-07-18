@@ -12,6 +12,23 @@ $app->get('/', 'index.controller:indexAction')
     ->bind('homepage') // nom de la route
 ;
 
+$app
+    ->get('/rubriques/menu', 'objectif.controller:menuAction')
+    ->bind('objectif_menu')
+;
+
+$app
+    ->get('/rubriques/{id}', 'objectif.controller:indexAction')
+    ->bind('objectif')
+;
+
+$app
+    ->match('/programmes/{id}', 'programme.controller:indexAction')
+    ->bind('programme')
+;
+
+
+
 $app->error(function (\Exception $e, Request $request, $code) use ($app) {
     if ($app['debug']) {
         return;

@@ -3,6 +3,10 @@
 use Controller\IndexController;
 use Controller\JourController;
 use Repository\JourRepository;
+use Controller\ObjectifController;
+use Controller\ProgrammeController;
+use Repository\ObjectifRepository;
+use Repository\ProgrammeRepository;
 use Silex\Application;
 use Silex\Provider\AssetServiceProvider;
 use Silex\Provider\DoctrineServiceProvider;
@@ -17,7 +21,7 @@ $app->register(new AssetServiceProvider());
 $app->register(new TwigServiceProvider());
 $app->register(new HttpFragmentServiceProvider());
 $app['twig'] = $app->extend('twig', function ($twig, $app) {
-    // add custom globals, filters, tags, ...
+    
 
     return $twig;
 });
@@ -49,10 +53,28 @@ $app['jour.controller'] = function () use ($app) {
     return new JourController($app);
 };
 
-
-/* Déclaration des repositories en service */
 $app['jour.repository'] = function () use ($app) {
     return new JourRepository($app['db']);
+};
+
+$app['programme.controller'] = function () use ($app) 
+{
+    return new ProgrammeController($app);
+};
+
+$app['programme.repository'] = function () use ($app) 
+{
+    return new ProgrammeRepository($app['db']);    
+};
+
+$app['objectif.controller'] = function () use ($app) 
+{
+    return new ObjectifController($app);
+};
+
+$app['objectif.repository'] = function () use ($app) 
+{
+    return new ObjectifRepository($app['db']);    
 };
 
 return $app;
