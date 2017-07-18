@@ -54,6 +54,13 @@ class Jour
         return $this->programme;
     }
     
+    public function getProgrammeId() {
+        if(!is_null($this->programme)) {
+            return $this->programme->getId();
+        }
+        return null;
+    }
+    
     /**
      * 
      * @return string
