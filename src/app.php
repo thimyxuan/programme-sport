@@ -1,6 +1,10 @@
 <?php
 
+use Controller\Admin\MembreController as AdminMembreController;
 use Controller\IndexController;
+use Controller\MembreController;
+use Repository\MembreRepository;
+use Service\UserManager;
 use Controller\JourController;
 use Repository\JourRepository;
 use Controller\ObjectifController;
@@ -44,17 +48,18 @@ $app->register(
 // rien à ajouter par composer
 $app->register(new SessionServiceProvider());
 
+$app['user.manager'] = function () use ($app) 
+{
+    return new UserManager($app['session']);
+};
+
+
 /* Déclaration des contrôleurs en service */
+
+
+// FRONT
 $app['index.controller'] = function () use ($app) {
     return new IndexController($app);
-};
-
-$app['jour.controller'] = function () use ($app) {
-    return new JourController($app);
-};
-
-$app['jour.repository'] = function () use ($app) {
-    return new JourRepository($app['db']);
 };
 
 $app['programme.controller'] = function () use ($app) 
@@ -62,14 +67,45 @@ $app['programme.controller'] = function () use ($app)
     return new ProgrammeController($app);
 };
 
-$app['programme.repository'] = function () use ($app) 
-{
-    return new ProgrammeRepository($app['db']);    
+$app['jour.controller'] = function () use ($app) {
+    return new JourController($app);
 };
 
 $app['objectif.controller'] = function () use ($app) 
 {
     return new ObjectifController($app);
+};
+
+
+// USER
+$app['membre.controller'] = function () use ($app) 
+{
+    return new MembreController($app);    
+};
+
+
+
+// BACK
+$app['admin.membre.controller'] = function () use ($app) 
+{
+    return new AdminMembreController($app);
+    
+};
+
+/* Déclaration des repository en service */
+
+$app['membre.repository'] = function () use ($app) 
+{
+    return new MembreRepository($app['db']);
+};
+
+$app['jour.repository'] = function () use ($app) {
+    return new JourRepository($app['db']);
+};
+
+$app['programme.repository'] = function () use ($app) 
+{
+    return new ProgrammeRepository($app['db']);    
 };
 
 $app['objectif.repository'] = function () use ($app) 

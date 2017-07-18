@@ -28,6 +28,32 @@ $app
 ;
 
 
+/* USER */
+$app
+    ->match('/inscription', 'membre.controller:registerAction') // on prend match() car contiendra un formulaire d'inscription
+    ->bind('inscription')
+;
+
+$app
+    ->match('/connexion', 'membre.controller:loginAction')
+    ->bind('connexion')
+;
+
+$app
+    ->get('/profil', 'membre.controller:membreDetailAction')
+    ->bind('profil')
+;
+
+
+/* BACK */
+
+$app
+    ->get('/admin/liste_membres', 'admin.membre.controller:membreListAction')
+    ->bind('liste_membres')
+;
+
+
+// -----------------
 
 $app->error(function (\Exception $e, Request $request, $code) use ($app) {
     if ($app['debug']) {

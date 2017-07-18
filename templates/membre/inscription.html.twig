@@ -1,0 +1,42 @@
+{% extends "layout.html.twig" %}
+
+{% block title 'Inscription' %}
+
+{% block content %}
+    <h1>Inscription</h1>
+    
+    <form method ="post">
+        <div>            
+            <label>Pseudo</label>
+            <input type="text" name="pseudo" value="">
+        </div>
+        <div>            
+            <label>Prénom</label>
+            <input type="text" name="prenom" value="">
+        </div>
+        <div>
+            <label>Nom</label>
+            <input type="text" name="nom" value="">
+        </div>
+        <div>
+            <label>E-mail</label>
+            <input type="text" name="email" value="">
+        </div>
+        <div>
+            <label>Mot de passe</label>
+            <input type="password" name="mdp">
+        </div>
+        <div>
+            <label>Confirmation du mot de passe</label>
+            <input type="password" name="mdp_confirm">
+        </div>
+        <div>
+            <label>Civilité</label>
+            <input type="radio" name="civilite" value="f" checked="checked"> : Homme
+            <input type="radio" name="civilite" value="f" > : Femme
+        </div>
+        {#<input type="hidden" name="statut" value="membre">#}
+        <button type="submit" class="btn btn-primary">Enregistrer</button>
+    </form>
+            
+{% endblock %}
