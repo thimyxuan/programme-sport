@@ -3,6 +3,7 @@
 namespace Repository;
 
 use Entity\Jour;
+use Entity\Programme;
 
 class JourRepository extends RepositoryAbstract
 {
@@ -52,7 +53,7 @@ class JourRepository extends RepositoryAbstract
     public function save(Jour $jour)
     {
         $data = ['ordre'=>$jour->getOrdre(),
-                'programme_id'=>$jour->getProgramme_id(),
+                'programme_id'=>$jour->getProgrammeId(),
                 'statut'=>$jour->getStatut()
                 ];
                 
@@ -79,14 +80,42 @@ class JourRepository extends RepositoryAbstract
     public function buildFromArray(array $dbJour)
     {
         $jour = new Jour();
+        $programme = new Programme;
         
         $jour
             ->setId($dbJour['id'])
             ->setOrdre($dbJour['ordre'])
-            //->setProgramme_id($programme_id)
+            ->setProgramme($programme)
             ->setStatut($dbJour['statut'])
         ;
         
         return $jour;
+    }
+    
+    public function findByProgramme(Programme $programme) {
+        
+        $query = <<<EOS
+SELECT j.*
+FROM jour j
+JOIN programme p ON j.programme_id = p.id
+WHERE j.programme_id = 1
+ORDER BY ordre ASC
+EOS;
+    
+        $dbJours = $this->db->fetchAll(
+            $query,
+            [':id' => $programme->getId()]
+        );
+    
+        $jours = [];
+
+        foreach ($dbJours as $dbJour) {
+
+            $jour = $this->buildFromArray($dbJour);
+
+            $jours[] = $jour;
+        }
+
+        return $jours;
     }
 }

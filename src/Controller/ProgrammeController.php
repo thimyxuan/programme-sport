@@ -11,11 +11,15 @@ class ProgrammeController extends ControllerAbstract
     {
         $programme = $this->app['programme.repository']->find($id);
         
-    return $this->render(
+        $jours = $this->app['jour.repository']->findByProgramme($programme);
+        
+        return $this->render(
            'programme/index.html.twig',
            [
-           'programme'=>$programme
+           'programme'=>$programme,
+            'jours' => $jours
            ]
-        );
+        ); 
     }
+    
 }
