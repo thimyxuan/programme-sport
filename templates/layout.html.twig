@@ -26,11 +26,18 @@
                 </ul>
             </div>
         </nav>
-        <nav>
-            <div>
-                <a href="">SportBook</a>
+        
+        <nav class="">
+            <div class="">
+                <a class = "" href="{{path('homepage')}}">Sportbook</a>
+                
+                {# affiche le rendu de la route category_menu p#}
+                {{ render(url('objectif_menu'))}}
+                
             </div>
         </nav>
+        
+        
         <div>
             {# bloc d'affichage des messages flash #}
             {% for type, flashes in app.session.flashbag.all %}
@@ -46,6 +53,7 @@
             {% endfor %}
             {% block content %}{% endblock %}
         </div>
+        
         
         <footer>
             <div>

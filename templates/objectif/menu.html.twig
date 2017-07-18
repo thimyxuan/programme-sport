@@ -1,0 +1,7 @@
+<ul class="">
+    {% for objectif in objectifs %}
+        <li>
+            <a href="{{ path('objectif', {id: objectif.id}) }}">{{ objectif.titre }}</a>
+        </li>
+    {% endfor %}
+</ul>
