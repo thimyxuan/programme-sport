@@ -1,6 +1,8 @@
 <?php
 
 use Controller\IndexController;
+use Controller\JourController;
+use Repository\JourRepository;
 use Controller\ObjectifController;
 use Controller\ProgrammeController;
 use Repository\ObjectifRepository;
@@ -19,7 +21,7 @@ $app->register(new AssetServiceProvider());
 $app->register(new TwigServiceProvider());
 $app->register(new HttpFragmentServiceProvider());
 $app['twig'] = $app->extend('twig', function ($twig, $app) {
-    // add custom globals, filters, tags, ...
+    
 
     return $twig;
 });
@@ -45,6 +47,14 @@ $app->register(new SessionServiceProvider());
 /* Déclaration des contrôleurs en service */
 $app['index.controller'] = function () use ($app) {
     return new IndexController($app);
+};
+
+$app['jour.controller'] = function () use ($app) {
+    return new JourController($app);
+};
+
+$app['jour.repository'] = function () use ($app) {
+    return new JourRepository($app['db']);
 };
 
 $app['programme.controller'] = function () use ($app) 
