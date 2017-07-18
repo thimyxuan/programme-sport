@@ -1,6 +1,8 @@
 <?php
 
 use Controller\IndexController;
+use Controller\JourController;
+use Repository\JourRepository;
 use Silex\Application;
 use Silex\Provider\AssetServiceProvider;
 use Silex\Provider\DoctrineServiceProvider;
@@ -41,6 +43,16 @@ $app->register(new SessionServiceProvider());
 /* Déclaration des contrôleurs en service */
 $app['index.controller'] = function () use ($app) {
     return new IndexController($app);
+};
+
+$app['jour.controller'] = function () use ($app) {
+    return new JourController($app);
+};
+
+
+/* Déclaration des repositories en service */
+$app['jour.repository'] = function () use ($app) {
+    return new JourRepository($app['db']);
 };
 
 return $app;
