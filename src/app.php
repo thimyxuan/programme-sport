@@ -1,6 +1,10 @@
 <?php
 
+use Controller\Admin\MembreController as AdminMembreController;
 use Controller\IndexController;
+use Controller\MembreController;
+use Repository\MembreRepository;
+use Service\UserManager;
 use Silex\Application;
 use Silex\Provider\AssetServiceProvider;
 use Silex\Provider\DoctrineServiceProvider;
@@ -38,9 +42,37 @@ $app->register(
 // rien à ajouter par composer
 $app->register(new SessionServiceProvider());
 
+$app['user.manager'] = function () use ($app) 
+{
+    return new UserManager($app['session']);
+    
+};
+
 /* Déclaration des contrôleurs en service */
+
 $app['index.controller'] = function () use ($app) {
     return new IndexController($app);
+};
+
+$app['membre.controller'] = function () use ($app) 
+{
+    return new MembreController($app);
+    
+};
+
+/* Déclaration des contrôleurs ADMIN en service */
+
+$app['admin.membre.controller'] = function () use ($app) 
+{
+    return new AdminMembreController($app);
+    
+};
+
+/* Déclaration des repository en service */
+
+$app['membre.repository'] = function () use ($app) 
+{
+    return new MembreRepository($app['db']);    
 };
 
 return $app;

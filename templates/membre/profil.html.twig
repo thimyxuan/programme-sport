@@ -1,0 +1,13 @@
+{% extends "layout.html.twig" %}
+
+{% block title 'Profil' %}
+
+{% block content %}
+    
+    <h1>{{ membre.pseudo }}</h1>
+    
+    <p>{{ membre.prenom }}</p>
+    <p>{{ membre.nom }}</p>
+    <p>{{ membre.email }}</p>
+            
+{% endblock %}

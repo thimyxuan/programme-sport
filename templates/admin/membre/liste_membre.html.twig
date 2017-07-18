@@ -1,0 +1,38 @@
+{% extends "layout.html.twig" %}
+
+{% block title 'Listing Membres' %}
+
+{% block content %}
+    
+    <h1>Gestion des membres</h1>
+            
+    <table>
+        <tr>
+            <th>Id</th>
+            <th>Pseudo</th>
+            <th>Nom</th>
+            <th>Prénom</th>
+            <th>Email</th>
+            <th>Civilité</th>
+            <th>Statut</th>
+            <th></th>
+        </tr>
+        
+        {% for membre in membres %}
+        <tr>
+            <td>{{ membre.id }}</td>
+            <td>{{ membre.pseudo }}</td>
+            <td>{{ membre.nom }}</td>
+            <td>{{ membre.prenom }}</td>
+            <td>{{ membre.email }}</td>
+            <td>{{ membre.civilite }}</td>
+            <td>{{ membre.statut }}</td>
+            <td>
+                <a href=''>Modifier</a>
+                <a href=''>Supprimer</a>
+            </td>    
+        </tr>
+        {% endfor %}
+    </table>
+    
+{% endblock %}

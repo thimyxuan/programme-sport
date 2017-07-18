@@ -4,7 +4,7 @@
 
 namespace Service;
 
-use Entity\User;
+use Entity\Membre;
 use Symfony\Component\HttpFoundation\Session\Session;
 
 class UserManager 
@@ -48,16 +48,16 @@ class UserManager
     
     /**
      * 
-     * @param User $user
+     * @param Membre $membre
      */
-    public function login(User $user)
+    public function login(Membre $membre)
     {
-        $this->session->set('user', $user);
+        $this->session->set('membre', $membre);
     }
     
     public function logout()
     {
-        $this->session->remove('user');
+        $this->session->remove('membre');
     }
     
     /**
@@ -66,7 +66,7 @@ class UserManager
      */
     public function getUser()
     {
-        return $this->session->get('user');
+        return $this->session->get('membre');
     }
     
     
@@ -74,18 +74,18 @@ class UserManager
      * 
      * @return string
      */
-    public function getUserName()
+    /*public function getUserName()
     {
-        if($this->session->has('user'))
+        if($this->session->has('membre'))
         {
-            return $this->session->get('user')->getFullName();
+            return $this->session->get('membre')->getFullName();
         }
         return '';
-    }
+    }*/
     
     public function isAdmin()
     {
-        return $this->session->has('user') && $this->session->get('user')->isAdmin();
+        return $this->session->has('membre') && $this->session->get('membre')->isAdmin();
     }
     
 }
