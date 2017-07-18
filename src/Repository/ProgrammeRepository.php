@@ -1,0 +1,181 @@
+<?php
+
+namespace Repository;
+
+use DateTime;
+use Entity\Membre;
+use Entity\Objectif;
+use Entity\Programme;
+
+class ProgrammeRepository extends RepositoryAbstract
+{
+    public function getTable()
+    {
+        return 'programme';
+    }
+    
+    
+    // ------------ Méthode findAll qui retourne un array -------------    
+    /**
+     * 
+     * @return array
+     */
+     public function findAll()
+    {
+        $query = <<<EOS
+SELECT p.*, o.titre, m.pseudo
+FROM programme p
+JOIN objectif o ON p.objectif_id = o.id
+JOIN membre m ON p.membre_id = m.id
+ORDER BY date_publication DESC
+EOS;
+        $dbProgrammes = $this->db->fetchAll($query);
+        $programmes = []; // le tableau dans lequel vont être stockées les entités
+        foreach ($dbProgrammes as $dbProgramme) 
+        {
+            $programme = $this->buildFromArray($dbProgramme);            
+            
+            $programmes[] = $programme;
+        }
+        return $programmes;
+    }    
+    
+    
+    // --------- Méthode find($id) pour rechercher un programme par id ----------    
+    /**
+     * 
+     * @param int $id
+     * @return Programme null
+     */
+    public function find($id)
+    {
+        $query = <<<EOS
+SELECT p.*, o.titre, m.pseudo
+FROM programme p
+JOIN objectif o ON p.objectif_id = o.id
+JOIN membre m ON p.membre_id = m.id
+WHERE p.id = :id 
+EOS;
+
+        $dbProgramme = $this->db->fetchAssoc(
+                $query,
+                [':id'=> $id]
+        );
+        
+        if(!empty($dbProgramme))
+        {
+            return $this->buildFromArray($dbProgramme);
+        }
+        return null;
+    }
+    
+    
+    // ------- Méthode findByObjectif() pour afficher les programmes par objectif --------
+    
+    public function findByObjectif(Objectif $objectif)
+    {
+        $query = <<<EOS
+SELECT p.*, o.titre, m.pseudo
+FROM programme p
+JOIN objectif o ON p.objectif_id = o.id
+JOIN membre m ON p.membre_id = m.id
+WHERE p.objectif_id = :id
+ORDER BY id DESC
+EOS;
+        
+        $dbProgrammes = $this->db->fetchAll(
+                $query,
+                [':id' => $objectif->getId()]
+            );
+        
+        $programmes = [];
+        foreach ($dbProgrammes as $dbProgramme) 
+        {
+            $programme = $this->buildFromArray($dbProgramme);            
+            
+            $programmes[] = $programme;
+        }
+        return $programmes;
+        
+    }
+    
+    
+    
+    // ---------- Enregistrement ou update d'un programme en bdd -----------
+    /**
+     * 
+     * @param Programme $programme
+     */
+    public function save(Programme $programme)
+    {
+        $data = ['titre'=>$programme->getTitre(),
+                'objectif_id'=>$programme->getObjectifId(),
+                'materiel'=>$programme->getMateriel(),
+                'difficulte'=>$programme->getDifficulte(),
+                'photo'=>$programme->getPhoto(),
+                'sport'=>$programme->getSport(),
+                'duree'=>$programme->getDuree(),            
+                'membre_id'=>$programme->getMembreId(),
+                'date_publication'=>$programme->getDatePublication()->format('Y-m-d H:i:s')
+                ];
+        
+        $where = !empty($programme->getId())
+                ? ['id' => $programme->getId()] // modification
+                : null // création
+            ;
+        $this->persist($data, $where);           
+    }
+    
+    
+    
+    // ---------- Suppression d'un programme en bdd -----------
+    /**
+     * 
+     * @param Programme $programme
+     */
+    public function delete(Programme $programme)
+    {
+        $this->db->delete('programme', ['id' => $programme->getId()]);
+    }
+    
+    
+    
+    // ---------------  Méthode buildFromArray() --------------- 
+    /**
+     * 
+     * @param array $dbProgramme
+     * @return Programme
+     */
+    public function buildFromArray(array $dbProgramme)
+    {
+        $programme = new Programme();       
+        
+        $objectif = new Objectif();
+        
+        /*
+        $membre = new Membre();
+        
+        $membre
+                ->setId($dbProgramme['membre_id'])
+                ->setNom($dbProgramme['nom'])
+                ->setPrenom($dbProgramme['prenom'])
+                ->setPseudo($dbProgramme['pseudo'])
+        ;*/
+        
+        $programme
+                ->setId($dbProgramme['id'])
+                ->setMateriel($dbProgramme['materiel'])
+                ->setDifficulte($dbProgramme['difficulte'])
+                ->setPhoto($dbProgramme['photo'])
+                ->setSport($dbProgramme['sport'])
+                ->setDuree($dbProgramme['duree'])
+                ->setDatePublication(new DateTime($dbProgramme['date_publication']))
+                ->setObjectif($objectif)
+                //->setMembre($membre)                
+        ;
+        
+        return $programme;
+    }
+    
+    
+}

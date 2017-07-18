@@ -1,0 +1,11 @@
+{% for programme in programmes %}    
+    <h2>{{ programme.titre }} <small>{{ programme.objectifTitre }}</small></h2>
+    <p><b>{{ programme.sport }}</b></p>
+    <p>{{ programme.duree }}</p>
+    <p><em>{{ programme.materiel }}</em></p>   
+    <a href="{{ path('programme', {id: programme.id}) }}">Lire</a>
+    {% if not loop.last %}
+    <hr>    
+    {% endif %}
+    
+{% endfor %}

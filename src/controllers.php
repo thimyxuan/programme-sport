@@ -12,7 +12,23 @@ $app->get('/', 'index.controller:indexAction')
     ->bind('homepage') // nom de la route
 ;
 
-/* Membre */
+$app
+    ->get('/rubriques/menu', 'objectif.controller:menuAction')
+    ->bind('objectif_menu')
+;
+
+$app
+    ->get('/rubriques/{id}', 'objectif.controller:indexAction')
+    ->bind('objectif')
+;
+
+$app
+    ->match('/programmes/{id}', 'programme.controller:indexAction')
+    ->bind('programme')
+;
+
+
+/* USER */
 $app
     ->match('/inscription', 'membre.controller:registerAction') // on prend match() car contiendra un formulaire d'inscription
     ->bind('inscription')
@@ -28,12 +44,16 @@ $app
     ->bind('profil')
 ;
 
-/* ADMIN Membre */
+
+/* BACK */
 
 $app
     ->get('/admin/liste_membres', 'admin.membre.controller:membreListAction')
     ->bind('liste_membres')
 ;
+
+
+// -----------------
 
 $app->error(function (\Exception $e, Request $request, $code) use ($app) {
     if ($app['debug']) {

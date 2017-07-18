@@ -5,6 +5,12 @@ use Controller\IndexController;
 use Controller\MembreController;
 use Repository\MembreRepository;
 use Service\UserManager;
+use Controller\JourController;
+use Repository\JourRepository;
+use Controller\ObjectifController;
+use Controller\ProgrammeController;
+use Repository\ObjectifRepository;
+use Repository\ProgrammeRepository;
 use Silex\Application;
 use Silex\Provider\AssetServiceProvider;
 use Silex\Provider\DoctrineServiceProvider;
@@ -19,7 +25,7 @@ $app->register(new AssetServiceProvider());
 $app->register(new TwigServiceProvider());
 $app->register(new HttpFragmentServiceProvider());
 $app['twig'] = $app->extend('twig', function ($twig, $app) {
-    // add custom globals, filters, tags, ...
+    
 
     return $twig;
 });
@@ -45,23 +51,41 @@ $app->register(new SessionServiceProvider());
 $app['user.manager'] = function () use ($app) 
 {
     return new UserManager($app['session']);
-    
 };
+
 
 /* Déclaration des contrôleurs en service */
 
+
+// FRONT
 $app['index.controller'] = function () use ($app) {
     return new IndexController($app);
 };
 
-$app['membre.controller'] = function () use ($app) 
+$app['programme.controller'] = function () use ($app) 
 {
-    return new MembreController($app);
-    
+    return new ProgrammeController($app);
 };
 
-/* Déclaration des contrôleurs ADMIN en service */
+$app['jour.controller'] = function () use ($app) {
+    return new JourController($app);
+};
 
+$app['objectif.controller'] = function () use ($app) 
+{
+    return new ObjectifController($app);
+};
+
+
+// USER
+$app['membre.controller'] = function () use ($app) 
+{
+    return new MembreController($app);    
+};
+
+
+
+// BACK
 $app['admin.membre.controller'] = function () use ($app) 
 {
     return new AdminMembreController($app);
@@ -72,7 +96,21 @@ $app['admin.membre.controller'] = function () use ($app)
 
 $app['membre.repository'] = function () use ($app) 
 {
-    return new MembreRepository($app['db']);    
+    return new MembreRepository($app['db']);
+};
+
+$app['jour.repository'] = function () use ($app) {
+    return new JourRepository($app['db']);
+};
+
+$app['programme.repository'] = function () use ($app) 
+{
+    return new ProgrammeRepository($app['db']);    
+};
+
+$app['objectif.repository'] = function () use ($app) 
+{
+    return new ObjectifRepository($app['db']);    
 };
 
 return $app;
