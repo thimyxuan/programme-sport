@@ -118,7 +118,7 @@ EOS;
                 'membre_id'=>$programme->getMembreId(),
                 'date_publication'=>$programme->getDatePublication()->format('Y-m-d H:i:s')
                 ];
-        
+                //var_dump($programme->getId());
         $where = !empty($programme->getId())
                 ? ['id' => $programme->getId()] // modification
                 : null // création

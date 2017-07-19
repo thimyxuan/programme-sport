@@ -115,7 +115,7 @@ class Programme
      * @return string
      */
     public function getTitre() {
-        return $this->id;
+        return $this->titre;
     }
 
     /**
@@ -233,8 +233,8 @@ class Programme
      * @param string $id
      * @return Programme
      */
-    public function setTitre($id) {
-        $this->id = $id;
+    public function setTitre($titre) {
+        $this->titre = $titre;
         return $this;
     }
 

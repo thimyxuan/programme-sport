@@ -44,6 +44,10 @@ $app
     ->bind('profil')
 ;
 
+$app
+    ->match('/programme/creation', 'programme.controller:registerAction')
+    ->bind('creation')
+;
 
 /* BACK */
 
