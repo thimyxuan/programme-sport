@@ -39,6 +39,34 @@ EOS;
         return $exercices;
     }
     
+    public function save(Exercice $exercice)
+    {
+        $data = ['titre'=>$exercice->getTitre(),
+                'consigne'=>$exercice->getConsigne(),
+                'difficulte'=>$exercice->getDifficulte(),
+                'zone_musculaire'=>$exercice->getZoneMusculaire(),
+                'muscle_cible'=>$exercice->getMuscleCible(),
+                'jour_id'=>$exercice->getJourId(),
+                'photo'=>$exercice->getPhoto(),
+                'serie'=>$exercice->getSerie(),
+                'repetition'=>$exercice->getRepetition(),
+                'detail_serie'=>$exercice->getDetailSerie(),
+                'temps_repos'=>$exercice->getTempsRepos()
+                ];
+                
+        
+        $where = !empty($exercice->getId())
+                ? ['id' => $exercice->getId()] // modification
+                : null // création
+        ;
+        
+        $this->persist($data, $where);
+        
+        if (empty($exercice->getId())) {
+            $exercice->setId($this->db->lastInsertId());
+        }
+    }
+    
     public function buildFromArray(array $dbExercice)
     {
         $exercice = new Exercice();

@@ -35,7 +35,12 @@ class ProgrammeController extends ControllerAbstract
     }
     
     public function registerAction() {
-        
+        /*
+         * jour -> 1
+         *          ->statut
+         *      -> 2
+         *          ->statut
+         */       
         $programme = new Programme;
         
         $objectif = new Objectif;
@@ -47,7 +52,7 @@ class ProgrammeController extends ControllerAbstract
         $errors = [];
         
         if ($_POST) {
-            
+            echo '<pre>'; print_r($_POST);echo '</pre>';die;
             if(!empty($_POST))
             {
                 $membre = new Membre();
@@ -86,14 +91,13 @@ class ProgrammeController extends ControllerAbstract
                     ->setTempsRepos($_POST['temps_repos'])
                     ;    
                 
-                //var_dump($programme);
-                //var_dump($exercice);
+
             }
           
             if (empty($errors)) {
                 $this->app['programme.repository']->save($programme);
                 $this->app['jour.repository']->save($jour);
-                $this->app['exercice.repository']->save($exercice);                
+                $this->app['exercice.repository']->save($exercice);           
             }
           
             else
