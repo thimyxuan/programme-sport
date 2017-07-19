@@ -30,6 +30,8 @@ class Jour
      */
     private $statut;
     
+    private $exercices = [];
+    
     /**
      * 
      * @return int
@@ -52,6 +54,13 @@ class Jour
      */
     public function getProgramme() {
         return $this->programme;
+    }
+    
+    public function getProgrammeId() {
+        if(!is_null($this->programme)) {
+            return $this->programme->getId();
+        }
+        return null;
     }
     
     /**
@@ -103,7 +112,7 @@ class Jour
     }
     
     //------------------------------------------
-    
+    // SUREMENT A SUPPRIMER
     public function getJourId() {
         
         if(!is_null($this->programme))
@@ -111,5 +120,16 @@ class Jour
             return $this->programme->getId();
         }
     }
+    
+    public function getExercices() {
+        return $this->exercices;
+    }
+
+    public function setExercices(array $exercices) {
+        $this->exercices = $exercices;
+        return $this;
+    }
+
+
 }
 

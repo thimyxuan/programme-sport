@@ -2,6 +2,8 @@
 
 namespace Entity;
 
+use DateTime;
+
 class Membre {
     
     /**
@@ -52,6 +54,20 @@ class Membre {
      */
     private $statut;
     
+    /**
+     *
+     * @var string 
+     */
+    private $avatar;
+    
+    /**
+     *
+     * @var DateTime 
+     */
+    private $dateEnregistrement;
+    
+    
+    
     /**** GETTERS ****/
     
     public function getId() {
@@ -85,7 +101,21 @@ class Membre {
     public function getStatut() {
         return $this->statut;
     }
+    
+    public function getAvatar() {
+        return $this->avatar;
+    }
+    
+    /**
+     * 
+     * @return DateTime
+     */
+    public function getDateEnregistrement() {
+    return $this->dateEnregistrement;
+    }
 
+    
+    
     /**** SETTERS ****/
     
     public function setId($id) {
@@ -126,6 +156,21 @@ class Membre {
     public function setStatut($statut) {
         $this->statut = $statut;
         return $this;
+    }
+    
+    public function setAvatar($avatar) {
+        $this->avatar = $avatar;
+        return $this;
+    }
+    
+    /**
+     * 
+     * @param \Entity\DateTime $dateEnregistrement
+     * @return Membre
+     */
+    public function setDateEnregistrement(DateTime $dateEnregistrement) {
+        $this->dateEnregistrement = $dateEnregistrement;
+    return $this;
     }
 
 

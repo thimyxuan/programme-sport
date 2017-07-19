@@ -28,8 +28,8 @@
             <td>{{ membre.civilite }}</td>
             <td>{{ membre.statut }}</td>
             <td>
-                <a href=''>Modifier</a>
-                <a href=''>Supprimer</a>
+                <a href="{{path('admin_membre_edit', {id: membre.id}) }}">Modifier</a>
+                <a href="{{path('admin_membre_delete', {id: membre.id}) }}">Supprimer</a>
             </td>    
         </tr>
         {% endfor %}

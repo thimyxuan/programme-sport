@@ -44,14 +44,28 @@ $app
     ->bind('profil')
 ;
 
+$app
+    ->match('/programme/creation', 'programme.controller:registerAction')
+    ->bind('creation')
+;
 
 /* BACK */
 
 $app
-    ->get('/admin/liste_membres', 'admin.membre.controller:membreListAction')
-    ->bind('liste_membres')
+    ->get('/admin/liste_membre', 'admin.membre.controller:membreListAction')
+    ->bind('liste_membre')
 ;
 
+$app
+    ->match('/membres/edit/{id}', 'admin.membre.controller:editAction') 
+    ->value('id', null) 
+    ->bind('admin_membre_edit')
+;
+
+$app
+    ->get('/membre/delete/{id}', 'admin.membre.controller:deleteAction')
+    ->bind('admin_membre_delete')
+;
 
 // -----------------
 

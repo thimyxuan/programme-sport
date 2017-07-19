@@ -4,8 +4,15 @@
     
 {% block content %}
     
-    <h1>{{ programme.titre }}</h1>
+    <p>{{ programme.titre }}</p>
     <p> {{ programme.duree }}</p>
     <p> {{ programme.materiel }}</p>
+    
+    {% for jour in jours %}
+        <p>{{ jour.id }}</p>
+        {% for exercice in jour.exercices %}
+            - {{ exercice.titre }}<br>
+        {% endfor %}
+    {% endfor %}
 
 {% endblock %}

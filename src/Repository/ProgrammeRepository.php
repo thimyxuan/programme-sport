@@ -118,7 +118,7 @@ EOS;
                 'membre_id'=>$programme->getMembreId(),
                 'date_publication'=>$programme->getDatePublication()->format('Y-m-d H:i:s')
                 ];
-        
+                //var_dump($programme->getId());
         $where = !empty($programme->getId())
                 ? ['id' => $programme->getId()] // modification
                 : null // création
@@ -148,19 +148,21 @@ EOS;
      */
     public function buildFromArray(array $dbProgramme)
     {
-        $programme = new Programme();       
+        $programme = new Programme();
         
         $objectif = new Objectif();
         
-        /*
         $membre = new Membre();
         
         $membre
                 ->setId($dbProgramme['membre_id'])
-                ->setNom($dbProgramme['nom'])
-                ->setPrenom($dbProgramme['prenom'])
                 ->setPseudo($dbProgramme['pseudo'])
-        ;*/
+        ;
+        
+        $objectif
+                ->setId($dbProgramme['objectif_id'])
+                ->setTitre($dbProgramme['titre'])
+        ;
         
         $programme
                 ->setId($dbProgramme['id'])
@@ -169,9 +171,9 @@ EOS;
                 ->setPhoto($dbProgramme['photo'])
                 ->setSport($dbProgramme['sport'])
                 ->setDuree($dbProgramme['duree'])
-                ->setDatePublication(new DateTime($dbProgramme['date_publication']))
+                ->setDatePublication(new \DateTime($dbProgramme['date_publication']))
                 ->setObjectif($objectif)
-                //->setMembre($membre)                
+                ->setMembre($membre)                
         ;
         
         return $programme;

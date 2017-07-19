@@ -1,0 +1,46 @@
+{% extends "layout.html.twig" %}
+
+{% block title 'Edit' %}
+
+{% block content %}
+    <h1>    
+    {% if membre.id is empty %}
+            Nouveau
+        {% else %}
+            Modification
+        {% endif %}
+        membre
+    </h1>
+   
+    <form method="post">        
+        <div class="">
+            <label>Pseudo</label>
+            <input type="text" name="pseudo" class="" value="{{ membre.pseudo }}">
+        <div class="">
+            <label>Prénom</label>
+            <input type="text" name="prenom" class="" value="{{ membre.prenom }}">
+        </div>
+        </div>
+        <div class="">
+            <label>Nom</label>
+            <input type="text" name="nom" class="" value="{{ membre.nom }}">
+        </div>
+        <div class="">
+            <label>Email</label>
+            <input type="text" name="email" class="" value="{{ membre.email }}">
+        </div>
+        <div class="">
+            <label>Civilité</label>
+            <input type="radio" name="civilite" class="" value="h" checked="{% if membre.civilite == 'h' %}checked{% else %} {% endif %}"> : Homme
+            <input type="radio" name="civilite" class="" value="f" checked="{% if membre.civilite == 'f' %}checked{% else %} {% endif %}"> : Femme
+        </div>
+        <div class="">
+            <label>Photo de profil : </label>
+            <input type="file" name="avatar" class="" value="{{ membre.avatar }}">
+        </div>
+        
+        <button type="submit" class="">Enregistrer</button>
+        <a href="{{ path('liste_membre') }}" class="">Annuler</a>
+    </form>
+        
+{% endblock %}

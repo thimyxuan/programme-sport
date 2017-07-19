@@ -2,22 +2,23 @@
 
 use Controller\Admin\MembreController as AdminMembreController;
 use Controller\IndexController;
-use Controller\MembreController;
-use Repository\MembreRepository;
-use Service\UserManager;
 use Controller\JourController;
-use Repository\JourRepository;
+use Controller\MembreController;
 use Controller\ObjectifController;
 use Controller\ProgrammeController;
+use Repository\ExerciceRepository;
+use Repository\JourRepository;
+use Repository\MembreRepository;
 use Repository\ObjectifRepository;
 use Repository\ProgrammeRepository;
+use Service\UserManager;
 use Silex\Application;
 use Silex\Provider\AssetServiceProvider;
 use Silex\Provider\DoctrineServiceProvider;
-use Silex\Provider\TwigServiceProvider;
+use Silex\Provider\HttpFragmentServiceProvider;
 use Silex\Provider\ServiceControllerServiceProvider;
 use Silex\Provider\SessionServiceProvider;
-use Silex\Provider\HttpFragmentServiceProvider;
+use Silex\Provider\TwigServiceProvider;
 
 $app = new Application();
 $app->register(new ServiceControllerServiceProvider());
@@ -97,6 +98,10 @@ $app['admin.membre.controller'] = function () use ($app)
 $app['membre.repository'] = function () use ($app) 
 {
     return new MembreRepository($app['db']);
+};
+
+$app['exercice.repository'] = function () use ($app) {
+    return new ExerciceRepository($app['db']);
 };
 
 $app['jour.repository'] = function () use ($app) {
