@@ -67,6 +67,22 @@ $app
     ->bind('admin_membre_delete')
 ;
 
+$app
+    ->get('/admin/liste_objectif', 'admin.objectif.controller:ListAction')
+    ->bind('liste_objectif')
+;
+
+$app
+    ->match('/objectifs/edit/{id}', 'admin.objectif.controller:editAction') 
+    ->value('id', null) 
+    ->bind('admin_objectif_edit')
+;
+
+$app
+    ->get('/objectif/delete/{id}', 'admin.objectif.controller:deleteAction')
+    ->bind('admin_objectif_delete')
+;
+
 // -----------------
 
 $app->error(function (\Exception $e, Request $request, $code) use ($app) {
