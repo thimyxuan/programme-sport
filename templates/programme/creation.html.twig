@@ -51,9 +51,24 @@
                 <option value="souplesse">Souplesse</option>
             </select>
         <div>
-            <label>Durée du programme</label>
+            <label>Durée du programme (en semaine)</label>
             <input type="text" name="duree">
         </div>
+         
+        <h2>Jour 1</h2>
+        <input type="hidden" name="programme_id" value="{{jour.programmeId}}">
+        <div>
+            <label>Ordre</label>
+            <input type="text" name="ordre" value="1">
+        </div>
+        <div>
+            <label>Statut</label>
+            <select type="text" name="statut">
+                <option>choisir</option>
+                <option value="entrainement">entrainement</option
+                <option value="repos">repos</option>>
+            </select>
+        <div>
             
         <button type="submit">Enregistrer</button>
     </form>
