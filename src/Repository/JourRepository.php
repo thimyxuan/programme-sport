@@ -64,6 +64,10 @@ class JourRepository extends RepositoryAbstract
         ;
         
         $this->persist($data, $where);
+        
+        if (empty($jour->getId())) {
+            $jour->setId($this->db->lastInsertId());
+        }
     }
     
     public function delete(Jour $jour)

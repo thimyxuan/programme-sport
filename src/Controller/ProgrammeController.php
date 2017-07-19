@@ -3,7 +3,8 @@
 namespace Controller;
 
 use Controller\ControllerAbstract;
-use Entity\Membre;
+use Entity\Exercice;
+use Entity\Jour;
 use Entity\Objectif;
 use Entity\Programme;
 
@@ -37,6 +38,8 @@ class ProgrammeController extends ControllerAbstract
         
         $objectif = new Objectif;
         
+        $exercice = new Exercice;
+        
         $errors = [];
         
         if ($_POST) {
@@ -58,11 +61,27 @@ class ProgrammeController extends ControllerAbstract
                     ->setMembre($membre)
                     //->setDatePublication($_POST['date_publication'])    
                 ;
+               
+                $exercice
+                    ->setTitre($_POST['titre'])
+                    ->setConsigne($_POST['consigne'])
+                    ->setDifficulte($_POST['difficulte'])
+                    ->setZoneMusculaire($_POST['zone_musculaire'])
+                    ->setMuscleCible($_POST['muscle_cible'])
+                    ->setJour($jour)
+                    ->setPhoto($_POST['photo'])
+                    ->setSerie($_POST['serie'])
+                    ->setRepetition($_POST['repetition'])
+                    ->setDetailSerie($_POST['detail_serie'])
+                    ->setTempsRepos($_POST['temps_repos'])
+                    ;    
                 
-                //var_dump($programme);
+                var_dump($programme);
+                var_dump($exercice);
             }
             if (empty($errors)) {
                 $this->app['programme.repository']->save($programme);
+                $this->app['exercice.repository']->save($exercice);
             }
             else
             {
@@ -78,7 +97,8 @@ class ProgrammeController extends ControllerAbstract
         return $this->render(
             'programme/creation.html.twig',
             [
-                'programme' => $programme
+                'programme' => $programme,
+                'exercice' => $exercice
             ]
             );
     }
