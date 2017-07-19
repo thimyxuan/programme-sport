@@ -98,7 +98,7 @@ class JourRepository extends RepositoryAbstract
 SELECT j.*
 FROM jour j
 JOIN programme p ON j.programme_id = p.id
-WHERE j.programme_id = 1
+WHERE j.programme_id = :id
 ORDER BY ordre ASC
 EOS;
     

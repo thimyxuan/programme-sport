@@ -32,7 +32,7 @@ abstract class RepositoryAbstract
                 $this->getTable(),
                 $data
             );
-        } else {
+        } else {echo 'ici!';
             $this->db->update(
                 $this->getTable(),
                 $data,
