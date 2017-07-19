@@ -49,7 +49,7 @@ EOS;
                 ->setDifficulte($dbExercice['difficulte'])
                 ->setZoneMusculaire($dbExercice['zone_musculaire'])
                 ->setMuscleCible($dbExercice['muscle_cible'])
-                //->setJour($jour)
+                ->setJour($jour)
                 ->setPhoto($dbExercice['photo'])
                 ->setSerie($dbExercice['serie'])
                 ->setRepetition($dbExercice['repetition'])

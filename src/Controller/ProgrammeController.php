@@ -66,7 +66,6 @@ class ProgrammeController extends ControllerAbstract
                     //->setDatePublication($_POST['date_publication'])
                 ;                
                 
-                
                 $jour
                     ->setOrdre($_POST['ordre'])
                     ->setStatut($_POST['statut'])
@@ -87,14 +86,14 @@ class ProgrammeController extends ControllerAbstract
                     ->setTempsRepos($_POST['temps_repos'])
                     ;    
                 
-                var_dump($programme);
-                var_dump($exercice);
+                //var_dump($programme);
+                //var_dump($exercice);
             }
           
             if (empty($errors)) {
                 $this->app['programme.repository']->save($programme);
-                $this->app['exercice.repository']->save($exercice);
                 $this->app['jour.repository']->save($jour);
+                $this->app['exercice.repository']->save($exercice);                
             }
           
             else

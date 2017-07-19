@@ -13,13 +13,13 @@
             <label>Objectif</label>
             <select name="objectif_id">
                 <option value="1">Se relaxer</option>
-                <option value="2">Sculpter son corps</option>                
-                <option value="3">S'affiner</option>                
-                <option value="4">Prendre du volume</option>                
-                <option value="5">Booster son endurance</option>                
-                <option value="6">Travailler sa souplesse</option>                
-                <option value="7">Gagner de la force</option>                
-                <option value="8">Travailler la vitesse</option>                
+                <option value="2">Sculpter son corps</option>
+                <option value="3">S'affiner</option>
+                <option value="4">Prendre du volume</option>
+                <option value="5">Booster son endurance</option>
+                <option value="6">Travailler sa souplesse</option>
+                <option value="7">Gagner de la force</option>
+                <option value="8">Travailler la vitesse</option>
             </select>
         </div>
         <div>            
@@ -54,33 +54,32 @@
             <label>Durée du programme (en semaine)</label>
             <input type="text" name="duree">
         </div>
-         
+        
+            
         <h2>Jour 1</h2>
         <input type="hidden" name="programme_id" value="{{jour.programmeId}}">
         <div>
-            <label>Ordre</label>
-            <input type="text" name="ordre" value="1">
-        </div>
-        <div>
             <label>Statut</label>
-            <select type="text" name="statut">
+            <select type="text" name="jour[1][statut]">
                 <option>choisir</option>
-                <option value="entrainement">entrainement</option
-                <option value="repos">repos</option>>
+                <option value="entrainement">entrainement</option>
+                <option value="repos">repos</option>
             </select>
-        <div>
+        </div>           
+           
             
+        <h2>Exercice 1</h2>
         <div>
             <label>Titre de l'exercice</label>
-            <input type="text" name="titre">
+            <input type="text" name="jour[1][exercices][1][titre]">
         </div>
         <div>
             <label>Consigne</label>
-            <textarea type="text" name="consigne"></textarea>
+            <textarea type="text" name="jour[1][exercices][1][consigne]"></textarea>
         </div>
         <div>            
             <label>Difficulté</label>
-            <select name="difficulte">
+            <select name="jour[1][exercices][1][difficulte]">
                 <option value="facile">Facile</option>
                 <option value="moyen">Moyen</option>
                 <option value="difficile">Difficile</option>
@@ -89,7 +88,7 @@
         </div>
         <div>            
             <label>Zone musculaire</label>
-            <select name="zone_musculaire">
+            <select name="jour[1][exercices][1][zone_musculaire]">
                 <option value="cou">Cou</option>
                 <option value="epaule">Epaules</option>
                 <option value="bras">Bras</option>
@@ -98,31 +97,328 @@
         </div>
         <div>
             <label>Muscle ciblé</label>
-            <input type="text" name="muscle_cible">
+            <input type="text" name="jour[1][exercices][1][muscle_cible]">
         </div>
         <div>
             <input type="hidden" name="jour_id" value="{{ exercice.jourId }}">
         </div>
         <div>
             <label>Photo</label>
-            <input type="file" name="photo" value="">
+            <input type="file" name="jour[1][exercices][1][photo]" value="">
         </div>
         <div>
             <label>Séries</label>
-            <input type="text" name="serie" value="">
+            <input type="text" name="jour[1][exercices][1][serie]" value="">
         </div>
         <div>
             <label>Répétitions</label>
-            <input type="text" name="repetition" value="">
+            <input type="text" name="jour[1][exercices][1][repetition]" value="">
         </div>
         <div>
             <label>Détails séries</label>
-            <textarea type="text" name="detail_serie"></textarea>
+            <textarea type="text" name="jour[1][exercices][1][detail_serie]"></textarea>
         </div>
         <div>
             <label>Temps de repos entre chaque série</label>
-            <textarea type="text" name="temps_repos"></textarea>
+            <input type="text" name="jour[1][exercices][1][temps_repos]">
         </div>
+        
+        
+        <h2>Exercice 2</h2>
+        <div>
+            <label>Titre de l'exercice</label>
+            <input type="text" name="jour[1][exercices][2][titre]">
+        </div>
+        <div>
+            <label>Consigne</label>
+            <textarea type="text" name="jour[1][exercices][2][consigne]"></textarea>
+        </div>
+        <div>            
+            <label>Difficulté</label>
+            <select name="jour[1][exercices][2][difficulte]">
+                <option value="facile">Facile</option>
+                <option value="moyen">Moyen</option>
+                <option value="difficile">Difficile</option>
+                <option value="infernal">Infernal</option>
+            </select>
+        </div>
+        <div>            
+            <label>Zone musculaire</label>
+            <select name="jour[1][exercices][2][zone_musculaire]">
+                <option value="cou">Cou</option>
+                <option value="epaule">Epaules</option>
+                <option value="bras">Bras</option>
+                <option value="dos">Dos</option>
+            </select>
+        </div>
+        <div>
+            <label>Muscle ciblé</label>
+            <input type="text" name="jour[1][exercices][2][muscle_cible]">
+        </div>
+        <div>
+            <input type="hidden" name="jour_id" value="{{ exercice.jourId }}">
+        </div>
+        <div>
+            <label>Photo</label>
+            <input type="file" name="jour[1][exercices][2][photo]" value="">
+        </div>
+        <div>
+            <label>Séries</label>
+            <input type="text" name="jour[1][exercices][2][serie]" value="">
+        </div>
+        <div>
+            <label>Répétitions</label>
+            <input type="text" name="jour[1][exercices][2][repetition]" value="">
+        </div>
+        <div>
+            <label>Détails séries</label>
+            <textarea type="text" name="jour[1][exercices][2][detail_serie]"></textarea>
+        </div>
+        <div>
+            <label>Temps de repos entre chaque série</label>
+            <input type="text" name="jour[1][exercices][2][temps_repos]">
+        </div>
+        
+        
+        
+        <h2>Exercice 3</h2>
+        <div>
+            <label>Titre de l'exercice</label>
+            <input type="text" name="jour[1][exercices][3][titre]">
+        </div>
+        <div>
+            <label>Consigne</label>
+            <textarea type="text" name="jour[1][exercices][3][consigne]"></textarea>
+        </div>
+        <div>            
+            <label>Difficulté</label>
+            <select name="jour[1][exercices][3][difficulte]">
+                <option value="facile">Facile</option>
+                <option value="moyen">Moyen</option>
+                <option value="difficile">Difficile</option>
+                <option value="infernal">Infernal</option>
+            </select>
+        </div>
+        <div>            
+            <label>Zone musculaire</label>
+            <select name="jour[1][exercices][3][zone_musculaire]">
+                <option value="cou">Cou</option>
+                <option value="epaule">Epaules</option>
+                <option value="bras">Bras</option>
+                <option value="dos">Dos</option>
+            </select>
+        </div>
+        <div>
+            <label>Muscle ciblé</label>
+            <input type="text" name="jour[1][exercices][3][muscle_cible]">
+        </div>
+        <div>
+            <input type="hidden" name="jour_id" value="{{ exercice.jourId }}">
+        </div>
+        <div>
+            <label>Photo</label>
+            <input type="file" name="jour[1][exercices][3][photo]" value="">
+        </div>
+        <div>
+            <label>Séries</label>
+            <input type="text" name="jour[1][exercices][3][serie]" value="">
+        </div>
+        <div>
+            <label>Répétitions</label>
+            <input type="text" name="jour[1][exercices][3][repetition]" value="">
+        </div>
+        <div>
+            <label>Détails séries</label>
+            <textarea type="text" name="jour[1][exercices][3][detail_serie]"></textarea>
+        </div>
+        <div>
+            <label>Temps de repos entre chaque série</label>
+            <input type="text" name="jour[1][exercices][3][temps_repos]">
+        </div>
+        
+        
+        
+        <h2>Jour 2</h2>
+        <input type="hidden" name="programme_id" value="{{jour.programmeId}}">
+        <div>
+            <label>Statut</label>
+            <select type="text" name="jour[2][statut]">
+                <option>choisir</option>
+                <option value="entrainement">entrainement</option>
+                <option value="repos">repos</option>
+            </select>
+        </div>           
+           
+            
+        <h2>Exercice 1</h2>
+        <div>
+            <label>Titre de l'exercice</label>
+            <input type="text" name="jour[2][exercices][1][titre]">
+        </div>
+        <div>
+            <label>Consigne</label>
+            <textarea type="text" name="jour[2][exercices][1][consigne]"></textarea>
+        </div>
+        <div>            
+            <label>Difficulté</label>
+            <select name="jour[2][exercices][1][difficulte]">
+                <option value="facile">Facile</option>
+                <option value="moyen">Moyen</option>
+                <option value="difficile">Difficile</option>
+                <option value="infernal">Infernal</option>
+            </select>
+        </div>
+        <div>            
+            <label>Zone musculaire</label>
+            <select name="jour[2][exercices][1][zone_musculaire]">
+                <option value="cou">Cou</option>
+                <option value="epaule">Epaules</option>
+                <option value="bras">Bras</option>
+                <option value="dos">Dos</option>
+            </select>
+        </div>
+        <div>
+            <label>Muscle ciblé</label>
+            <input type="text" name="jour[2][exercices][1][muscle_cible]">
+        </div>
+        <div>
+            <input type="hidden" name="jour_id" value="{{ exercice.jourId }}">
+        </div>
+        <div>
+            <label>Photo</label>
+            <input type="file" name="jour[2][exercices][1][photo]" value="">
+        </div>
+        <div>
+            <label>Séries</label>
+            <input type="text" name="jour[2][exercices][1][serie]" value="">
+        </div>
+        <div>
+            <label>Répétitions</label>
+            <input type="text" name="jour[2][exercices][1][repetition]" value="">
+        </div>
+        <div>
+            <label>Détails séries</label>
+            <textarea type="text" name="jour[2][exercices][1][detail_serie]"></textarea>
+        </div>
+        <div>
+            <label>Temps de repos entre chaque série</label>
+            <input type="text" name="jour[2][exercices][1][temps_repos]">
+        </div>
+        
+        
+        <h2>Exercice 2</h2>
+        <div>
+            <label>Titre de l'exercice</label>
+            <input type="text" name="jour[2][exercices][2][titre]">
+        </div>
+        <div>
+            <label>Consigne</label>
+            <textarea type="text" name="jour[2][exercices][2][consigne]"></textarea>
+        </div>
+        <div>            
+            <label>Difficulté</label>
+            <select name="jour[2][exercices][2][difficulte]">
+                <option value="facile">Facile</option>
+                <option value="moyen">Moyen</option>
+                <option value="difficile">Difficile</option>
+                <option value="infernal">Infernal</option>
+            </select>
+        </div>
+        <div>            
+            <label>Zone musculaire</label>
+            <select name="jour[2][exercices][2][zone_musculaire]">
+                <option value="cou">Cou</option>
+                <option value="epaule">Epaules</option>
+                <option value="bras">Bras</option>
+                <option value="dos">Dos</option>
+            </select>
+        </div>
+        <div>
+            <label>Muscle ciblé</label>
+            <input type="text" name="jour[2][exercices][2][muscle_cible]">
+        </div>
+        <div>
+            <input type="hidden" name="jour_id" value="{{ exercice.jourId }}">
+        </div>
+        <div>
+            <label>Photo</label>
+            <input type="file" name="jour[2][exercices][2][photo]" value="">
+        </div>
+        <div>
+            <label>Séries</label>
+            <input type="text" name="jour[2][exercices][2][serie]" value="">
+        </div>
+        <div>
+            <label>Répétitions</label>
+            <input type="text" name="jour[2][exercices][2][repetition]" value="">
+        </div>
+        <div>
+            <label>Détails séries</label>
+            <textarea type="text" name="jour[2][exercices][2][detail_serie]"></textarea>
+        </div>
+        <div>
+            <label>Temps de repos entre chaque série</label>
+            <input type="text" name="jour[2][exercices][2][temps_repos]">
+        </div>
+        
+        
+        
+        <h2>Exercice 3</h2>
+        <div>
+            <label>Titre de l'exercice</label>
+            <input type="text" name="jour[2][exercices][3][titre]">
+        </div>
+        <div>
+            <label>Consigne</label>
+            <textarea type="text" name="jour[2][exercices][3][consigne]"></textarea>
+        </div>
+        <div>            
+            <label>Difficulté</label>
+            <select name="jour[2][exercices][3][difficulte]">
+                <option value="facile">Facile</option>
+                <option value="moyen">Moyen</option>
+                <option value="difficile">Difficile</option>
+                <option value="infernal">Infernal</option>
+            </select>
+        </div>
+        <div>            
+            <label>Zone musculaire</label>
+            <select name="jour[2][exercices][3][zone_musculaire]">
+                <option value="cou">Cou</option>
+                <option value="epaule">Epaules</option>
+                <option value="bras">Bras</option>
+                <option value="dos">Dos</option>
+            </select>
+        </div>
+        <div>
+            <label>Muscle ciblé</label>
+            <input type="text" name="jour[2][exercices][3][muscle_cible]">
+        </div>
+        <div>
+            <input type="hidden" name="jour_id" value="{{ exercice.jourId }}">
+        </div>
+        <div>
+            <label>Photo</label>
+            <input type="file" name="jour[2][exercices][3][photo]" value="">
+        </div>
+        <div>
+            <label>Séries</label>
+            <input type="text" name="jour[2][exercices][3][serie]" value="">
+        </div>
+        <div>
+            <label>Répétitions</label>
+            <input type="text" name="jour[2][exercices][3][repetition]" value="">
+        </div>
+        <div>
+            <label>Détails séries</label>
+            <textarea type="text" name="jour[2][exercices][3][detail_serie]"></textarea>
+        </div>
+        <div>
+            <label>Temps de repos entre chaque série</label>
+            <input type="text" name="jour[2][exercices][3][temps_repos]">
+        </div>
+        
+        
         
         <button type="submit">Enregistrer</button>
     </form>
