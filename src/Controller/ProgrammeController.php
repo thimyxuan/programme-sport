@@ -3,6 +3,8 @@
 namespace Controller;
 
 use Controller\ControllerAbstract;
+
+use Entity\Exercice;
 use Entity\Jour;
 use Entity\Membre;
 use Entity\Objectif;
@@ -38,6 +40,8 @@ class ProgrammeController extends ControllerAbstract
         
         $objectif = new Objectif;
         
+        $exercice = new Exercice;
+
         $jour = new Jour;
         
         $errors = [];
@@ -68,13 +72,31 @@ class ProgrammeController extends ControllerAbstract
                     ->setStatut($_POST['statut'])
                     ->setProgramme($programme)
                 ;
+               
+                $exercice
+                    ->setTitre($_POST['titre'])
+                    ->setConsigne($_POST['consigne'])
+                    ->setDifficulte($_POST['difficulte'])
+                    ->setZoneMusculaire($_POST['zone_musculaire'])
+                    ->setMuscleCible($_POST['muscle_cible'])
+                    ->setJour($jour)
+                    ->setPhoto($_POST['photo'])
+                    ->setSerie($_POST['serie'])
+                    ->setRepetition($_POST['repetition'])
+                    ->setDetailSerie($_POST['detail_serie'])
+                    ->setTempsRepos($_POST['temps_repos'])
+                    ;    
                 
-                //var_dump($programme);
+                var_dump($programme);
+                var_dump($exercice);
             }
+          
             if (empty($errors)) {
                 $this->app['programme.repository']->save($programme);
+                $this->app['exercice.repository']->save($exercice);
                 $this->app['jour.repository']->save($jour);
             }
+          
             else
             {
                 $msg='<strong>Le formulaire contient des erreurs</strong>';
@@ -90,6 +112,7 @@ class ProgrammeController extends ControllerAbstract
             'programme/creation.html.twig',
             [
                 'programme' => $programme,
+                'exercice' => $exercice,
                 'jour'=> $jour
             ]
             );

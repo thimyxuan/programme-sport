@@ -6,7 +6,7 @@
     
     <form method="post">
         <div>
-            <label>Titre</label>
+            <label>Titre du programme</label>
             <input type="text" name="titre">
         </div>
         <div>            
@@ -70,6 +70,60 @@
             </select>
         <div>
             
+        <div>
+            <label>Titre de l'exercice</label>
+            <input type="text" name="titre">
+        </div>
+        <div>
+            <label>Consigne</label>
+            <textarea type="text" name="consigne"></textarea>
+        </div>
+        <div>            
+            <label>Difficulté</label>
+            <select name="difficulte">
+                <option value="facile">Facile</option>
+                <option value="moyen">Moyen</option>
+                <option value="difficile">Difficile</option>
+                <option value="infernal">Infernal</option>
+            </select>
+        </div>
+        <div>            
+            <label>Zone musculaire</label>
+            <select name="zone_musculaire">
+                <option value="cou">Cou</option>
+                <option value="epaule">Epaules</option>
+                <option value="bras">Bras</option>
+                <option value="dos">Dos</option>
+            </select>
+        </div>
+        <div>
+            <label>Muscle ciblé</label>
+            <input type="text" name="muscle_cible">
+        </div>
+        <div>
+            <input type="hidden" name="jour_id" value="{{ exercice.jourId }}">
+        </div>
+        <div>
+            <label>Photo</label>
+            <input type="file" name="photo" value="">
+        </div>
+        <div>
+            <label>Séries</label>
+            <input type="text" name="serie" value="">
+        </div>
+        <div>
+            <label>Répétitions</label>
+            <input type="text" name="repetition" value="">
+        </div>
+        <div>
+            <label>Détails séries</label>
+            <textarea type="text" name="detail_serie"></textarea>
+        </div>
+        <div>
+            <label>Temps de repos entre chaque série</label>
+            <textarea type="text" name="temps_repos"></textarea>
+        </div>
+        
         <button type="submit">Enregistrer</button>
     </form>
 

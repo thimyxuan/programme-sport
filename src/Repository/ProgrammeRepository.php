@@ -123,8 +123,8 @@ EOS;
                 ? ['id' => $programme->getId()] // modification
                 : null // création
             ;
-        $this->persist($data, $where);
-        
+        $this->persist($data, $where);        
+
         if(empty($programme->getId()))
         {
             $programme->setId($this->db->lastInsertId());
