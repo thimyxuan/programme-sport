@@ -3,8 +3,10 @@
 namespace Controller;
 
 use Controller\ControllerAbstract;
+
 use Entity\Exercice;
 use Entity\Jour;
+use Entity\Membre;
 use Entity\Objectif;
 use Entity\Programme;
 
@@ -39,6 +41,8 @@ class ProgrammeController extends ControllerAbstract
         $objectif = new Objectif;
         
         $exercice = new Exercice;
+
+        $jour = new Jour;
         
         $errors = [];
         
@@ -46,9 +50,9 @@ class ProgrammeController extends ControllerAbstract
             
             if(!empty($_POST))
             {
-//                $membre = new Membre();
-//                $membre->setId(1);
-                $membre = $this->app['user.manager']->getUser();
+                $membre = new Membre();
+                $membre->setId(1);
+//              $membre = $this->app['user.manager']->getUser();
                 $objectif->setId($_POST['objectif_id']);
                 $programme
                     ->setTitre($_POST['titre'])
@@ -59,7 +63,14 @@ class ProgrammeController extends ControllerAbstract
                     ->setSport($_POST['sport'])    
                     ->setDuree($_POST['duree'])
                     ->setMembre($membre)
-                    //->setDatePublication($_POST['date_publication'])    
+                    //->setDatePublication($_POST['date_publication'])
+                ;                
+                
+                
+                $jour
+                    ->setOrdre($_POST['ordre'])
+                    ->setStatut($_POST['statut'])
+                    ->setProgramme($programme)
                 ;
                
                 $exercice
@@ -79,10 +90,13 @@ class ProgrammeController extends ControllerAbstract
                 var_dump($programme);
                 var_dump($exercice);
             }
+          
             if (empty($errors)) {
                 $this->app['programme.repository']->save($programme);
                 $this->app['exercice.repository']->save($exercice);
+                $this->app['jour.repository']->save($jour);
             }
+          
             else
             {
                 $msg='<strong>Le formulaire contient des erreurs</strong>';
@@ -98,7 +112,8 @@ class ProgrammeController extends ControllerAbstract
             'programme/creation.html.twig',
             [
                 'programme' => $programme,
-                'exercice' => $exercice
+                'exercice' => $exercice,
+                'jour'=> $jour
             ]
             );
     }
