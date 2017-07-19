@@ -2,6 +2,7 @@
 
 namespace Repository;
 
+use DateTime;
 use Entity\Membre;
 
 class MembreRepository extends RepositoryAbstract {
@@ -11,6 +12,7 @@ class MembreRepository extends RepositoryAbstract {
         return 'membre';
     }
     
+    //--------------- Enregistrement ou update d'un membre en bdd --------------------
     /**
      * 
      * @param User $user
@@ -24,21 +26,21 @@ class MembreRepository extends RepositoryAbstract {
                 'email'=>$membre->getEmail(),
                 'civilite'=>$membre->getCivilite(),
                 'statut'=>$membre->getStatut(),
-                'mdp'=>$membre->getMdp()
+                'mdp'=>$membre->getMdp(),     
+                'avatar'=>$membre->getAvatar()//,
+                //'date_enregistrement'=>$membre->getDateEnregistrement()->format('Y-m-d H:i:s')
                 ];
         
         $where = !empty($membre->getId())
                 ? ['id' => $membre->getId()] // modification
                 : null // création
             ;
-        $this->persist($data, $where);           
+        $this->persist($data, $where);
     }
     
-    /**
-     * 
-     * @param type $email
-     * @return string
-     */
+    
+    //--------------- Méthode pour rechercher un membre par son email --------------------
+
     public function findByEmail($email)
     {
         $dbMembre = $this->db->fetchAssoc(
@@ -48,16 +50,13 @@ class MembreRepository extends RepositoryAbstract {
         if(!empty($dbMembre))
         {
             return $this->buildFromArray($dbMembre);
-        }
-      
+        }      
         return null;
     }
     
-    /**
-     * 
-     * @param type $id
-     * @return int
-     */
+    
+    //--------------- Méthode pour rechercher un membre par son id --------------------
+    
     public function findById($id)
     {
         $dbMembre = $this->db->fetchAssoc(
@@ -67,10 +66,29 @@ class MembreRepository extends RepositoryAbstract {
         if(!empty($dbMembre))
         {
             return $this->buildFromArray($dbMembre);
-        }
-      
+        }      
         return null;
     }
+    
+    
+    //--------------- Méthode pour rechercher un membre par son pseudo --------------------
+    
+    public function findByPseudo($pseudo)
+    {
+        $dbMembre = $this->db->fetchAssoc(
+                'SELECT * FROM membre WHERE pseudo = :pseudo', [':pseudo'=>$pseudo]
+                );
+        
+        if(!empty($dbMembre))
+        {
+            return $this->buildFromArray($dbMembre);
+        }      
+        return null;
+    }
+    
+    
+    
+    // ------------ Méthode findAll qui retourne un array -------------
     
     public function findAll() {
         
@@ -87,6 +105,8 @@ class MembreRepository extends RepositoryAbstract {
         return $membres;
     }
     
+    
+    // ---------------  Méthode buildFromArray() --------------- 
     /**
      * 
      * @param array $dbMembre
@@ -104,6 +124,8 @@ class MembreRepository extends RepositoryAbstract {
                 ->setCivilite($dbMembre['civilite'])
                 ->setMdp($dbMembre['mdp'])
                 ->setStatut($dbMembre['statut'])
+                ->setAvatar($dbMembre['avatar'])
+                ->setDateEnregistrement(new \DateTime($dbMembre['date_enregistrement']))
         ;
         return $membre;
     }

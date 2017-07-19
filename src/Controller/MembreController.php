@@ -2,8 +2,8 @@
 
 namespace Controller;
 
+use Controller\ControllerAbstract;
 use Entity\Membre;
-use Repository\MembreRepository;
 
 class MembreController extends ControllerAbstract {
     
@@ -23,8 +23,11 @@ class MembreController extends ControllerAbstract {
                     ->setPseudo($_POST['pseudo'])
                     ->setNom($_POST['nom'])
                     ->setPrenom($_POST['prenom'])
+                    ->setMdp($_POST['mdp'])
                     ->setEmail($_POST['email'])    
-                    ->setCivilite($_POST['civilite'])    
+                    ->setCivilite($_POST['civilite']) 
+                    ->setAvatar($_POST['avatar'])
+                    //->setDateEnregistrement(new \DateTime($dbMembre['date_enregistrement']))
                 ;
             }
 
@@ -62,13 +65,13 @@ class MembreController extends ControllerAbstract {
             }
             elseif($_POST['mdp'] != $_POST['mdp_confirm'])
             {
-                $errors['mdp_confim'] = 'Les mots de passe ne sont pas identiques';
+                $errors['mdp_confirm'] = 'Les mots de passe ne sont pas identiques';
             }
             if(empty($errors))
             {
                 $membre->setMdp($this->app['user.manager']->encodePassword($_POST['mdp']));
                 $this->app['membre.repository']->save($membre);
-                $this->app['membre.repository']->login($membre);
+                $this->app['user.manager']->login($membre);
 
                 return $this->redirectRoute('homepage');
             }
@@ -115,7 +118,7 @@ class MembreController extends ControllerAbstract {
         return $this->render
             (
                 'membre/connexion.html.twig',
-                ['email'=>$email]             
+                ['email'=>$email]
             );
     }
     
