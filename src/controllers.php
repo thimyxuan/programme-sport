@@ -45,8 +45,9 @@ $app
 ;
 
 $app
-    ->match('/programme/creation', 'programme.controller:registerAction')
-    ->bind('creation')
+    ->match('/programme/edit/{id}', 'programme.controller:editAction')
+    ->value('id', null)
+    ->bind('programme_edit')
 ;
 
 /* BACK */

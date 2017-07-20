@@ -35,20 +35,28 @@ class ProgrammeController extends ControllerAbstract
     }
 
 
-    
-    public function registerAction() {
+    public function editAction($id = null) {
         
         $objectifs = $this->app['objectif.repository']->findAll();
         
-        $programme = new Programme;
-        
-        $objectif = new Objectif;
+        if(!is_null($id))
+        {
+            $programme = $this->app['programme.repository']->find($id);
+            //$jour = $this->app['jour.repository']->findByProgramme($programme);
+            //echo '<pre>'; print_r($jour) ; echo '</pre>';
+            //$exercice = $this->app['exercice.repository']->findByJour($jour);
+            //echo '<pre>'; print_r($exercice) ; echo '</pre>';
+        }        
+        else
+        {        
+            $programme = new Programme;
+            
+            $objectif = new Objectif;       
+        }
         
         $tabJours = [];
         
-        $tabExercices = [];
-        
-        //$exercice = new Exercice;
+        $tabExercices = []; 
         
         $errors = [];
         
@@ -93,6 +101,7 @@ class ProgrammeController extends ControllerAbstract
 
                         $tabJours[] = $jour;
                         
+                                                
                         if (isset($_POST['jour'][$index]['exercice'])) {
                         
                             foreach ($_POST['jour'][$index]['exercice'] as $index => $formExercice) {
@@ -144,7 +153,7 @@ class ProgrammeController extends ControllerAbstract
         }
         
         return $this->render(
-            'programme/creation.html.twig',
+            'programme/edit.html.twig',
             [
                 'objectifs' => $objectifs,
                 'programme' => $programme,
