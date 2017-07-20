@@ -69,9 +69,9 @@ class JourRepository extends RepositoryAbstract
             $jour->setId($this->db->lastInsertId());
         }
         
-        var_dump($jour);die;
+        //var_dump($jour);die;
     }
-    
+   
     public function delete(Jour $jour)
     {
         $this->db->delete('jour', ['id' => $jour->getId()]);

@@ -35,24 +35,23 @@ class ProgrammeController extends ControllerAbstract
     }
     
     public function registerAction() {
-        /*
-         * jour -> 1
-         *          ->statut
-         *      -> 2
-         *          ->statut
-         */       
+        
+        $objectifs = $this->app['objectif.repository']->findAll();
+        
         $programme = new Programme;
         
         $objectif = new Objectif;
         
-        $exercice = new Exercice;
-
-        $jour = new Jour;
+        $tabjours = [];
+        
+        //$exercice = new Exercice;
         
         $errors = [];
         
         if ($_POST) {
-            echo '<pre>'; print_r($_POST);echo '</pre>';die;
+            
+            echo '<pre>'; print_r($_POST);echo '</pre>';
+            
             if(!empty($_POST))
             {
                 $membre = new Membre();
@@ -71,54 +70,54 @@ class ProgrammeController extends ControllerAbstract
                     //->setDatePublication($_POST['date_publication'])
                 ;                
                 
-                $jour
-                    ->setOrdre($_POST['ordre'])
-                    ->setStatut($_POST['statut'])
-                    ->setProgramme($programme)
-                ;
-               
-                $exercice
-                    ->setTitre($_POST['titre'])
-                    ->setConsigne($_POST['consigne'])
-                    ->setDifficulte($_POST['difficulte'])
-                    ->setZoneMusculaire($_POST['zone_musculaire'])
-                    ->setMuscleCible($_POST['muscle_cible'])
-                    ->setJour($jour)
-                    ->setPhoto($_POST['photo'])
-                    ->setSerie($_POST['serie'])
-                    ->setRepetition($_POST['repetition'])
-                    ->setDetailSerie($_POST['detail_serie'])
-                    ->setTempsRepos($_POST['temps_repos'])
-                    ;    
+                // Il faut faire un foreach poour chaque $_POST['jour']
+                // et à l'intérieur de ce foreach, il faut faire un for
+                // ce qui donnerait dans le for quelque chose comme ça :
+                // 
                 
+                foreach ($_POST['jour'] as $index => $formJour) {
+                    
+                    $jour = new Jour;
 
-            }
+                        $jour
+                            ->setOrdre($index)
+                            ->setStatut($formJour['statut'])
+                            ->setProgramme($programme)
+                        ;
+                    
+                    $tabjours[] = $jour;
+                    
+                }
           
-            if (empty($errors)) {
-                $this->app['programme.repository']->save($programme);
-                $this->app['jour.repository']->save($jour);
-                $this->app['exercice.repository']->save($exercice);           
-            }
-          
-            else
-            {
-                $msg='<strong>Le formulaire contient des erreurs</strong>';
-                $msg .= '<br>' . implode('<br>', $errors);
-                // on utilise IMPLODE car on stock les erreurs dans un array errors=[];
-                // implode permet d'ajouer un <br> après chaque élément du tableau
-                $this->addFlashMessage($msg, 'error');
-            }
+                if (empty($errors)) {
+                    $this->app['programme.repository']->save($programme);
+                    foreach ($tabjours as $jour) {
+                        $this->app['jour.repository']->save($jour);
+                    }
+                    //$this->app['exercice.repository']->save($exercice);           
+                }
+
+                else
+                {
+                    $msg='<strong>Le formulaire contient des erreurs</strong>';
+                    $msg .= '<br>' . implode('<br>', $errors);
+                    // on utilise IMPLODE car on stock les erreurs dans un array errors=[];
+                    // implode permet d'ajouer un <br> après chaque élément du tableau
+                    $this->addFlashMessage($msg, 'error');
+                }
             
+            }
         }
         
         return $this->render(
             'programme/creation.html.twig',
             [
+                'objectifs' => $objectifs,
                 'programme' => $programme,
-                'exercice' => $exercice,
-                'jour'=> $jour
+                //'exercice' => $exercice,
+                'jours'=> $tabjours
             ]
-            );
+        );
+        
     }
-    
 }
