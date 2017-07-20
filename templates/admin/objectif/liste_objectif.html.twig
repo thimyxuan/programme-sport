@@ -1,0 +1,32 @@
+
+{% extends "layout.html.twig" %}
+
+{% block title 'Listing Objectifs' %}
+
+{% block content %}
+    
+    <h1>Gestion des objectifs</h1>
+       
+    <p><a href="{{ path('admin_objectif_edit') }}">Ajouter un objectif</a></p>
+    
+    <table>
+        <tr>
+            <th>Id</th>
+            <th>Titre</th>
+            <th></th>
+        </tr>
+        
+        {% for objectif in objectifs %}
+        <tr>
+            <td>{{ objectif.id }}</td>
+            <td>{{ objectif.titre }}</td>
+            <td>
+                <a href="{{path('admin_objectif_edit', {id: objectif.id}) }}">Modifier</a>
+                <a href="{{path('admin_objectif_delete', {id: objectif.id}) }}">Supprimer</a>
+            </td>    
+        </tr>
+        {% endfor %}
+    </table>
+    
+{% endblock %}
+
