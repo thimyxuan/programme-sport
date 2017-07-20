@@ -36,7 +36,9 @@
                 
                 {# affiche le rendu de la route category_menu p#}
                 {{ render(url('objectif_menu'))}}
-                
+            </div>
+            <div class="">
+                <a class = "" href="{{path('creation')}}">Créez votre programme</a>
             </div>
         </nav>
         
@@ -79,6 +81,7 @@
             
         {% block javascripts %}
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+        <script src="{{ asset('js/fonctions.js') }}"></script>
         {% endblock %}
     </body>
 </html>
