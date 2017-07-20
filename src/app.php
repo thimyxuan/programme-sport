@@ -1,6 +1,7 @@
 <?php
 
 use Controller\Admin\MembreController as AdminMembreController;
+use Controller\Admin\ObjectifController as AdminObjectifController;
 use Controller\IndexController;
 use Controller\JourController;
 use Controller\MembreController;
@@ -90,6 +91,12 @@ $app['membre.controller'] = function () use ($app)
 $app['admin.membre.controller'] = function () use ($app) 
 {
     return new AdminMembreController($app);
+    
+};
+
+$app['admin.objectif.controller'] = function () use ($app) 
+{
+    return new AdminObjectifController($app);
     
 };
 

@@ -5,4 +5,133 @@
 {% block content %}
     
 
+    <form method="POST">
+        
+        {#    PARTIE ENREGISTREMENT PROGRAMME    #}
+        
+        <div>
+            <label>Titre du programme</label>
+            <input type="text" name="titre">
+        </div>
+        <div>            
+            <label>Objectif</label>
+            <select name="objectif_id">
+                {% for objectif in objectifs %}
+                    <option value="{{ objectif.id }}">{{ objectif.titre }}</option>
+                {% endfor %}
+            </select>
+        </div>
+        <div>            
+            <label>Matériel</label>
+            <select name="materiel">
+                <option value="oui">Oui</option>
+                <option value="non">Non</option>
+                <option value="facultatif">Facultatif</option>
+            </select>
+        </div>
+        <div>            
+            <label>Difficulté</label>
+            <select name="difficulte">
+                <option value="facile">Facile</option>
+                <option value="moyen">Moyen</option>
+                <option value="difficile">Difficile</option>
+                <option value="infernal">Infernal</option>
+            </select>
+        </div>
+        <div>
+            <label>Photo</label>
+            <input type="file" name="photo" value="">
+        </div>
+        <div>    
+            <label>Sport</label>
+            <select name="sport">
+                <option value="muscu">Musculation</option>
+                <option value="yoga">Yoga</option>
+                <option value="fitness">Fitness</option>
+                <option value="souplesse">Souplesse</option>
+            </select>
+        </div>
+        <div>
+            <label>Durée du programme (en semaine)</label>
+            <input type="text" name="duree">
+        </div>    
+            
+        {#    PARTIE ENREGISTREMENT JOURS    #}
+            {% for i in 1..7 %}
+            <h2>Jour {{i}}</h2>
+            <input type="hidden" name="programme_id" value="">
+            <div>
+                <label>Statut</label>
+                <select type="text" name="jour[{{i}}][statut]">
+                    <option>choisir</option>
+                    <option value="entrainement">entrainement</option>
+                    <option value="repos">repos</option>
+                </select>
+            </div>
+                
+                {% for j in 1..3 %}
+                    <h2>Exercice {{ j }}</h2>
+                    <div>
+                        <label>Titre de l'exercice</label>
+                        <input type="text" name="jour[{{ i }}][exercice][{{ j }}][titre]">
+                    </div>
+                    <div>
+                        <label>Consigne</label>
+                        <textarea type="text" name="jour[{{ i }}][exercice][{{ j }}][consigne]"></textarea>
+                    </div>
+                    <div>            
+                        <label>Difficulté</label>
+                        <select name="jour[{{ i }}][exercice][{{ j }}][difficulte]">
+                            <option value="facile">Facile</option>
+                            <option value="moyen">Moyen</option>
+                            <option value="difficile">Difficile</option>
+                            <option value="infernal">Infernal</option>
+                        </select>
+                    </div>
+                    <div>            
+                        <label>Zone musculaire</label>
+                        <select name="jour[{{ i }}][exercice][{{ j }}][zone_musculaire]">
+                            <option value="cou">Cou</option>
+                            <option value="epaule">Epaules</option>
+                            <option value="bras">Bras</option>
+                            <option value="dos">Dos</option>
+                        </select>
+                    </div>
+                    <div>
+                        <label>Muscle ciblé</label>
+                        <input type="text" name="jour[{{ i }}][exercice][{{ j }}][muscle_cible]">
+                    </div>
+                    <div>
+                        <input type="hidden" name="jour_id" value="">
+                    </div>
+                    <div>
+                        <label>Photo</label>
+                        <input type="file" name="jour[{{ i }}][exercice][{{ j }}][photo]" value="">
+                    </div>
+                    <div>
+                        <label>Séries</label>
+                        <input type="text" name="jour[{{ i }}][exercice][{{ j }}][serie]" value="">
+                    </div>
+                    <div>
+                        <label>Répétitions</label>
+                        <input type="text" name="jour[{{ i }}][exercice][{{ j }}][repetition]" value="">
+                    </div>
+                    <div>
+                        <label>Détails séries</label>
+                        <textarea type="text" name="jour[{{ i }}][exercice][{{ j }}][detail_serie]"></textarea>
+                    </div>
+                    <div>
+                        <label>Temps de repos entre chaque série</label>
+                        <input type="text" name="jour[{{ i }}][exercice][{{ j }}][temps_repos]">
+                    </div>
+                {% endfor %}  
+            {% endfor %}           
+
+        <button type="submit">Enregistrer</button>
+    </form>
+
+
+
+
+
 {% endblock %}

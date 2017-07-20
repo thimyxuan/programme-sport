@@ -1,0 +1,26 @@
+{% extends "layout.html.twig" %}
+
+{% block title 'Edit' %}
+
+{% block content %}
+    <h1>    
+    {% if objectif.id is empty %}
+            Nouvel
+        {% else %}
+            Modification de l'
+        {% endif %}
+        objectif
+    </h1>
+   
+    <form method="post">
+        <div class="">
+            <label>Titre</label>
+            <input type="text" name="titre" class="" value="{{ objectif.titre }}">
+        </div>
+        
+        <button type="submit" class="">Enregistrer</button>
+        <a href="{{ path('liste_objectif') }}" class="">Annuler</a>
+    </form>
+        
+{% endblock %}
+
