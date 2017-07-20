@@ -70,6 +70,7 @@
                 
                 {% for j in 1..3 %}
                     <h2>Exercice {{ j }}</h2>
+                    <input type="hidden" name="jour_id" value="">
                     <div>
                         <label>Titre de l'exercice</label>
                         <input type="text" name="jour[{{ i }}][exercice][{{ j }}][titre]">

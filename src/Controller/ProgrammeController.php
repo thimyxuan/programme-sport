@@ -42,7 +42,9 @@ class ProgrammeController extends ControllerAbstract
         
         $objectif = new Objectif;
         
-        $tabjours = [];
+        $tabJours = [];
+        
+        $tabExercices = [];
         
         //$exercice = new Exercice;
         
@@ -75,26 +77,56 @@ class ProgrammeController extends ControllerAbstract
                 // ce qui donnerait dans le for quelque chose comme ça :
                 // 
                 
-                foreach ($_POST['jour'] as $index => $formJour) {
+                if (isset($_POST['jour'])) {
                     
-                    $jour = new Jour;
+                    foreach ($_POST['jour'] as $index => $formJour) {
 
-                        $jour
-                            ->setOrdre($index)
-                            ->setStatut($formJour['statut'])
-                            ->setProgramme($programme)
-                        ;
-                    
-                    $tabjours[] = $jour;
-                    
+                        $jour = new Jour();
+
+                            $jour
+                                ->setOrdre($index)
+                                ->setStatut($formJour['statut'])
+                                ->setProgramme($programme)
+                            ;
+
+                        $tabJours[] = $jour;
+                        
+                        if (isset($_POST['jour'][$index]['exercice'])) {
+                        
+                            foreach ($_POST['jour'][$index]['exercice'] as $index => $formExercice) {
+
+                                $exercice = new Exercice();
+
+                                $exercice
+                                    ->setTitre($formExercice['titre'])
+                                    ->setConsigne($formExercice['consigne'])
+                                    ->setDifficulte($formExercice['difficulte'])
+                                    ->setZoneMusculaire($formExercice['zone_musculaire'])
+                                    ->setMuscleCible($formExercice['muscle_cible'])
+                                    ->setPhoto($formExercice['photo'])
+                                    ->setSerie($formExercice['serie'])
+                                    ->setRepetition($formExercice['repetition'])
+                                    ->setDetailSerie($formExercice['detail_serie'])
+                                    ->setTempsRepos($formExercice['temps_repos'])
+                                    ->setJour($jour)
+                                    ;
+
+                                $tabExercices[] = $exercice;
+
+                            }
+                        }
+
+                    }
                 }
           
                 if (empty($errors)) {
                     $this->app['programme.repository']->save($programme);
-                    foreach ($tabjours as $jour) {
-                        $this->app['jour.repository']->save($jour);
+                    foreach ($tabJours as $jour) {
+                        $this->app['jour.repository']->save($jour); 
+                    }   
+                    foreach ($tabExercices as $exercice) {
+                        $this->app['exercice.repository']->save($exercice);
                     }
-                    //$this->app['exercice.repository']->save($exercice);           
                 }
 
                 else
@@ -115,7 +147,8 @@ class ProgrammeController extends ControllerAbstract
                 'objectifs' => $objectifs,
                 'programme' => $programme,
                 //'exercice' => $exercice,
-                'jours'=> $tabjours
+                'jours'=> $tabJours,
+                'exercices' > $tabExercices
             ]
         );
         
