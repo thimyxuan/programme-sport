@@ -13,6 +13,8 @@
     </head>
     
     <body>
+        
+        {% if user_manager.admin %}
         <nav>
             <div>
                 <a>Menu admin</a>
@@ -29,6 +31,7 @@
                 </ul>
             </div>
         </nav>
+        {% endif %}
         
         <nav class="">
             <div class="">
@@ -37,9 +40,21 @@
                 {# affiche le rendu de la route category_menu p#}
                 {{ render(url('objectif_menu'))}}
             </div>
+            {% if user_manager.user %}
+                <div class="">
+                    <a class = "" href="{{path('programme_edit')}}">Créez votre programme</a>
+                </div>
+                <div class="">
+                    <a class = "" href="{{path('logout')}}">déconnexion</a>
+                </div>
+            {% else %}
             <div class="">
-                <a class = "" href="{{path('creation')}}">Créez votre programme</a>
+                <a class = "" href="{{path('connexion')}}">Connexion</a>
             </div>
+            <div class="">
+                <a class = "" href="{{path('inscription')}}">Inscription</a>
+            </div>
+            {% endif %}
         </nav>
         
         

@@ -52,7 +52,7 @@ class Membre {
      *
      * @var string 
      */
-    private $statut;
+    private $statut = 'membre';
     
     /**
      *
@@ -65,7 +65,6 @@ class Membre {
      * @var DateTime 
      */
     private $dateEnregistrement;
-    
     
     
     /**** GETTERS ****/
@@ -173,5 +172,9 @@ class Membre {
     return $this;
     }
 
+    public function isAdmin() {
+        
+        return $this->statut == 'admin';
+    }
 
 }
