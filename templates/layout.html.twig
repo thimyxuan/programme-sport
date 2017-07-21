@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="FR-fr">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
+        
+        <title>{% block title '' %} Sportbook</title>
+
+        {% block stylesheets %}
+        <link href="{{ asset('css/main.css') }}" rel="stylesheet" type="text/css" />
+        {% endblock %}
+    </head>
+    
+    <body>
+        
+        {% if user_manager.admin %}
+        <nav>
+            <div>
+                <a>Menu admin</a>
+                <ul>
+                    <li>
+                        <a href="{{path('liste_membre')}}">Gestion membres</a>
+                    </li>
+                    <li>
+                        <a href="{{path('liste_programme')}}">Gestion programmes</a>
+                    </li>
+                    <li>
+                        <a href="{{path('liste_objectif')}}">Gestion objectifs</a>
+                    </li>
+                </ul>
+            </div>
+        </nav>
+        {% endif %}
+        
+        <nav class="">
+            <div class="">
+                <a class = "" href="{{path('homepage')}}">Sportbook</a>
+                
+                {# affiche le rendu de la route category_menu p#}
+                {{ render(url('objectif_menu'))}}
+            </div>
+            {% if user_manager.user %}
+                <div class="">
+                    <a class = "" href="{{path('programme_edit')}}">Créez votre programme</a>
+                </div>
+                <div class="">
+                    <a class = "" href="{{path('logout')}}">déconnexion</a>
+                </div>
+            {% else %}
+            <div class="">
+                <a class = "" href="{{path('connexion')}}">Connexion</a>
+            </div>
+            <div class="">
+                <a class = "" href="{{path('inscription')}}">Inscription</a>
+            </div>
+            {% endif %}
+        </nav>
+        
+        
+        <div>
+            {# bloc d'affichage des messages flash #}
+            {% for type, flashes in app.session.flashbag.all %}
+                {% for flash in flashes %}
+                    {% if type == 'error' %}
+                        {% set type = 'danger' %}
+                    {% endif %}
+                    <div>
+                        {{ flash|raw }}
+                        {# filtre |raw pour afficher du Html mais pour ne pas que ça affiche les balises sur le site. Rend inactives les balises html #}
+                    </div>
+                {% endfor %}
+            {% endfor %}
+            {% block content %}{% endblock %}
+        </div>
+        
+        
+        <footer>		
+		<nav class="footer">
+		<!--navigation de la page-->
+			<ul>
+			<!--liste à puce non ordonnée-->
+				<li>
+					<a href="#" title="cgu" target="_blank">CGU</a>
+				</li>
+				<li>
+					<a href="#" title="contact" target="_blank">Contact</a>
+				</li>
+				<li>
+					<a href="#" title="mentions_legales" target="_blank">Mentions Légales</a>
+				</li>
+				
+				<li>
+					<a href="#" title="plan_de_site" target="_blank">Plan de site</a>
+				</li>
+				<li>
+					<a href="#" title="team" target="_blank">Team</a>
+				</li>
+				<li class="normal_foot">
+					<a>&#169; 2017 SPORTBOOK</a>
+				</li>
+			</ul>
+		</nav>
+	</footer>
+            
+        {% block javascripts %}
+        <script src="{{ asset('js/cdn-jquery.js') }}"></script>
+        <script src="{{ asset('js/app_menu.js') }}"></script>
+        <script src="{{ asset('js/fonctions.js') }}"></script>
+        {% endblock %}
+    </body>
+</html>
