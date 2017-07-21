@@ -15,21 +15,20 @@ class ProgrammeController extends ControllerAbstract
     public function indexAction($id)
     {
         $programme = $this->app['programme.repository']->find($id);
-        
         $jours = $this->app['jour.repository']->findByProgramme($programme);
         
         foreach ($jours as $jour) {
             $exercices = $this->app['exercice.repository']->findByJour($jour);
             $jour->setExercices($exercices);
+            //echo '<pre>'; print_r($jours); echo '</pre>';
         }
-        
         
         return $this->render(
            'programme/index.html.twig',
            [
            'programme'=>$programme,
            'jours' => $jours,
-           'exercices' => $exercices 
+           'exercices' => $exercices
            ]
         ); 
     }
@@ -51,12 +50,12 @@ class ProgrammeController extends ControllerAbstract
         {        
             $programme = new Programme;
             
-            $objectif = new Objectif;       
+            $objectif = new Objectif;
         }
         
         $tabJours = [];
         
-        $tabExercices = []; 
+        $tabExercices = [];
         
         $errors = [];
         
@@ -159,7 +158,7 @@ class ProgrammeController extends ControllerAbstract
                 'programme' => $programme,
                 //'exercice' => $exercice,
                 'jours'=> $tabJours,
-                'exercices' > $tabExercices
+                'exercices' => $tabExercices
             ]
         );
         

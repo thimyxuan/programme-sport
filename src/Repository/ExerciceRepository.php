@@ -69,6 +69,7 @@ EOS;
     
     public function buildFromArray(array $dbExercice)
     {
+        $jour = new Jour();
         $exercice = new Exercice();
         $exercice
                 ->setId($dbExercice['id'])
