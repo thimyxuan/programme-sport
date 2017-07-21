@@ -3,29 +3,129 @@
 {% block title '' %}
     
 {% block content %}    
+       
     <h2>Nom du programme : {{ programme.titre }}</h2>
     <p>
         Durée :  {{ programme.duree }} semaine(s)<br>
         Materiel : {{ programme.materiel }}<br>
     </p>
     
-    {% for jour in jours %}        
+    {% for jour in jours %}
         <h3>Jour n° : {{ jour.ordre }}</h3>
         <p>
-            id (jour) : {{ jour.id }}<br>       
+            id (jour) : {{ jour.id }}<br>
             Statut : {{ jour.statut }}<br>
         </p>
         
-        {% for exercice in exercices %}
-            <h4> Nom de l'exercice : {{ exercice.titre }}</h4>
+        {% for exercice in exercices %}           
+            <h4> Exercice {{ loop.index }} : {{ exercice.titre }}</h4>
             <p> 
                 id (exercice) : {{ exercice.id }}<br>
                 Consignes : {{ exercice.consigne }}<br>
                 Zone musculaire : {{ exercice.zoneMusculaire }}<br>
-            </p>
-            
+            </p>           
+ 
         {% endfor %}
         
     {% endfor %}
+    
+    <div class="container">
+        
+    <!-- INFOS DU PROGRAMME -->
+        <img class="prog_photo" src="{{ asset('image/fitness.jpg') }}" alt="image">
 
+        <div class="sport"> {{ programme.sport }} </div></i>
+        <div class="titre_prog">{{ programme.titre }} / semaine 1</div>
+        <div class="membre">proposé par {{ programme.membre.pseudo }}</div>
+
+        <!-- Menu Recap (table) -->
+        <ul class="recap">
+            <li class="recap_image"><img src="{{ asset('image/objectif.jpg') }}"><p class="menu_prog">{{ programme.objectif.titre }}</p></li>
+            <li class="recap_image"><img src="{{ asset('image/level.jpg') }}"><p class="menu_prog">{{ programme.difficulte }}</p></li>
+            <li class="recap_image"><img src="{{ asset('image/time.jpg') }}"><p class="menu_prog">{{ programme.duree }} semaine(s)</p></li>
+            <li class="recap_image"><img src="{{ asset('image/altere.jpg') }}"><p class="menu_prog">{{ programme.materiel }}</p></li>
+        </ul>
+        
+        <!-- ETOILES DE COMMENTAIRE A AJOUTER -->
+        
+        <!-- séparateur -->
+	<div class="border"><hr></div>
+        
+        <!-- LISTE MATERIEL -->	
+        <div class="materiel-titre">Matériel</div>
+            <ul class="materiel">
+                <li>- un tapis</li>
+            </ul>
+        
+        <!-- MENU DES JOURS -->	
+        <section>
+            <div class="container-jour">
+                <p>Calendrier du programme</p>
+
+        <!-- NOM JOURS -->	
+        
+        <ul>
+            {% for jour in jours %}
+            <li class="jour jour1">
+                    <a class="jour_icon">Jour {{ loop.index }}</a><hr>
+                    
+            <!-- CONTENU -->
+                <ul class="sub-menu sub-menu-j1">
+
+                    {% for exercice in exercices %}
+                    <!-- 1er exercice -->
+                    <p class="ex_titre"><strong>{{ loop.index }}/. {{ exercice.titre }} :</strong></p>
+
+                        <!-- Menu Recap exercice (table) -->
+                        <ul class="recap_ex">
+                            <li>
+                                <p>Nombre de répétitions</p>
+                                <a> {{ exercice.repetition }} fois</a>
+                            </li>
+                            <li>
+                                <p>Temps de repos</p>
+                                <a> {{ exercice.tempsRepos }} secondes</a>
+                            </li>
+                            <li>
+                                <p>Nombre de séries</p>
+                                <a> {{ exercice.serie }}</a>
+                            </li>
+                                	
+                        </ul>
+                        
+                        <!-- 3 Colonnes -->
+                        <ul class="corps_ex">
+                            <li class="colonne1">
+                                <div>
+                                    <img src="{{ asset('image/level.jpg') }}">
+                                    <p> {{ exercice.difficulte }}</p>
+                                </div>
+                                <div>
+                                    <img src="{{ asset('image/location.jpg') }}">
+                                    <p> {{ exercice.zoneMusculaire }}</p>
+                                </div>	
+                        </li>
+
+                        <li class="colonne2">
+                            <p><i class="fa fa-ellipsis-v" aria-hidden="true"></i> 
+                            Muscles ciblés :  {{ exercice.muscleCible }}</p>
+                            <p> {{ exercice.consigne }}</p>
+                        </li>
+
+                        <li class="colonne3">
+                                <img src="{{ asset('image/squatbase.jpg') }}">
+                            </li>
+                        </ul>
+                        
+                    {% endfor %}
+                </ul>   
+            
+            </li>          
+            {% endfor %}
+        </ul>  
+
+
+     </div>
+    </div>
+    
 {% endblock %}
