@@ -30,6 +30,10 @@ class Jour
      */
     private $statut;
     
+    /**
+     *
+     * @var array 
+     */
     private $exercices = [];
     
     /**

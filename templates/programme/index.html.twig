@@ -2,17 +2,30 @@
 
 {% block title '' %}
     
-{% block content %}
+{% block content %}    
+    <h2>Nom du programme : {{ programme.titre }}</h2>
+    <p>
+        Durée :  {{ programme.duree }} semaine(s)<br>
+        Materiel : {{ programme.materiel }}<br>
+    </p>
     
-    <p>{{ programme.titre }}</p>
-    <p> {{ programme.duree }}</p>
-    <p> {{ programme.materiel }}</p>
-    
-    {% for jour in jours %}
-        <p>{{ jour.id }}</p>
-        {% for exercice in jour.exercices %}
-            - {{ exercice.titre }}<br>
+    {% for jour in jours %}        
+        <h3>Jour n° : {{ jour.ordre }}</h3>
+        <p>
+            id (jour) : {{ jour.id }}<br>       
+            Statut : {{ jour.statut }}<br>
+        </p>
+        
+        {% for exercice in exercices %}
+            <h4> Nom de l'exercice : {{ exercice.titre }}</h4>
+            <p> 
+                id (exercice) : {{ exercice.id }}<br>
+                Consignes : {{ exercice.consigne }}<br>
+                Zone musculaire : {{ exercice.zoneMusculaire }}<br>
+            </p>
+            
         {% endfor %}
+        
     {% endfor %}
 
 {% endblock %}
