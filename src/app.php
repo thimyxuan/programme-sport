@@ -2,6 +2,7 @@
 
 use Controller\Admin\MembreController as AdminMembreController;
 use Controller\Admin\ObjectifController as AdminObjectifController;
+use Controller\Admin\ProgrammeController as AdminProgrammeController;
 use Controller\IndexController;
 use Controller\JourController;
 use Controller\MembreController;
@@ -99,6 +100,13 @@ $app['admin.objectif.controller'] = function () use ($app)
     return new AdminObjectifController($app);
     
 };
+
+$app['admin.programme.controller'] = function () use ($app) 
+{
+    return new AdminProgrammeController($app);
+    
+};
+
 
 /* Déclaration des repository en service */
 

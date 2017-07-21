@@ -1,0 +1,30 @@
+
+{% extends "layout.html.twig" %}
+
+{% block title 'Listing Programmes' %}
+
+{% block content %}
+    
+    <h1>Gestion des programmes</h1>
+       
+    <table>
+        <tr>
+            <th>Id</th>
+            <th>Nom du programme</th>
+            <th>Créé par le membre</th>
+            <th>Action</th>
+        </tr>
+        
+        {% for programme in programmes %}
+        <tr>
+            <td>{{ programme.id }}</td>
+            <td>{{ programme.titre }}</td>
+            <td>{{ programme.membre.pseudo }}</td>
+            <td>                
+                <a href="{{path('admin_programme_delete', {id: programme.id}) }}">Supprimer</a>
+            </td>    
+        </tr>
+        {% endfor %}
+    </table>
+    
+{% endblock %}{# empty Twig template #}

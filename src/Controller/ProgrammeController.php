@@ -16,21 +16,28 @@ class ProgrammeController extends ControllerAbstract
     {
         $programme = $this->app['programme.repository']->find($id);
         $jours = $this->app['jour.repository']->findByProgramme($programme);
-        
-        foreach ($jours as $jour) {
+        $allExercices = [];
+   
+        foreach ($jours as $index => $jour) {
+            
             $exercices = $this->app['exercice.repository']->findByJour($jour);
-            $jour->setExercices($exercices);
-            //echo '<pre>'; print_r($jours); echo '</pre>';
+            $allExercices[] = $exercices;
+            //echo '<pre>'; print_r($exercices); echo '</pre>';
         }
+        
+        $allExercices = $allExercices[0]; // commenter cette ligne après avoir bouclé dans TWIG
+        //echo '<pre>'; print_r($allExercices); echo '</pre>';
         
         return $this->render(
            'programme/index.html.twig',
            [
            'programme'=>$programme,
            'jours' => $jours,
-           'exercices' => $exercices
+           'exercices' => $allExercices
            ]
-        ); 
+        );
+        
+        
     }
 
 

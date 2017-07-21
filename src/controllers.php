@@ -64,13 +64,14 @@ $app->mount('/admin',$admin);
 
 
 // protection de l'accès au backoffice
+/*
 $admin->before(function() use ($app)
 {
     if(!$app['user.manager']->isAdmin())
     {
         $app->abort(403, 'Accès refusé');
     }
-});
+});*/
 
 $admin
     ->get('/liste_membre', 'admin.membre.controller:membreListAction')
@@ -102,6 +103,16 @@ $admin
 $admin
     ->get('/objectif/delete/{id}', 'admin.objectif.controller:deleteAction')
     ->bind('admin_objectif_delete')
+;
+
+$admin
+    ->get('/liste_programme', 'admin.programme.controller:ListAction')
+    ->bind('liste_programme')
+;
+
+$admin
+    ->get('/programme/delete/{id}', 'admin.programme.controller:deleteAction')
+    ->bind('admin_programme_delete')
 ;
 
 // -----------------
