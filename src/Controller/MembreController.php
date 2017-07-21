@@ -109,7 +109,7 @@ class MembreController extends ControllerAbstract {
                 if($this->app['user.manager']->verifyPassword($_POST['mdp'], $membre->getMdp()))
                 {
                     $this->app['user.manager']->login($membre);
-                    return $this->redirectRoute('homepage');
+                    return $this->redirectRoute('profil');
                 }                
             }            
             $this->addFlashMessage('Identification incorrecte', 'error');

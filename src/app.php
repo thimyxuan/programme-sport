@@ -28,7 +28,7 @@ $app->register(new TwigServiceProvider());
 $app->register(new HttpFragmentServiceProvider());
 $app['twig'] = $app->extend('twig', function ($twig, $app) {
     
-
+    $twig->addGlobal('user_manager', $app['user.manager']);
     return $twig;
 });
 
