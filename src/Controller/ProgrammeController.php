@@ -22,10 +22,10 @@ class ProgrammeController extends ControllerAbstract
             
             $exercices = $this->app['exercice.repository']->findByJour($jour);
             $allExercices[] = $exercices;
-            //echo '<pre>'; print_r($exercices); echo '</pre>';
+            //echo '<pre>'; print_r($allExercices); echo '</pre>';
         }
         
-        $allExercices = $allExercices[0]; // commenter cette ligne après avoir bouclé dans TWIG
+        //$allExercices = $allExercices[0]; // commenter cette ligne après avoir bouclé dans TWIG
         //echo '<pre>'; print_r($allExercices); echo '</pre>';
         
         return $this->render(
