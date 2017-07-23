@@ -27,6 +27,10 @@ $app
     ->bind('programme')
 ;
 
+$app
+    ->match('/search/', 'programme.controller:searchAction')
+    ->bind('search')
+;
 
 /* USER */
 $app

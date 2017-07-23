@@ -66,14 +66,16 @@ class ProgrammeController extends ControllerAbstract
         
         $errors = [];
         
+        $membre_id = $this->app['user.manager']->getUser()->getId();
+        //echo '<pre>'; print_r($membre_id);echo '</pre>';
+        
         if ($_POST) {
             
-            echo '<pre>'; print_r($_POST);echo '</pre>';
             
             if(!empty($_POST))
             {
                 $membre = new Membre();
-                $membre->setId(1);
+                $membre->setId($membre_id);
 //              $membre = $this->app['user.manager']->getUser();
                 $objectif->setId($_POST['objectif_id']);
                 $programme
@@ -169,6 +171,23 @@ class ProgrammeController extends ControllerAbstract
             ]
         );
         
+    }
+    
+    public function searchAction() {
+        
+        if(isset($_POST['form'])) {
+        
+            $motRecherche = htmlentities($_POST['motRecherche']);
+
+            $resultat = $this->app['programme.repository']->search($motRecherche);
+        }
+        
+        return $this->render(
+            'search.html.twig',
+            [
+                'resultat' => $resultat
+            ]
+        );
     }
 
 }
