@@ -138,7 +138,11 @@ class ProgrammeController extends ControllerAbstract
 
 
             //--------- Vérification des champs du formulaire avant entrée en bdd
-
+            
+                       
+            echo '<pre>'; print_r($_POST); echo '</pre>';
+            
+            // Contrôles pour les champs de la table PROGRAMME
             foreach($_POST as $indice => $valeur)
             {
                 if($indice == 'titre' || $indice == 'photo' || $indice == 'duree')
@@ -147,6 +151,23 @@ class ProgrammeController extends ControllerAbstract
                 }
 
             }
+            
+            // Contrôles pour les champs de la table EXERCICE
+            foreach($_POST as $indice => $valeur)
+            {
+                if ($indice == 'jour'){
+                    foreach($valeur as $index => $value){
+                        if($index == 'exercice'){
+                            foreach($value as $ind => $val){
+                                $_POST[$ind] = htmlspecialchars(addslashes($val));
+                            }
+                        }
+                    }
+                }
+            }
+            
+            
+            // Contrôles pour les champs de la table PROGRAMME
             if(empty($_POST['titre']))
             {
                 $errors['titre'] = 'Le titre du programme est obligatoire';
@@ -179,76 +200,111 @@ class ProgrammeController extends ControllerAbstract
             {
                 $errors['duree'] = 'La durée n\'est pas valide';
             }
-            //for ($i=1; $i<10; $i++)
-            //{
-                if(empty($_POST['jour']['statut']))
-                {
-                    $errors['statut'] = 'Le statut du jour est obligatoire';
-                }
-            //}
-            /*if(empty($_POST['jour']['exercice']['titre']))
+            
+            
+            // Contrôles pour les champs de la table JOUR
+            
+            foreach($_POST as $indice => $valeur)
             {
-                $errors['exercicetitre'] = 'Le titre de l\'exercice est obligatoire';
-            }
-            elseif(strlen($_POST['jour']['exercice']['titre'])>100)
-            {
-                $errors['exercicetitre'] = 'Le titre de l\'exercice ne doit pas faire plus de 100 caractères' ;
-            }
-            if(empty($_POST['jour']['exercice']['consigne']))
-            {
-                $errors['exerciceconsigne'] = 'La consigne est obligatoire';
-            }
-            elseif(strlen($_POST['jour']['exercice']['consigne'])>600)
-            {
-                $errors['exerciceconsigne'] = 'La consigne ne doit pas faire plus de 600 caractères' ;
-            }
-            if(empty($_POST['jour']['exercice']['zone_musculaire']))
-            {
-                $errors['exercicezone'] = 'La zone musculaire est obligatoire';
-            }
-            if(empty($_POST['jour']['exercice']['muscle_cible']))
-            {
-                $errors['exercicemuscle'] = '' ;
-            }
-            elseif(strlen($_POST['jour']['exercice']['muscle_cible'])>200)
-            {
-                $errors['exercicemuscle'] = 'Le champs muscle ciblé ne doit pas faire plus de 200 caractères ' ;
-            }
-            if(empty($_POST['jour']['exercice']['serie']))
-            {
-                $errors['exerciceserie'] = 'Le nombre de séries est obligatoire';
-            }
-            elseif(!is_numeric($_POST['jour']['exercice']['serie']))
-            {
-                $errors['exerciceserie'] = 'Le nombre de séries n\'est pas valide';
-            }
-            if(empty($_POST['jour']['exercice']['repetition']))
-            {
-                $errors['exercicerepetition'] = 'Le nombre de répétitions est obligatoire';
-            }
-            elseif(!is_numeric($_POST['jour']['exercice']['repetition']))
-            {
-                $errors['exercicerepetition'] = 'Le nombre de répétitions n\'est pas valide';
-            }
-            if(empty($_POST['jour']['exercice']['temps_repos']))
-            {
-                $errors['exercicerepos'] = 'Le temps de repos est obligatoire';
-            }
-            elseif(!is_numeric($_POST['jour']['exercice']['temps_repos']))
-            {
-                $errors['exercicerepos'] = 'Le temps de repos n\'est pas valide';
-            }
-            if(empty($_POST['jour']['exercice']['detail_serie']))
-            {
-                $errors['exercicedetail'] = '' ;
-            }
-            elseif(strlen($_POST['jour']['exercice']['detail_serie'])>600)
-            {
-                $errors['exercicedetail'] = 'Le champ détail série ne doit pas faire plus de 600 caractères' ;
+                if ($indice == 'jour'){
+                    foreach($valeur as $index => $value){                        
+                        //echo '<pre>'; print_r($_POST[$indice][$index]['statut']); echo '</pre>';                        
+                        if(empty($_POST[$indice][$index]['statut']))
+                        {
+                            $errors['statut'] = 'Le statut du jour est obligatoire';
+                        }
+                    }
+                }            
+            }            
+            /*
+            for ($i=1; $i<8; $i++) {// ceci ne fonctionne pas, est remplacé par le code ci-dessus
+                if(empty($_POST['jour'][$i]['statut'])) {
+                        $errors['statut'] = 'Le statut du jour est obligatoire';
+                    }    
             }*/
-
-
-
+            
+            
+            // Contrôles pour les champs de la table EXERCICE
+            
+            foreach($_POST as $indice => $valeur)
+            {
+                if ($indice == 'jour'){
+                    foreach($valeur as $index => $value){
+                        if($index == 'exercice'){
+                            foreach($value as $ind => $val){
+                                
+                                // toutes mes conditions ici :
+                                
+                                //echo '<pre>'; print_r($_POST[$indice][$index][$ind]['difficulte']); echo '</pre>'; 
+                                
+                                if(empty($_POST[$indice][$index][$ind]['titre']))
+                                {
+                                    $errors['exercice_titre'] = 'Le titre de l\'exercice est obligatoire';
+                                }
+                                elseif(strlen($_POST[$indice][$index][$ind]['titre'])>100)
+                                {
+                                    $errors['exercice_titre'] = 'Le titre de l\'exercice ne doit pas faire plus de 100 caractères' ;
+                                }
+                                if(empty($_POST[$indice][$index][$ind]['consigne']))
+                                {
+                                    $errors['exercice_consigne'] = 'La consigne est obligatoire';
+                                }
+                                elseif(strlen($_POST[$indice][$index][$ind]['consigne'])>600)
+                                {
+                                    $errors['exercice_consigne'] = 'La consigne ne doit pas faire plus de 600 caractères' ;
+                                }
+                                if(empty($_POST[$indice][$index][$ind]['zone_musculaire']))
+                                {
+                                    $errors['exercice_zone'] = 'La zone musculaire est obligatoire';
+                                }
+                                if(empty($_POST[$indice][$index][$ind]['muscle_cible']))
+                                {
+                                    $errors['exercice_muscle'] = '' ;
+                                }
+                                elseif(strlen($_POST[$indice][$index][$ind]['muscle_cible'])>200)
+                                {
+                                    $errors['exercice_muscle'] = 'Le champs muscle ciblé ne doit pas faire plus de 200 caractères ' ;
+                                }
+                                if(empty($_POST[$indice][$index][$ind]['serie']))
+                                {
+                                    $errors['exercice_serie'] = 'Le nombre de séries est obligatoire';
+                                }
+                                elseif(!is_numeric($_POST[$indice][$index][$ind]['serie']))
+                                {
+                                    $errors['exercice_serie'] = 'Le nombre de séries n\'est pas valide';
+                                }
+                                if(empty($_POST[$indice][$index][$ind]['repetition']))
+                                {
+                                    $errors['exercice_repetition'] = 'Le nombre de répétitions est obligatoire';
+                                }
+                                elseif(!is_numeric($_POST[$indice][$index][$ind]['repetition']))
+                                {
+                                    $errors['exercice_repetition'] = 'Le nombre de répétitions n\'est pas valide';
+                                }
+                                if(empty($_POST[$indice][$index][$ind]['temps_repos']))
+                                {
+                                    $errors['exercice_repos'] = 'Le temps de repos est obligatoire';
+                                }
+                                elseif(!is_numeric($_POST[$indice][$index][$ind]['temps_repos']))
+                                {
+                                    $errors['exercice_repos'] = 'Le temps de repos n\'est pas valide';
+                                }
+                                if(empty($_POST[$indice][$index][$ind]['detail_serie']))
+                                {
+                                    $errors['exercice_detail'] = '' ;
+                                }
+                                elseif(strlen($_POST[$indice][$index][$ind]['detail_serie'])>600)
+                                {
+                                    $errors['exercic_edetail'] = 'Le champ détail série ne doit pas faire plus de 600 caractères' ;
+                                }
+                                
+                            }
+                        }
+                    }
+                }
+            }
+           
+           
 
             // Si pas d'erreur c'est ok pour envoyer en bdd :
 

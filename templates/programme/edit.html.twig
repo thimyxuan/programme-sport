@@ -69,7 +69,7 @@
                 <div>
                     <label>Statut</label>
                     <select type="text" name="jour[{{i}}][statut]">
-                        <option>choisir</option>
+                        <option value="">choisir</option>
                         <option value="entrainement">entrainement</option>
                         <option value="repos">repos</option>
                     </select>
@@ -78,19 +78,20 @@
                 <div class="exercices">
                 {% for j in 1..1 %}
                     <div class="exercice">
-                        <h2>Exercice {{ j }}</h2>
+                        <h2>Exercice {{j}}</h2>
                         <input type="hidden" name="jour_id" value="">
                         <div>
                             <label>Titre de l'exercice</label>
-                            <input type="text" name="jour[{{ i }}][exercice][{{ j }}][titre]">
+                            <input type="text" name="jour[{{i}}][exercice][{{j}}][titre]">
                         </div>
                         <div>
                             <label>Consigne</label>
-                            <textarea type="text" name="jour[{{ i }}][exercice][{{ j }}][consigne]"></textarea>
+                            <textarea type="text" name="jour[{{i}}][exercice][{{j}}][consigne]"></textarea>
                         </div>
                         <div>            
                             <label>Difficulté</label>
-                            <select name="jour[{{ i }}][exercice][{{ j }}][difficulte]">
+                            <select name="jour[{{i}}][exercice][{{j}}][difficulte]">
+                                <option value="">choisir</option>
                                 <option value="facile">Facile</option>
                                 <option value="moyen">Moyen</option>
                                 <option value="difficile">Difficile</option>
@@ -99,7 +100,7 @@
                         </div>
                         <div>            
                             <label>Zone musculaire</label>
-                            <select name="jour[{{ i }}][exercice][{{ j }}][zone_musculaire]">
+                            <select name="jour[{{i}}][exercice][{{j}}][zone_musculaire]">
                                 <option value="">Choisir</option>
                                 <option value="bras">Bras</option>
                                 <option value="cou">Cou</option>
@@ -111,34 +112,34 @@
                         </div>
                         <div>
                             <label>Muscle(s) ciblé(s)</label>
-                            <input type="text" name="jour[{{ i }}][exercice][{{ j }}][muscle_cible]">
+                            <input type="text" name="jour[{{i}}][exercice][{{j}}][muscle_cible]">
                         </div>
                         <div>
                             <input type="hidden" name="jour_id" value="">
                         </div>
                         <div>
                             <label>Photo</label>
-                            <input type="file" name="jour[{{ i }}][exercice][{{ j }}][photo]" value="">
+                            <input type="file" name="jour[{{i}}][exercice][{{j}}][photo]" value="">
                         </div>
                         <div>
                             <label>Séries</label>
-                            <input type="text" name="jour[{{ i }}][exercice][{{ j }}][serie]" value="">
+                            <input type="text" name="jour[{{i}}][exercice][{{j}}][serie]" value="">
                         </div>
                         <div>
                             <label>Répétitions</label>
-                            <input type="text" name="jour[{{ i }}][exercice][{{ j }}][repetition]" value="">
+                            <input type="text" name="jour[{{i}}][exercice][{{j}}][repetition]" value="">
                         </div>
                         <div>
                             <label>Détails séries</label>
-                            <textarea type="text" name="jour[{{ i }}][exercice][{{ j }}][detail_serie]"></textarea>
+                            <textarea type="text" name="jour[{{i}}][exercice][{{j}}][detail_serie]"></textarea>
                         </div>
                         <div>
                             <label>Temps de repos entre chaque série</label>
-                            <input type="text" name="jour[{{ i }}][exercice][{{ j }}][temps_repos]">
+                            <input type="text" name="jour[{{i}}][exercice][{{j}}][temps_repos]">
                         </div>
                     </div>
                 {% endfor %}
-                <button type="button" class="clone_exercice" data-added="0" data-jour="{{ i }}">Ajouter un exercice</button>
+                <button type="button" class="clone_exercice" data-added="0" data-jour="{{i}}">Ajouter un exercice</button>
                 </div>
 
             {% endfor %}           
