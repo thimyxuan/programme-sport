@@ -70,7 +70,7 @@
                     <label>Statut</label>
                     <select type="text" name="jour[{{i}}][statut]">
                         <option value="">choisir</option>
-                        <option value="entrainement">entrainement</option>
+                        <option value="entrainement" {% if jour.statut == 'entrainement'%}selected{% endif %}>entrainement</option>
                         <option value="repos">repos</option>
                     </select>
                 </div>       
