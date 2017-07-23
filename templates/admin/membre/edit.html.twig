@@ -14,29 +14,38 @@
    
     <form method="post">        
         <div class="">
-            <label>Pseudo</label>
+            <label for="pseudo">Pseudo</label>
             <input type="text" name="pseudo" class="" value="{{ membre.pseudo }}">
         <div class="">
-            <label>Prénom</label>
+            <label for="prenom">Prénom</label>
             <input type="text" name="prenom" class="" value="{{ membre.prenom }}">
         </div>
         </div>
         <div class="">
-            <label>Nom</label>
+            <label for="nom">Nom</label>
             <input type="text" name="nom" class="" value="{{ membre.nom }}">
         </div>
         <div class="">
-            <label>Email</label>
+            <label for="email">E-mail</label>
             <input type="text" name="email" class="" value="{{ membre.email }}">
         </div>
         <div class="">
-            <label>Civilité</label>
-            <input type="radio" name="civilite" class="" value="h" checked="{% if membre.civilite == 'h' %}checked{% else %} {% endif %}"> : Homme
-            <input type="radio" name="civilite" class="" value="f" checked="{% if membre.civilite == 'f' %}checked{% else %} {% endif %}"> : Femme
+            <label for="civilite"Civilité</label>
+            <input type="radio" name="civilite" class="" value="h" {% if membre.civilite == 'h' %}checked{% endif %}> : Homme
+            <input type="radio" name="civilite" class="" value="f" {% if membre.civilite == 'f' %}checked{% endif %}> : Femme
         </div>
         <div class="">
-            <label>Photo de profil : </label>
+            <label for="avatar">Photo de profil : </label>
             <input type="file" name="avatar" class="" value="{{ membre.avatar }}">
+        </div>
+        
+        <div class="">
+            <label for="statut">Statut</label>
+            <select name="statut">
+                <option value="membre" {% if membre.statut == 'membre'%}selected{% endif %}>membre</option>
+                <option value="admin" {% if membre.statut == 'admin'%}selected{% endif %}>admin</option>
+                <option value="pro" {% if membre.statut == 'pro'%}selected{% endif %}>pro</option>
+            </select>
         </div>
         
         <button type="submit" class="">Enregistrer</button>

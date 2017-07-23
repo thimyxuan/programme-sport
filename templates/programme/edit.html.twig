@@ -15,7 +15,8 @@
         <div>            
             <label>Objectif</label>
             <select name="objectif_id">
-                {% for objectif in objectifs %}
+                <option value="">Choisir</option>
+                {% for objectif in objectifs %}                    
                     <option value="{{ objectif.id }}" {% if objectif.id == programme.objectifId %}selected{% endif %} >{{ objectif.titre }}</option>
                 {% endfor %}
             </select>
@@ -32,6 +33,7 @@
         <div>            
             <label>Difficulté</label>
             <select name="difficulte">
+                <option value="">Choisir</option>
                 <option value="facile" {% if programme.difficulte == 'facile'%}selected{% endif %}>Facile</option>
                 <option value="moyen" {% if programme.difficulte == 'moyen'%}selected{% endif %}>Moyen</option>
                 <option value="difficile" {% if programme.difficulte == 'difficile'%}selected{% endif %}>Difficile</option>
@@ -40,7 +42,7 @@
         </div>
         <div>
             <label>Photo</label>
-            <input type="file" name="photo" value=" {{ programme.photo }}">
+            <input type="file" name="photo" value="{{ programme.photo }}">
         </div>
         <div>    
             <label>Sport</label>
@@ -55,13 +57,13 @@
         </div>
         <div>
             <label>Durée du programme (en semaine)</label>
-            <input type="text" name="duree" value=" {{ programme.duree }}">
+            <input type="text" name="duree" value="{{ programme.duree }}">
        </div>           
     
             
             
         {#    PARTIE ENREGISTREMENT JOURS    #}
-            {% for i in 1..7 %}    
+            {% for i in 1..1 %}    
                 <h2>Jour {{i}}</h2>
                 <input type="hidden" name="programme_id" value="">
                 <div>
@@ -74,7 +76,7 @@
                 </div>       
                         
                 <div class="exercices">
-                {% for j in 1..3 %}
+                {% for j in 1..1 %}
                     <div class="exercice">
                         <h2>Exercice {{ j }}</h2>
                         <input type="hidden" name="jour_id" value="">
@@ -98,14 +100,17 @@
                         <div>            
                             <label>Zone musculaire</label>
                             <select name="jour[{{ i }}][exercice][{{ j }}][zone_musculaire]">
-                                <option value="cou">Cou</option>
-                                <option value="epaule">Epaules</option>
+                                <option value="">Choisir</option>
                                 <option value="bras">Bras</option>
+                                <option value="cou">Cou</option>
                                 <option value="dos">Dos</option>
+                                <option value="epaule">Epaules</option>
+                                <option value="fessiers">Fessiers</option>
+                                <option value="jambes">Jambes</option>                                
                             </select>
                         </div>
                         <div>
-                            <label>Muscle ciblé</label>
+                            <label>Muscle(s) ciblé(s)</label>
                             <input type="text" name="jour[{{ i }}][exercice][{{ j }}][muscle_cible]">
                         </div>
                         <div>
