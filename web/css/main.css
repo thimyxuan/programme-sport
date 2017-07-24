@@ -848,3 +848,121 @@ figcaption>a>p{
 		.normal_foot>a:hover{
 			font-weight: 300;
 		}
+
+		
+/***************************************************************/ 
+/* FORMULAIRE*/
+
+	/* Formulaire programme */
+		/* supprime border des inputs */
+		input{
+			background: none;
+			border: solid 1px transparent;
+			border-bottom-color: #ccc;
+			padding:10px;
+			margin : 0 0 20px 0;
+		}
+		/* trait devient bleu quand clique */
+		input[type="texte"]:focus,input[type="email"]:focus{
+			border-bottom : solid 1.7px #2979ff;
+		}
+
+		[placeholder]{
+			width:auto;
+			font-size: 1rem;
+			color:#222;
+			transition-duration: 0.1s;
+			padding:10px;
+		}
+		[placeholder]:focus{
+			color:#222;
+		}
+		select{
+			border:none;
+			margin-top:20px;
+			cursor: pointer;
+		}
+		.menu_prog{
+			padding:10px 10px 0px 10px;
+		}
+		.materiel{
+			padding-left:0;
+		}
+		.materiel textarea{
+			width:80%;
+		}
+
+		button[type="submit"]{
+			width:100%;
+			background-color: #51a351;
+			background-image: linear-gradient(center bottom, rgba( 0, 0, 255 ,1.0), rgba( 0, 255, 255
+,1.0));
+			background-image: -moz-linear-gradient(center bottom, rgba( 0, 0, 255 ,1.0), rgba( 0, 255, 255
+,1.0));
+			background-image: -webkit-linear-gradient(center bottom, rgba( 0, 0, 255 ,1.0), rgba( 0, 255, 255
+,1.0));
+			/*text-shadow:-1px 1px 1px #222;*/
+			font:16px 'Open sans',sans-serif;
+			color:#fff;
+			font-size: 1rem;
+			font-weight: 600;
+			border:0;
+			padding : 7px;
+			
+		}
+		button[type="submit"]:hover{
+			background-color: #33FFCC;
+			background-image: none;
+			padding : 7px;
+			cursor: pointer;
+		}
+		/* Exercice formulaire 3eme col.*/
+		.recap_li_prog li{
+			padding-bottom: 2px;
+		}
+		.label-file-ex{
+		    text-align: center;
+		}
+		/* Exercice formulaire 2eme col.*/
+		.colonne2 p{
+			display: block;
+			width:80%;
+			margin: 0 auto;
+		}
+		.col2-bis>p:nth-child(1){
+			margin-bottom: 0;
+		}
+		.colonne2 input{
+			display: block;
+			width:80%;
+			margin: 0 auto 20px;
+		}
+		.colonne2 textarea{
+			display: block;
+			width:80%;
+			text-align: left;
+		}
+		#consigne{
+			margin: 0 auto;
+		}
+
+		/* Exercice formulaire 1ere col.*/
+		.col1-bis>div{
+			margin-top: 0;
+		}
+		.colonne1-bis>div:nth-child(1){
+			margin-bottom: 20px;
+		}
+		.col1-bis img{
+			display: block;
+			margin: 0 auto 20px;
+		}
+		.colonne1 label{
+			display: block;
+			line-height: normal;
+		}
+		.sub-menu button{
+			margin: 50px auto 0;
+		}                
+                
+                
