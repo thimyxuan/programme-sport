@@ -185,5 +185,20 @@ EOS;
         return $programme;
     }
     
+    public function search($motRecherche) {
+        
+//        ECRIRE LA GROSSE REQUETE DE JOINTURE POUR COMPARAISON DE LA RECHERCHE DU FORMULAIRE
+        
+        // EXEMPLE
+        $query = "SELECT * FROM programme WHERE titre = :titre";
+
+        $dbProgramme = $this->db->fetchAll(
+                $query,
+                [':titre'=> $motRecherche]
+        );
+        
+        return $dbProgramme;
+        
+    }
     
 }

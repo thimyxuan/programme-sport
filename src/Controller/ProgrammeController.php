@@ -22,10 +22,10 @@ class ProgrammeController extends ControllerAbstract
             
             $exercices = $this->app['exercice.repository']->findByJour($jour);
             $allExercices[] = $exercices;
-            //echo '<pre>'; print_r($exercices); echo '</pre>';
+            //echo '<pre>'; print_r($allExercices); echo '</pre>';
         }
         
-        $allExercices = $allExercices[0]; // commenter cette ligne après avoir bouclé dans TWIG
+        //$allExercices = $allExercices[0]; // commenter cette ligne après avoir bouclé dans TWIG
         //echo '<pre>'; print_r($allExercices); echo '</pre>';
         
         return $this->render(
@@ -66,15 +66,18 @@ class ProgrammeController extends ControllerAbstract
         
         $errors = [];
         
-        if($_POST) {
+        $membre_id = $this->app['user.manager']->getUser()->getId();
+        //echo '<pre>'; print_r($membre_id);echo '</pre>';
         
-            if (!empty($_POST)) {
-
-                //echo '<pre>'; print_r($_POST);echo '</pre>';
-
+        if ($_POST) {
+            
+            
+            if(!empty($_POST))
+            {
                 $membre = new Membre();
-                $membre->setId(1);
-    //              $membre = $this->app['user.manager']->getUser();
+                $membre->setId($membre_id);
+//              $membre = $this->app['user.manager']->getUser();
+
                 $objectif->setId($_POST['objectif_id']);
                 $programme
                     ->setTitre($_POST['titre'])
@@ -345,6 +348,23 @@ class ProgrammeController extends ControllerAbstract
             ]
         );
 
+    }
+    
+    public function searchAction() {
+        
+        if(isset($_POST['form'])) {
+        
+            $motRecherche = htmlentities($_POST['motRecherche']);
+
+            $resultat = $this->app['programme.repository']->search($motRecherche);
+        }
+        
+        return $this->render(
+            'search.html.twig',
+            [
+                'resultat' => $resultat
+            ]
+        );
     }
 
 }

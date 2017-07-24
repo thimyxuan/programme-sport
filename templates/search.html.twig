@@ -1,0 +1,14 @@
+<form action="" method="post">
+    <input type="text" name="motRecherche">
+    <input type="submit" name="form" value="Rechercher">
+</form>   
+
+{% set index = resultat|length-1 %}
+{% for i in 0..index %}
+    <p>id : {{ resultat[i].id }}<p>
+    <p>id : {{ resultat[i].titre }}<p>
+    <a href="{{ path('programme', {id: resultat[i].id}) }}">lire</a>    
+    <hr/>    
+{% endfor %} 
+{#{{ dump(resultat) }}#}
+    

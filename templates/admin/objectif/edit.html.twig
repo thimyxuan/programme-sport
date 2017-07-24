@@ -13,12 +13,12 @@
     </h1>
    
     <form method="post">
-        <div class="">
+        <div class="form-group">
             <label>Titre</label>
-            <input type="text" name="titre" class="" value="{{ objectif.titre }}">
+            <input type="text" name="titre" class="form-control" value="{{ objectif.titre }}">
         </div>
         
-        <button type="submit" class="">Enregistrer</button>
+        <button type="submit" class="btn btn-primary">Enregistrer</button>
         <a href="{{ path('liste_objectif') }}" class="">Annuler</a>
     </form>
         
