@@ -143,7 +143,7 @@ class ProgrammeController extends ControllerAbstract
             //--------- Vérification des champs du formulaire avant entrée en bdd
             
                        
-            //echo '<pre>'; print_r($_POST); echo '</pre>';
+            echo '<pre>'; print_r($_POST); echo '</pre>';
             
             // Condition addslashes() pour la table PROGRAMME
             foreach($_POST as $indice => $valeur)
@@ -211,7 +211,7 @@ class ProgrammeController extends ControllerAbstract
             {
                 if ($indice == 'jour'){
                     foreach($valeur as $index => $value){                        
-                        //echo '<pre>'; print_r($_POST[$indice][$index]['statut']); echo '</pre>';                        
+                        echo '<pre>'; print_r($_POST[$indice][$index]['statut']); echo '</pre>';                        
                         if(empty($_POST[$indice][$index]['statut']))
                         {
                             $errors['statut'] = 'Le statut du jour est obligatoire';
@@ -238,7 +238,7 @@ class ProgrammeController extends ControllerAbstract
                                 
                                 // toutes mes conditions ici :
                                 
-                                //echo '<pre>'; print_r($_POST[$indice][$index][$ind]['difficulte']); echo '</pre>'; 
+                                echo '<pre>'; print_r($_POST[$indice][$index][$ind]['titre']); echo '</pre>'; 
                                 
                                 if(empty($_POST[$indice][$index][$ind]['titre']))
                                 {
