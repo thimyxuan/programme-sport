@@ -66,6 +66,13 @@ class Programme
      */
     private $datePublication;
     
+      /**
+     *  Programme constructor
+     */
+    public function __construct()
+    {
+        $this->datePublication = new DateTime();
+    }
     
     
     // -------- Getter ----------
@@ -196,15 +203,7 @@ class Programme
     return $this->datePublication;
     }
     
-    /**
-     *  Programme constructor
-     */
-    public function __construct()
-    {
-        $this->datePublication = new DateTime();
-    }
-
-    
+     
     
     // -------- Setter ----------
     

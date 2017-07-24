@@ -12,6 +12,7 @@
             <th>Id</th>
             <th>Nom du programme</th>
             <th>Créé par le membre</th>
+            <th>Date de création</th>
             <th>Action</th>
         </tr>
         
@@ -20,6 +21,7 @@
             <td>{{ programme.id }}</td>
             <td>{{ programme.titre }}</td>
             <td>{{ programme.membre.pseudo }}</td>
+            <td>{{ programme.datePublication|date('d-m-Y H:i:s') }}</td>
             <td>                
                 <a href="{{path('admin_programme_delete', {id: programme.id}) }}">Supprimer</a>
             </td>    

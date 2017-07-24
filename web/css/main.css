@@ -13,6 +13,8 @@
 		li{
 			width:auto;
 			list-style: none;
+                        padding:0;
+                        margin:0;
 			/*transition-duration:0.5s;*/
 			/*background: #FFF;*/
 			/*margin-bottom: 1px;*/
@@ -30,7 +32,7 @@
 		.container{
 			text-align: center;
 			width: 50%;
-			margin: 0 auto 40px;
+			margin: 40px auto;
 			border :solid 1px #222;
 			background: #FFF;
 			border-radius: 10px;
@@ -101,9 +103,21 @@
 			margin: 0 30px;
 			text-align: left;
 		}
+                .materiel{
+                        display:block;
+                        margin:0;
+                        padding:0;
+                }
+                .materiel>ul{
+                        list-style: none;
+                        padding:0;
+                        margin:0;
+                }
 		.materiel>li{
 			text-align: center;
 			margin-bottom: 20px;
+                        padding:0;
+                        margin:0;
 		}
 		.materiel>li:last-child{
 			margin-bottom: 50px;
@@ -262,7 +276,9 @@
 			text-align: center;
 		}
 		.colonne1 div{
-			margin-top: 30px;
+                        display:block;
+			margin-bottom: 15px;
+                        height:auto;
 		}
 		.colonne1 img{
 			width : 30px;
@@ -270,15 +286,16 @@
 			line-height: normal;
 			margin:0;
 		}
+                .colonne1 p{
+                        margin:0;
+                }
 		.colonne2{
 			text-align: left;
 			vertical-align: top;
 		}
 		.colonne2 p{
 			padding-right: 10px;
-		}
-		.colonne2>p:nth-child(1){
-			margin-bottom: 20px;
+                        margin-bottom: 20px;
 		}
 		.colonne3{
 			vertical-align: top;

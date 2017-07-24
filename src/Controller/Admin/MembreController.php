@@ -48,8 +48,8 @@ class MembreController extends ControllerAbstract {
                     ->setCivilite($_POST['civilite']) 
                     ->setAvatar($_POST['avatar'])
                     ->setDateEnregistrement(new \DateTime($dbMembre['date_enregistrement']))
-            ;
-            
+                    ->setStatut($_POST['avatar'])
+            ;            
             
             if(empty($_POST['nom']))
             {
@@ -57,15 +57,15 @@ class MembreController extends ControllerAbstract {
             }
             elseif(strlen($_POST['nom'])>20)
             {
-                $errors['nom'] = 'Le prenom ne doit pas faire plus de 20 caractères' ;
+                $errors['nom'] = 'Le prénom ne doit pas faire plus de 20 caractères' ;
             }
             if(empty($_POST['prenom']))
             {
-                $errors['prenom'] = 'Le prenom est obligatoire';
+                $errors['prenom'] = 'Le prénom est obligatoire';
             }
             elseif(strlen($_POST['nom'])>20)
             {
-                $errors['prenom'] = 'Le prenom ne doit pas faire plus de 20 caractères' ;
+                $errors['prenom'] = 'Le prénom ne doit pas faire plus de 20 caractères' ;
             }            
             if(empty($_POST['email']))
             {

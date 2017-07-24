@@ -13,6 +13,7 @@
     </h1>
    
     <form method="post">        
+
         <div class="form-group">
             <label>Pseudo</label>
             <input type="text" name="pseudo" class="form-control" value="{{ membre.pseudo }}">
@@ -39,8 +40,20 @@
             <input type="file" name="avatar" class="" value="{{ membre.avatar }}">
         </div>
         
+        <div class="form-group">
+        <label for="statut">Statut</label>
+            <select name="statut">
+                <option value="">Choisir</option>
+                <option value="membre" {% if membre.statut == 'membre'%}selected{% endif %}>membre</option>
+                <option value="admin" {% if membre.statut == 'admin'%}selected{% endif %}>admin</option>
+                <option value="pro" {% if membre.statut == 'pro'%}selected{% endif %}>pro</option>
+            </select>
+        </div>
+        
         <button type="submit" class="btn btn-primary">Enregistrer</button>
+
         <a href="{{ path('liste_membre') }}" class="">Annuler</a>
+        
     </form>
         
 {% endblock %}
