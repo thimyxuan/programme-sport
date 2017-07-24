@@ -1,33 +1,534 @@
 @import url('https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,700,800');
+@import url('https://fonts.googleapis.com/css?family=Dosis:200,300,400,500,600,700,800');
 
-		body{
-			font:16px 'Open sans',sans-serif;
-			font-size-adjust:0.5;
-			margin:0;
-			background: #EEE;
-		}
-		a{
-			text-decoration: none;
-			margin: 0;
-		}
-		li{
-			width:auto;
-			list-style: none;
-                        padding:0;
-                        margin:0;
-			/*transition-duration:0.5s;*/
-			/*background: #FFF;*/
-			/*margin-bottom: 1px;*/
-		}		
-		ul li p{
-			margin:0;
-			padding:0;
-		}
-		hr{
-			margin:0;
-		}
+/* GENERAL */
+body{
+    font:16px 'Open sans',sans-serif;
+    font-size-adjust:0.5;
+    margin:0;
+    background: #EEE;
+}
+a{
+    text-decoration: none;
+    margin: 0;
+    cursor:default;
+}
+ul, li{
+    width:auto;
+    list-style: none;
+    padding:0;
+    margin:0;
+}		
+p{
+    margin:0;
+    padding:0;
+}
+hr{
+    margin:0;
+}
 
-		
+                
+/***************************** HEADER ET BARRE DE NAVIGATION FIXE *******************************/
+header{
+	display:block;
+	width:100%;
+	margin: 0 auto;
+	height: 50px;
+	line-height:50px;
+	background: rgba(30,45,53,0.7);
+}
+header nav ul li a{
+	color:#fff;
+	font-weight: 300;
+}
+nav{
+	text-align:right;
+}
+ul li{
+	display: inline-block;
+	margin : 0 25px;
+	text-align:center;
+}
+#logo-accueil{
+	width:120px;
+	float:left;
+	margin:15px 40px;
+}
+header>nav>ul>li:last-child{
+	text-transform: uppercase;
+}
+header>nav>ul>li:last-child::before{
+	content: '\f2be ';
+	font-family:'FontAwesome';
+	margin-right:5px;
+	color:#fff;
+}
+
+/******************************** COLONNE DE MENU FIXE **********************************/
+
+/* ACCUEIL ZONE 1 : background + colonne menu */
+.zone1, .zone2, .zone3, .zone5, .zone6{
+	display:block;
+	margin:0 auto;
+	padding:0;
+	width:100%;
+	height:auto;
+}
+.menu-haut>nav{
+    text-align: left;
+}
+.menu-haut{
+    margin:0 auto;
+    padding:0;
+    width:100%;
+    background:#000;
+}
+.menu-haut>nav>ul{
+    display:flex;
+    flex-direction:row;
+    flex-wrap:nowrap;
+    justify-content: space-between;
+    display:block;
+    margin:0 auto;
+    margin:0;
+    padding:0;
+    width:100%;
+}
+.menu-haut>nav>ul>li{
+    width:10%;
+    height:40px;
+}
+.colonne-menu>ul>li{
+	display:block;
+	margin:0;
+	padding: 35px 0;
+	width:25%;
+	height:30px;
+	line-height:30px;
+	background:rgba(255,255,255,0.2);
+	/*display:flex;
+	flex-direction: column;
+	height:auto;*/
+}
+.colonne-menu ul{
+	background:url(../image/sportbook.jpg) center center scroll no-repeat;
+        margin:0;
+}
+.colonne-menu>ul>li:first-child{
+	background:black;
+	color:white;
+	font-weight:bolder;
+	text-transform: uppercase;
+        height:30px;
+	line-height:30px;
+}
+.colonne-menu>ul>li>a{
+	color:black;
+}
+.colonne-menu>ul>li:hover{
+	font-weight:bolder;
+	background:rgba(255,255,255,0.9);
+        text-decoration:none;
+}
+.colonne-menu>ul>li:first-child:hover{
+	background:black;
+}
+.zone1-texte{
+	display:block;
+	position:absolute;
+	width:50%;
+	margin:0 auto;
+	right:10%;
+	top:55%;
+	transform:translateY(-50%);	
+	padding:10px 25px;
+	text-align: center;        
+}
+.slogan, .slogan-detail{
+	background:rgba(255,255,255,0.5);
+	margin:10px 0;
+	padding:0 20px;
+	font-family: Dosis;
+}
+.slogan>h1{
+	text-transform: uppercase;
+	margin:10px 15px;
+	font-size:40px;
+        font-weight:bolder;
+
+}
+.slogan-detail{
+	font-size:24px;
+	padding: 5px 20px;
+}
+
+/************************************* PAGE D'ACCUEIl ****************************************/
+
+/* ACCUEIL ZONE 2 : bandeau pub */
+.zone2{
+	width:100%;
+	height:250px;
+	background: #000;
+	color:#fff;
+}
+.zone2-container1{
+	display:inline-block;
+	width:60%;
+	margin:0 auto;
+	font-family:Dosis;
+	font-size:28px;
+	text-align:right;
+	height:250px;
+	line-height: 250px;
+	vertical-align: top;
+}
+.zone2-container2{
+	display:inline-block;
+	height:250px;
+	line-height: 250px;
+	position:relative;
+	top:42px;
+}
+#zone2-logo{
+	display:inline-block;
+	width:150px;
+	vertical-align: center;
+}
+#zone2-photo{
+	display:block;
+	width:250px;
+	margin:0 20px;
+}
+
+/*.zone2-container1>p{
+	display:block;
+	color:#fff;
+	font-family:Dosis;
+	font-size:28px;
+	text-align:center;
+	position:relative;
+	width:100%;
+	top:25%;
+	transform:translateY(-50%);
+
+}
+#zone2-logo{
+	display: inline-block;
+	width:150px;
+	vertical-align:bottom;
+}
+#zone2-photo{
+	display:inline-block;
+	width:250px;
+	position:relative;
+	vertical-align: center;
+	margin-left:10px;
+
+}*/
+
+/* ACCUEIL ZONE 3 : comment ça marche */
+h2{
+	font-family: Dosis;
+	font-weight: lighter;
+	text-align: center;
+	padding: 50px 0;
+	margin:0;
+}
+.zone3{
+	background: #fff;
+	height:500px;
+}
+.zone3>ul{
+	display:block;
+	margin:0 auto;
+	text-align: center;
+	padding:30px 0;
+}
+.zone3>ul>li{
+	margin:0 5%;
+}
+.zone3>ul>li>figure>img{
+	display:block;
+	width:150px;
+}
+figure{
+	position:relative;
+	margin:0 auto;
+}
+figcaption{
+	display:block;
+	text-align:center;
+	position:absolute;
+	width:100%;
+	height:auto;
+	font-family: Dosis;
+	font-size:16px;
+}
+figcaption a{
+	color:#000;
+}
+figcaption>a>p{
+	font-weight: bolder;
+	font-size:22px;
+	margin-top:20px;
+}
+
+/* ACCUEIL ZONE 4 : slider */
+
+.zone4{
+	background: url(../image/fond-slider2.jpg) center center scroll no-repeat;
+	background-color: #fff;
+	background-size: cover;
+	padding:20px;
+}
+/*.slider-photo{
+	display:block;
+	margin:0 auto;
+	padding: 30px 0;
+	width:700px;
+	height:400px;
+	background:url(../image/toujours-a-la-pointe.jpg) center center scroll no-repeat;
+	background-size:contain;
+}*/
+/* #slides::after{
+	content:'"Toujours à la pointe"';
+	font-style: Dosis;
+	font-style: italic;
+	font-size:33px;
+	z-index: 1;
+} */
+
+
+/* ACCUEIL ZONE 5 : bandeau pub avec juste le logo */
+.zone5{
+	background: #fff;
+	height:120px;
+}
+.zone5>p{
+	display:block;
+	height:120px;
+	text-align: center;
+}
+.zone5>p>img{
+	width:200px;
+	display:inline-block;
+	position:relative;
+	top:50%;
+	transform:translateY(-50%);
+}
+
+/* ACCUEIL ZONE 6 : les avantages du site */
+.zone6>ul{
+	display:block;
+	margin:0 auto;
+	width:100%
+	height:500px;
+}
+.zone6>ul>li{
+	display:block;
+	float:left;
+	width:25%;
+	margin:0;
+	padding:0;
+	height:500px;
+}
+.zone6-container{
+	display:block;
+	float:left;
+	width:100%;
+	height:100%;
+}
+/*.zone6>ul>li>div>p{
+	display:inline-block;	
+	color:#fff;
+	vertical-align: center;
+	margin:10%;
+}*/
+.zone6-titre{
+	display:block;
+	width:70%;
+	height:40px;
+	line-height:40px;
+	margin:0 auto;
+	border:solid 1px #fff;
+	border-radius: 4px;
+	position: relative;
+	color:#fff;
+	font-weight: bolder;
+	top:33%;
+	font-size:18px;
+}
+.zone6-titre>a{
+        text-decoration:none;
+        color:#fff;
+}
+.zone6-titre>a:hover{
+        text-decoration:none;
+        color:#fff;
+}
+.zone6-texte{
+	display:block;
+	width:70%;
+	height:auto;
+	line-height:auto;
+	margin:20px auto;
+	position:relative;
+	color:#fff;
+	top:30%;
+}
+
+.zone6>ul>li:first-child{
+	background:url(../image/photo-bas1.jpg) center center scroll no-repeat;
+	background-size: cover;
+	z-index:0;
+}
+.zone6>ul>li:nth-child(2){
+	background:url(../image/photo-bas2.jpg) center center scroll no-repeat;
+	background-size: cover;
+}
+.zone6>ul>li:nth-child(3){
+	background:url(../image/photo-bas3.jpg) center center scroll no-repeat;
+	background-size: cover;
+}
+.zone6>ul>li:nth-child(4){
+	background:url(../image/photo-bas4.jpg) center center scroll no-repeat;
+	background-size: cover;
+}
+
+#zone6-container1{
+	background:rgba(239,71,36,0.5);
+}
+#zone6-container2{
+	background:rgba(112,204,221,0.5);
+}
+#zone6-container3{
+	background:rgba(45,47,122,0.5);
+}
+#zone6-container4{
+	background:rgba(0,0,0,0.5);
+}
+#zone6-container4>p{
+	display:block;
+	height:500px;
+}
+#zone6-container4>p>img{
+	display:inline-block;
+	width:180px;
+	margin:0 auto;
+	position:relative;
+	top:80%;
+}
+
+
+/********************************* SLIDER DE LA PADE D'ACCUEIL *********************************/
+/****** CSS pour le slider ******/
+
+#slides{
+    display:block;
+    width:800px;
+    margin:0 auto;
+    padding: 20px 0;
+}
+#slides {
+  display: none
+}
+#slides .slidesjs-navigation {
+  margin-top:3px;
+}
+#slides .slidesjs-previous {
+  margin-right: 5px;
+  float: left;
+}
+#slides .slidesjs-next {
+  margin-right: 5px;
+  float: left;
+}
+.slidesjs-pagination {
+  margin: 6px 0 0;
+  float: right;
+  list-style: none;
+}
+.slidesjs-pagination li {
+  float: left;
+  margin: 0 1px;
+}
+.slidesjs-pagination li a {
+  display: block;
+  width: 13px;
+  height: 0;
+  padding-top: 13px;
+  background-image: url(img/pagination.png);
+  background-position: 0 0;
+  float: left;
+  overflow: hidden;
+  background-color: #fff;
+}
+.slidesjs-pagination li a.active,
+.slidesjs-pagination li a:hover.active {
+  background-position: 0 -13px;
+  color:#fff;
+}
+.slidesjs-pagination li a:hover {
+  background-position: 0 -26px;
+  color:#fff;
+}
+#slides a:link,
+#slides a:visited {
+  color: #fff
+}
+#slides a:hover,
+#slides a:active {
+  color: #fff
+}
+.navbar {
+  overflow: hidden
+}
+
+/****** CSS RESPONSIVE pour le slider ******/
+
+#slides {
+	display: none
+}
+
+.container-slider {
+	margin: 0 auto;
+}
+
+/* For tablets & smart phones */
+@media (max-width: 767px) {
+	body {
+		padding-left: 20px;
+		padding-right: 20px;
+	}
+	.container-slider {
+		width: auto
+	}
+}
+
+/* For smartphones */
+@media (max-width: 480px) {
+	.container-slider {
+	width: auto
+	}
+}
+
+/* For smaller displays like laptops */
+@media (min-width: 768px) and (max-width: 979px) {
+	.container-slider {
+	width: 724px
+	}
+}
+
+/* For larger displays */
+@media (min-width: 1200px) {
+	.container-slider {
+	width: 1170px
+	}
+}
+
+
+
+/******************************* PAGE AFFICHAGE D'UN PROGRAMME *********************************/
 /* CONTAINER PROGRAMME */
 		.container{
 			text-align: center;
@@ -305,13 +806,16 @@
 			width: 100%;
 		}
 
-
+/***************************** FOOTER FIXE SUR TOUTES LES PAGES *******************************/
 /* FOOTER */
 		footer{
-			position:relative;
+			display:block;
+                        height:40px;
+                        width:100%;
 			bottom:0;
 			background: rgba(30,45,53,0.7);
 			width: 100%;
+                        clear:both;                       
 		}
 		footer ul{
 			padding: 0;
@@ -325,6 +829,7 @@
 			display: inline-block;
 			width: 11.6%;
 			height: 40px;
+                        line-height:40px;
 			text-align: center;
 			margin: 0 auto;
 		}
@@ -336,49 +841,10 @@
 		}
 	/* Animation texte */	
 		nav ul li a:hover{
-			font-weight: 600;
+			font-weight: bolder;
+                        text-decoration: none;
+                        color:#fff;
 		}
 		.normal_foot>a:hover{
 			font-weight: 300;
 		}
-
-
-		
-
-
-		/*p {
-  			white-space: nowrap;
-		}
-		Specify that the text in <p> elements will never wrap:*/
-		/*button,
-		input,
-		optgroup,
-		select,
-		textarea {
-		  color: inherit;
-		  font: inherit;
-		  margin: 0;
-		}*/
-
-		/* line 185, sass/_init.scss */
-		/*button {
-		  overflow: visible;
-		}
-
-		body,
-		button,
-		input,
-		select,
-		textarea {
-		  color: #404040;
-		  font-size: 16px;
-		  font-size: 1rem;
-		  line-height: 1.5;
-		}
-		blockquote:before,
-		blockquote:after,
-		q:before,
-		q:after {
-		  content: "";
-		}*/
-
