@@ -3,7 +3,7 @@
 {% block title 'Création et modification programme' %}
     
 {% block content %}
-    
+{{ dump(jours) }}    
 <form method="POST">
         
         {#    PARTIE ENREGISTREMENT PROGRAMME    #}
@@ -70,7 +70,7 @@
                     <label>Statut</label>
                     <select type="text" name="jour[{{i}}][statut]">
                         <option value="">choisir</option>
-                        <option value="entrainement" {% if jour.statut == 'entrainement'%}selected{% endif %}>entrainement</option>
+                        <option value="entrainement" {#{% if jours.statut == 'entrainement'%}selected{% endif %}#}>entrainement</option>
                         <option value="repos">repos</option>
                     </select>
                 </div>       
