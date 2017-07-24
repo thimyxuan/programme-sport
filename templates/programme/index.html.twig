@@ -66,11 +66,11 @@
         
         <ul>
             {% for jour in jours %}
-            <li class="jour jour1">
+            <li class="jour jour{{ loop.index }}">
                     <a class="jour_icon">Jour {{ loop.index }}</a><hr>
                     
             <!-- CONTENU -->
-                <ul class="sub-menu sub-menu-j1">
+                <ul class="sub-menu sub-menu-j{{ loop.index }}">
 
                     {% for exercice in exercices %}
                     <!-- 1er exercice -->
@@ -79,7 +79,7 @@
                         <!-- Menu Recap exercice (table) -->
                         <ul class="recap_ex">
                             <li>
-                                <p>Nombre de répétitions</p>
+                                <p>Répétitions</p>
                                 <a> {{ exercice.repetition }} fois</a>
                             </li>
                             <li>
@@ -87,7 +87,7 @@
                                 <a> {{ exercice.tempsRepos }} secondes</a>
                             </li>
                             <li>
-                                <p>Nombre de séries</p>
+                                <p>Séries</p>
                                 <a> {{ exercice.serie }}</a>
                             </li>
                                 	
@@ -109,7 +109,10 @@
                         <li class="colonne2">
                             <p><i class="fa fa-ellipsis-v" aria-hidden="true"></i> 
                             Muscles ciblés :  {{ exercice.muscleCible }}</p>
-                            <p> {{ exercice.consigne }}</p>
+                            <p><i class="fa fa-ellipsis-v" aria-hidden="true"></i>
+                            Consignes : {{ exercice.consigne }}</p>
+                            <p><i class="fa fa-ellipsis-v" aria-hidden="true"></i> 
+                            Détails : {{ exercice.detailSerie }}</p>
                         </li>
 
                         <li class="colonne3">
@@ -125,7 +128,7 @@
         </ul>  
 
 
-     </div>
+        </div>
     </div>
     
 {% endblock %}

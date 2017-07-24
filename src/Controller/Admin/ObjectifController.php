@@ -36,7 +36,16 @@ class ObjectifController extends ControllerAbstract {
         {
             $objectif
                     ->setTitre($_POST['titre'])
-            ;            
+            ;           
+            
+            if(empty($_POST['titre']))
+            {
+                $errors['titre'] = 'Le titre est obligatoire';
+            }
+             elseif(strlen($_POST['titre'])>100)
+            {
+                $errors['titre'] = 'Le titre ne doit pas faire plus de 100 caractères' ;
+            }
             
             // ---- Si pas d'erreur c'est OK pour aller en bdd :
             
