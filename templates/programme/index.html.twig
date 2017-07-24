@@ -3,31 +3,6 @@
 {% block title '' %}
     
 {% block content %}    
-       
-    <h2>Nom du programme : {{ programme.titre }}</h2>
-    <p>
-        Durée :  {{ programme.duree }} semaine(s)<br>
-        Materiel : {{ programme.materiel }}<br>
-    </p>
-    
-    {% for jour in jours %}
-        <h3>Jour n° : {{ jour.ordre }}</h3>
-        <p>
-            id (jour) : {{ jour.id }}<br>
-            Statut : {{ jour.statut }}<br>
-        </p>
-        
-        {% for exercice in exercices %}           
-            <h4> Exercice {{ loop.index }} : {{ exercice.titre }}</h4>
-            <p> 
-                id (exercice) : {{ exercice.id }}<br>
-                Consignes : {{ exercice.consigne }}<br>
-                Zone musculaire : {{ exercice.zoneMusculaire }}<br>
-            </p>           
- 
-        {% endfor %}
-        
-    {% endfor %}
     
     <div class="container">
         
@@ -66,29 +41,32 @@
         
         <ul>
             {% for jour in jours %}
+                {#{{ dump(exercices) }}#}
+            {% set indexLength = exercices[loop.index0]|length-1 %}
+            {% set index = loop.index0 %}
             <li class="jour jour1">
                     <a class="jour_icon">Jour {{ loop.index }}</a><hr>
                     
             <!-- CONTENU -->
                 <ul class="sub-menu sub-menu-j1">
 
-                    {% for exercice in exercices %}
+                    {% for i in 0..indexLength %}
                     <!-- 1er exercice -->
-                    <p class="ex_titre"><strong>{{ loop.index }}/. {{ exercice.titre }} :</strong></p>
+                    <p class="ex_titre"><strong>{{ loop.index }}/. {{ exercices[index][i].titre }} :</strong></p>
 
                         <!-- Menu Recap exercice (table) -->
                         <ul class="recap_ex">
                             <li>
                                 <p>Nombre de répétitions</p>
-                                <a> {{ exercice.repetition }} fois</a>
+                                <a> {{ exercices[index][i].repetition }} fois</a>
                             </li>
                             <li>
                                 <p>Temps de repos</p>
-                                <a> {{ exercice.tempsRepos }} secondes</a>
+                                <a> {{ exercices[index][i].tempsRepos }} secondes</a>
                             </li>
                             <li>
                                 <p>Nombre de séries</p>
-                                <a> {{ exercice.serie }}</a>
+                                <a> {{ exercices[index][i].serie }}</a>
                             </li>
                                 	
                         </ul>
@@ -98,18 +76,18 @@
                             <li class="colonne1">
                                 <div>
                                     <img src="{{ asset('image/level.jpg') }}">
-                                    <p> {{ exercice.difficulte }}</p>
+                                    <p> {{ exercices[index][i].difficulte }}</p>
                                 </div>
                                 <div>
                                     <img src="{{ asset('image/location.jpg') }}">
-                                    <p> {{ exercice.zoneMusculaire }}</p>
+                                    <p> {{ exercices[index][i].zoneMusculaire }}</p>
                                 </div>	
                         </li>
 
                         <li class="colonne2">
                             <p><i class="fa fa-ellipsis-v" aria-hidden="true"></i> 
-                            Muscles ciblés :  {{ exercice.muscleCible }}</p>
-                            <p> {{ exercice.consigne }}</p>
+                            Muscles ciblés :  {{ exercices[index][i].muscleCible }}</p>
+                            <p> {{ exercices[index][i].consigne }}</p>
                         </li>
 
                         <li class="colonne3">
@@ -123,7 +101,6 @@
             </li>          
             {% endfor %}
         </ul>  
-
 
      </div>
     </div>
