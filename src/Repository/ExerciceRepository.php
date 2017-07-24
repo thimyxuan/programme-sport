@@ -39,8 +39,37 @@ EOS;
         return $exercices;
     }
     
+    public function save(Exercice $exercice)
+    {
+        $data = ['titre'=>$exercice->getTitre(),
+                'consigne'=>$exercice->getConsigne(),
+                'difficulte'=>$exercice->getDifficulte(),
+                'zone_musculaire'=>$exercice->getZoneMusculaire(),
+                'muscle_cible'=>$exercice->getMuscleCible(),
+                'jour_id'=>$exercice->getJourId(),
+                'photo'=>$exercice->getPhoto(),
+                'serie'=>$exercice->getSerie(),
+                'repetition'=>$exercice->getRepetition(),
+                'detail_serie'=>$exercice->getDetailSerie(),
+                'temps_repos'=>$exercice->getTempsRepos()
+                ];
+                
+        
+        $where = !empty($exercice->getId())
+                ? ['id' => $exercice->getId()] // modification
+                : null // création
+        ;
+        
+        $this->persist($data, $where);
+        
+        if (empty($exercice->getId())) {
+            $exercice->setId($this->db->lastInsertId());
+        }
+    }
+    
     public function buildFromArray(array $dbExercice)
     {
+        $jour = new Jour();
         $exercice = new Exercice();
         $exercice
                 ->setId($dbExercice['id'])
@@ -49,7 +78,7 @@ EOS;
                 ->setDifficulte($dbExercice['difficulte'])
                 ->setZoneMusculaire($dbExercice['zone_musculaire'])
                 ->setMuscleCible($dbExercice['muscle_cible'])
-                //->setJour($jour)
+                ->setJour($jour)
                 ->setPhoto($dbExercice['photo'])
                 ->setSerie($dbExercice['serie'])
                 ->setRepetition($dbExercice['repetition'])

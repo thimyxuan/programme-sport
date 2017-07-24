@@ -13,34 +13,47 @@
     </h1>
    
     <form method="post">        
-        <div class="">
+
+        <div class="form-group">
             <label>Pseudo</label>
-            <input type="text" name="pseudo" class="" value="{{ membre.pseudo }}">
-        <div class="">
+            <input type="text" name="pseudo" class="form-control" value="{{ membre.pseudo }}">
+        <div class="form-group">
             <label>Prénom</label>
-            <input type="text" name="prenom" class="" value="{{ membre.prenom }}">
+            <input type="text" name="prenom" class="form-control" value="{{ membre.prenom }}">
         </div>
         </div>
-        <div class="">
+        <div class="form-group">
             <label>Nom</label>
-            <input type="text" name="nom" class="" value="{{ membre.nom }}">
+            <input type="text" name="nom" class="form-control" value="{{ membre.nom }}">
         </div>
-        <div class="">
+        <div class="form-group">
             <label>Email</label>
-            <input type="text" name="email" class="" value="{{ membre.email }}">
+            <input type="text" name="email" class="form-control" value="{{ membre.email }}">
         </div>
-        <div class="">
-            <label>Civilité</label>
-            <input type="radio" name="civilite" class="" value="h" checked="{% if membre.civilite == 'h' %}checked{% else %} {% endif %}"> : Homme
-            <input type="radio" name="civilite" class="" value="f" checked="{% if membre.civilite == 'f' %}checked{% else %} {% endif %}"> : Femme
+        <div class="form-group">
+            <label class="">Civilité</label>
+            <input type="radio" name="civilite" id="inlineRadio1" value="h" checked="{% if membre.civilite == 'h' %}checked{% else %} {% endif %}"> : Homme
+            <input type="radio" name="civilite" id="inlineRadio2" value="f" checked="{% if membre.civilite == 'f' %}checked{% else %} {% endif %}"> : Femme
         </div>
-        <div class="">
+        <div class="form-group">
             <label>Photo de profil : </label>
             <input type="file" name="avatar" class="" value="{{ membre.avatar }}">
         </div>
         
-        <button type="submit" class="">Enregistrer</button>
+        <div class="form-group">
+        <label for="statut">Statut</label>
+            <select name="statut">
+                <option value="">Choisir</option>
+                <option value="membre" {% if membre.statut == 'membre'%}selected{% endif %}>membre</option>
+                <option value="admin" {% if membre.statut == 'admin'%}selected{% endif %}>admin</option>
+                <option value="pro" {% if membre.statut == 'pro'%}selected{% endif %}>pro</option>
+            </select>
+        </div>
+        
+        <button type="submit" class="btn btn-primary">Enregistrer</button>
+
         <a href="{{ path('liste_membre') }}" class="">Annuler</a>
+        
     </form>
         
 {% endblock %}

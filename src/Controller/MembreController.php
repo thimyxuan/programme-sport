@@ -2,8 +2,11 @@
 
 namespace Controller;
 
+use DateTime;
+
 use Controller\ControllerAbstract;
 use Entity\Membre;
+use Repository\MembreRepository;
 
 class MembreController extends ControllerAbstract {
     
@@ -27,7 +30,7 @@ class MembreController extends ControllerAbstract {
                     ->setEmail($_POST['email'])    
                     ->setCivilite($_POST['civilite']) 
                     ->setAvatar($_POST['avatar'])
-                    //->setDateEnregistrement(new \DateTime($dbMembre['date_enregistrement']))
+                    ->setStatut($membre->getStatut())
                 ;
             }
 
@@ -35,9 +38,17 @@ class MembreController extends ControllerAbstract {
             {
                 $errors['nom'] = 'Le nom est obligatoire';
             }
+            elseif(strlen($_POST['nom'])>20)
+            {
+                $errors['nom'] = 'Le nom ne doit pas faire plus de 20 caractères' ;
+            }
             if(empty($_POST['prenom']))
             {
                 $errors['prenom'] = 'Le prénom est obligatoire';
+            }
+            elseif(strlen($_POST['prenom'])>20)
+            {
+                $errors['nom'] = 'Le prénom ne doit pas faire plus de 20 caractères' ;
             }
             if(empty($_POST['email']))
             {
@@ -109,7 +120,7 @@ class MembreController extends ControllerAbstract {
                 if($this->app['user.manager']->verifyPassword($_POST['mdp'], $membre->getMdp()))
                 {
                     $this->app['user.manager']->login($membre);
-                    return $this->redirectRoute('homepage');
+                    return $this->redirectRoute('profil');
                 }                
             }            
             $this->addFlashMessage('Identification incorrecte', 'error');

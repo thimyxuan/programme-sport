@@ -23,7 +23,7 @@ class ProgrammeRepository extends RepositoryAbstract
      public function findAll()
     {
         $query = <<<EOS
-SELECT p.*, o.titre, m.pseudo
+SELECT p.*, o.titre as objectif_titre, m.pseudo
 FROM programme p
 JOIN objectif o ON p.objectif_id = o.id
 JOIN membre m ON p.membre_id = m.id
@@ -50,7 +50,7 @@ EOS;
     public function find($id)
     {
         $query = <<<EOS
-SELECT p.*, o.titre, m.pseudo
+SELECT p.*, o.titre as objectif_titre, m.pseudo
 FROM programme p
 JOIN objectif o ON p.objectif_id = o.id
 JOIN membre m ON p.membre_id = m.id
@@ -75,7 +75,7 @@ EOS;
     public function findByObjectif(Objectif $objectif)
     {
         $query = <<<EOS
-SELECT p.*, o.titre, m.pseudo
+SELECT p.*, o.titre as objectif_titre, m.pseudo
 FROM programme p
 JOIN objectif o ON p.objectif_id = o.id
 JOIN membre m ON p.membre_id = m.id
@@ -123,7 +123,12 @@ EOS;
                 ? ['id' => $programme->getId()] // modification
                 : null // création
             ;
-        $this->persist($data, $where);           
+        $this->persist($data, $where);        
+
+        if(empty($programme->getId()))
+        {
+            $programme->setId($this->db->lastInsertId());
+        }
     }
     
     
@@ -161,11 +166,12 @@ EOS;
         
         $objectif
                 ->setId($dbProgramme['objectif_id'])
-                ->setTitre($dbProgramme['titre'])
+                ->setTitre($dbProgramme['objectif_titre'])
         ;
         
         $programme
                 ->setId($dbProgramme['id'])
+                ->setTitre($dbProgramme['titre'])
                 ->setMateriel($dbProgramme['materiel'])
                 ->setDifficulte($dbProgramme['difficulte'])
                 ->setPhoto($dbProgramme['photo'])
@@ -179,5 +185,20 @@ EOS;
         return $programme;
     }
     
+    public function search($motRecherche) {
+        
+//        ECRIRE LA GROSSE REQUETE DE JOINTURE POUR COMPARAISON DE LA RECHERCHE DU FORMULAIRE
+        
+        // EXEMPLE
+        $query = "SELECT * FROM programme WHERE titre = :titre";
+
+        $dbProgramme = $this->db->fetchAll(
+                $query,
+                [':titre'=> $motRecherche]
+        );
+        
+        return $dbProgramme;
+        
+    }
     
 }

@@ -1,0 +1,384 @@
+@import url('https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,700,800');
+
+		body{
+			font:16px 'Open sans',sans-serif;
+			font-size-adjust:0.5;
+			margin:0;
+			background: #EEE;
+		}
+		a{
+			text-decoration: none;
+			margin: 0;
+		}
+		li{
+			width:auto;
+			list-style: none;
+                        padding:0;
+                        margin:0;
+			/*transition-duration:0.5s;*/
+			/*background: #FFF;*/
+			/*margin-bottom: 1px;*/
+		}		
+		ul li p{
+			margin:0;
+			padding:0;
+		}
+		hr{
+			margin:0;
+		}
+
+		
+/* CONTAINER PROGRAMME */
+		.container{
+			text-align: center;
+			width: 50%;
+			margin: 40px auto;
+			border :solid 1px #222;
+			background: #FFF;
+			border-radius: 10px;
+		}
+/* INFOS DU PROGRAMME */
+
+	/* Photo */
+		.prog_photo{
+			width : 100%;
+			border-radius : 10px 10px 0 0;
+		}
+	/* Titres */
+		.sport{
+			font: 1.6rem 'Open sans',sans-serif;
+			color:#222;
+			font-weight: 300;
+			margin:0;
+			margin-top: 20px;
+		}
+		.titre_prog{
+			font: 2rem 'Open sans',sans-serif;
+			color:#222;
+			font-weight: 700;
+			margin:0;
+		}
+		.membre{
+			font: 1rem 'Open sans',sans-serif;
+			color:#222;
+			font-weight: 500;
+			margin:0;
+			margin-top: 10px;
+		}
+	/* Menu Recap programme (table) */
+		.recap{
+			display:table;
+			width:100%;
+			padding: 0;
+		}
+		.recap>li{
+			display:table-cell;
+			width: 25%;
+			height:50px;
+			background-color:#fff;
+			color:#222;
+			text-align: center;
+			border-right:solid 1px #222;
+			padding: 20px 0;
+		}
+		.recap>li:nth-child(4){
+			border-right : none;
+		}
+		.recap_image img{
+			width : 30px;
+			height: 30px;
+		}
+		.recap p{
+			text-align: center;
+			margin-top: 5px;
+			margin-bottom: 0;
+		}
+
+	/* Liste matériel */
+
+		.materiel-titre{
+			font: 1rem 'Open sans',sans-serif;
+			color:#222;
+			font-weight: 400;
+			margin: 0 30px;
+			text-align: left;
+		}
+                .materiel{
+                        display:block;
+                        margin:0;
+                        padding:0;
+                }
+                .materiel>ul{
+                        list-style: none;
+                        padding:0;
+                        margin:0;
+                }
+		.materiel>li{
+			text-align: center;
+			margin-bottom: 20px;
+                        padding:0;
+                        margin:0;
+		}
+		.materiel>li:last-child{
+			margin-bottom: 50px;
+		}
+		.border{
+			width : 40%;
+			margin: 50px auto;
+			bottom-border :solid 1px #222;
+		}
+
+/* MENU DES JOURS */
+		.container-jour{
+			width: 100%;
+			border :solid 1px #222;
+			border-radius: 10px;
+			text-align: left;
+			background-color: #222;
+			color:#FFF;
+			border-radius : 10px;
+			padding-bottom: 10px;
+		}
+		/* on cache les jours */
+		.container-jour ul>li>ul{
+			width:auto;
+			margin:0;
+			display:none;	
+		}
+
+	/* Titre calendrier */	
+		.container-jour>p:first-child{
+			margin: 10px 10px;
+			line-height: 10px;
+		}
+		.container-jour ul{
+			padding:0;
+		}
+
+	/* Liste */
+		.jour{
+			line-height: 50px;
+			border-bottom:solid 1px #222;
+		}
+	/* Titre jour */
+		.jour a{
+			display: block;
+			width:auto;
+			list-style: none;
+			transition-duration:0.7s;
+			background: #FFF;
+			color:#222;
+			text-align: left;
+			padding-left:20px;
+		}
+		.jour a:hover{
+			background: #222;		
+			/*background: rgba(30,45,53,0.7);*/
+			color:#18ffff;
+		}
+		.jour a::after:hover{
+			background: rgba(0,0,0,0.3);
+			color:#18ffff;
+		}	
+		.jour a:nth-child(1)::after{
+			content:"\f144";
+			font-family: 'FontAwesome';
+			margin-right: 10px;
+			float: right;
+		}
+
+
+	/* Titre exercice */
+		.sub-menu>p:nth-child(1){
+			background:#FFF;
+			color:#222;
+			font-weight: 700;
+			margin:0;
+			padding-top: 30px; 
+		}
+		.ex_titre strong{
+			margin: 30px;
+			line-height: 30px;
+                        color: #222;
+                        text-transform:uppercase;
+		}
+
+/* EXERCICES */
+
+		.sub-menu{
+			background: #FFF;
+		}
+
+	/* Menu Recap exercice (table) */
+		.recap_ex{
+			display:table;
+			width:100%;
+			padding: 0;
+		}
+		.recap_ex li{
+			display:table-cell;
+			width:160px;
+			height:25px;
+			background-color:#fff;
+			color:#222;
+			text-align: center;
+			border-right:solid 1px #222;
+			margin-top: 100px;
+			margin-bottom: 1px;
+			padding: 5px;
+		}
+		.recap_ex>li:nth-child(3){
+			border-right : none;
+		}
+		.recap_ex p{
+			line-height: normal;
+			margin-bottom: 5px;
+			padding: 0;
+		}		
+		.recap_ex a{
+			line-height: normal;
+			font-weight: 700;
+			text-align: center;
+			margin:0;
+			padding: 0;
+		}
+
+	/* Corps exercice ->3 colonnes avec table) */
+		/* table */
+		.corps_ex{
+			display:table;
+			width:100%;
+			padding: 0;
+			margin-top: 50px;
+		}
+		.corps_ex li{
+			display:table-cell;
+			background-color:#fff;
+			color:#222;
+			margin-bottom: 1px;
+			padding: 5px;
+		}
+		/* largeur colonnes */
+		.corps_ex>li:nth-child(1){
+			width:12%;
+		}
+		.corps_ex>li:nth-child(2){
+			width:48%;
+		}
+		.corps_ex>li:nth-child(3){
+			width:40%;
+		}
+		.corps_ex p{
+			line-height: normal;
+		}
+
+		.colonne1{
+			text-align: center;
+		}
+		.colonne1 div{
+                        display:block;
+			margin-bottom: 15px;
+                        height:auto;
+		}
+		.colonne1 img{
+			width : 30px;
+			height: 30px;
+			line-height: normal;
+			margin:0;
+		}
+                .colonne1 p{
+                        margin:0;
+                }
+		.colonne2{
+			text-align: left;
+			vertical-align: top;
+		}
+		.colonne2 p{
+			padding-right: 10px;
+                        margin-bottom: 20px;
+		}
+		.colonne3{
+			vertical-align: top;
+		}
+		.colonne3 img{
+			text-align: center;
+			width: 100%;
+		}
+
+
+/* FOOTER */
+		footer{
+			position:relative;
+			bottom:0;
+			background: rgba(30,45,53,0.7);
+			width: 100%;
+		}
+		footer ul{
+			padding: 0;
+			margin: 0 auto;
+			width:100%;
+			text-align: center;
+			align-content: center;
+			/*justify-content: space-between;*/			
+		}
+		footer nav ul li{
+			display: inline-block;
+			width: 11.6%;
+			height: 40px;
+			text-align: center;
+			margin: 0 auto;
+		}
+		footer li a{
+			font-weight: 300;
+			color: #fff;
+			transition-duration: 0.1s;
+			line-height: 40px;
+		}
+	/* Animation texte */	
+		nav ul li a:hover{
+			font-weight: 600;
+		}
+		.normal_foot>a:hover{
+			font-weight: 300;
+		}
+
+
+		
+
+
+		/*p {
+  			white-space: nowrap;
+		}
+		Specify that the text in <p> elements will never wrap:*/
+		/*button,
+		input,
+		optgroup,
+		select,
+		textarea {
+		  color: inherit;
+		  font: inherit;
+		  margin: 0;
+		}*/
+
+		/* line 185, sass/_init.scss */
+		/*button {
+		  overflow: visible;
+		}
+
+		body,
+		button,
+		input,
+		select,
+		textarea {
+		  color: #404040;
+		  font-size: 16px;
+		  font-size: 1rem;
+		  line-height: 1.5;
+		}
+		blockquote:before,
+		blockquote:after,
+		q:before,
+		q:after {
+		  content: "";
+		}*/
+

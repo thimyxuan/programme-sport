@@ -1,6 +1,8 @@
 <?php
 
 use Controller\Admin\MembreController as AdminMembreController;
+use Controller\Admin\ObjectifController as AdminObjectifController;
+use Controller\Admin\ProgrammeController as AdminProgrammeController;
 use Controller\IndexController;
 use Controller\JourController;
 use Controller\MembreController;
@@ -27,7 +29,7 @@ $app->register(new TwigServiceProvider());
 $app->register(new HttpFragmentServiceProvider());
 $app['twig'] = $app->extend('twig', function ($twig, $app) {
     
-
+    $twig->addGlobal('user_manager', $app['user.manager']);
     return $twig;
 });
 
@@ -92,6 +94,19 @@ $app['admin.membre.controller'] = function () use ($app)
     return new AdminMembreController($app);
     
 };
+
+$app['admin.objectif.controller'] = function () use ($app) 
+{
+    return new AdminObjectifController($app);
+    
+};
+
+$app['admin.programme.controller'] = function () use ($app) 
+{
+    return new AdminProgrammeController($app);
+    
+};
+
 
 /* Déclaration des repository en service */
 

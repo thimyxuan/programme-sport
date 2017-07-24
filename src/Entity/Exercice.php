@@ -48,6 +48,12 @@ class Exercice {
     
     /**
      *
+     * @var array 
+     */
+    private $jours = [];
+    
+    /**
+     *
      * @var string
      */
     private $photo;
@@ -191,6 +197,11 @@ class Exercice {
 
     public function setTempsRepos($tempsRepos) {
         $this->tempsRepos = $tempsRepos;
+        return $this;
+    }
+    //----------------------
+    public function setJours(array $jours) {
+        $this->jours = $jours;
         return $this;
     }
 

@@ -27,6 +27,10 @@ $app
     ->bind('programme')
 ;
 
+$app
+    ->match('/search/', 'programme.controller:searchAction')
+    ->bind('search')
+;
 
 /* USER */
 $app
@@ -45,26 +49,74 @@ $app
 ;
 
 $app
-    ->match('/programme/creation', 'programme.controller:registerAction')
-    ->bind('creation')
+    ->match('/programme/edit/{id}', 'programme.controller:editAction')
+    ->value('id', null)
+    ->bind('programme_edit')
+;
+
+$app
+    ->match('/deconnexion', 'membre.controller:logoutAction')
+    ->bind('logout')
 ;
 
 /* BACK */
 
-$app
-    ->get('/admin/liste_membre', 'admin.membre.controller:membreListAction')
+// crée un groupe de routes pour la partie Admin
+$admin = $app['controllers_factory'];
+// toutes les toures définies dans le groupe $admin auront le préfixe /admin
+$app->mount('/admin',$admin);
+
+
+// protection de l'accès au backoffice
+/*
+$admin->before(function() use ($app)
+{
+    if(!$app['user.manager']->isAdmin())
+    {
+        $app->abort(403, 'Accès refusé');
+    }
+});*/
+
+$admin
+    ->get('/liste_membre', 'admin.membre.controller:membreListAction')
     ->bind('liste_membre')
 ;
 
-$app
+$admin
     ->match('/membres/edit/{id}', 'admin.membre.controller:editAction') 
     ->value('id', null) 
     ->bind('admin_membre_edit')
 ;
 
-$app
+$admin
     ->get('/membre/delete/{id}', 'admin.membre.controller:deleteAction')
     ->bind('admin_membre_delete')
+;
+
+$admin
+    ->get('/liste_objectif', 'admin.objectif.controller:ListAction')
+    ->bind('liste_objectif')
+;
+
+$admin
+    ->match('/objectifs/edit/{id}', 'admin.objectif.controller:editAction') 
+    ->value('id', null) 
+    ->bind('admin_objectif_edit')
+;
+
+$admin
+    ->get('/objectif/delete/{id}', 'admin.objectif.controller:deleteAction')
+    ->bind('admin_objectif_delete')
+;
+
+$admin
+    ->get('/liste_programme', 'admin.programme.controller:ListAction')
+    ->bind('liste_programme')
+;
+
+$admin
+    ->get('/programme/delete/{id}', 'admin.programme.controller:deleteAction')
+    ->bind('admin_programme_delete')
 ;
 
 // -----------------
