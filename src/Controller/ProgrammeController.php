@@ -84,13 +84,26 @@ class ProgrammeController extends ControllerAbstract
                     ->setObjectif($objectif)
                     ->setMateriel($_POST['materiel'])
                     ->setDifficulte($_POST['difficulte'])    
-                    ->setPhoto($_POST['photo'])    
+                    //->setPhotoProgramme($_POST['photo_'])    
                     ->setSport($_POST['sport'])    
                     ->setDuree($_POST['duree'])
                     ->setMembre($membre)
                     //->setDatePublication($_POST['date_publication'])
-                ;                
+                ; 
+                
+                if(!empty($_FILES['photo_programme']['name'])) {
 
+                    $nom_photo_programme = str_replace('', '_', $_POST['titre']) . '_' . $_FILES['photo_programme']['name']; // ondéfinit le nom de la photo
+                    // on définit le nom complet de la photo. Nous nous servirons de cette variable pour enregistrer 
+                    // le chemin complet de la photo en BDD puisqu'on ne garde jamais la photo, mais le lien en bdd
+                    $photo_bdd_programme = "http://localhost/programme-sport/web/photo/$nom_photo_programme";
+                    // on définit le chemin physique du dossier de destination pour enregistrer la photo
+                    $photo_dossier_programme = $_SERVER['DOCUMENT_ROOT'] . "/programme-sport/" . "web/photo/$nom_photo_programme";
+                    // la fonction copy permet de copier la photo directement dans le dossier de destination
+                    copy($_FILES['photo_programme']['tmp_name'], $photo_dossier_programme);
+
+                    $programme->setPhotoProgramme($photo_bdd_programme);
+                }
                 // Il faut faire un foreach poour chaque $_POST['jour']
                 // et à l'intérieur de ce foreach, il faut faire un for
                 // ce qui donnerait dans le for quelque chose comme ça :
@@ -110,26 +123,38 @@ class ProgrammeController extends ControllerAbstract
 
                         $tabJours[] = $jour;
 
-
+                        
                         if (isset($_POST['jour'][$index]['exercice'])) {
-
+                            
                             foreach ($_POST['jour'][$index]['exercice'] as $index => $formExercice) {
-
+                                
                                 $exercice = new Exercice();
-
+                                
                                 $exercice
                                     ->setTitre($formExercice['titre'])
                                     ->setConsigne($formExercice['consigne'])
                                     ->setDifficulte($formExercice['difficulte'])
                                     ->setZoneMusculaire($formExercice['zone_musculaire'])
                                     ->setMuscleCible($formExercice['muscle_cible'])
-                                    ->setPhoto($formExercice['photo'])
                                     ->setSerie($formExercice['serie'])
                                     ->setRepetition($formExercice['repetition'])
                                     ->setDetailSerie($formExercice['detail_serie'])
                                     ->setTempsRepos($formExercice['temps_repos'])
                                     ->setJour($jour)
                                     ;
+                                if(!empty($_FILES['jour'][$index]['exercice']['photo']['name'])) {
+
+                                    $nom_photo_exercice = $formExercice['titre'] . '_' . $_FILES['jour'][$index]['exercice']['photo']['name']; // ondéfinit le nom de la photo
+                                    // on définit le nom complet de la photo. Nous nous servirons de cette variable pour enregistrer 
+                                    // le chemin complet de la photo en BDD puisqu'on ne garde jamais la photo, mais le lien en bdd
+                                    $photo_bdd_exercice = "http://localhost/programme-sport/web/photo/$nom_photo_exercice";
+                                    // on définit le chemin physique du dossier de destination pour enregistrer la photo
+                                    $photo_dossier_exercice = $_SERVER['DOCUMENT_ROOT'] . "/programme-sport/" . "web/photo/$nom_photo_exercice";
+                                    // la fonction copy permet de copier la photo directement dans le dossier de destination
+                                    copy($_FILES['photo']['tmp_name'], $photo_dossier_exercice);
+                                    
+                                    $exercice->setPhoto($photo_bdd_exercice);
+                                } 
 
                                 $tabExercices[] = $exercice;
                             }   
@@ -137,8 +162,7 @@ class ProgrammeController extends ControllerAbstract
                     }
                 }            
             }
-
-
+            
 
             //--------- Vérification des champs du formulaire avant entrée en bdd
             
@@ -216,30 +240,13 @@ class ProgrammeController extends ControllerAbstract
                         {
                             $errors['statut'] = 'Le statut du jour est obligatoire';
                         }
-                    }
-                }            
-            }            
-            /*
-            for ($i=1; $i<8; $i++) {// ceci ne fonctionne pas, est remplacé par le code ci-dessus
-                if(empty($_POST['jour'][$i]['statut'])) {
-                        $errors['statut'] = 'Le statut du jour est obligatoire';
-                    }    
-            }*/
-            
-            
-            // Contrôles des champs de la table EXERCICE
-            
-            foreach($_POST as $indice => $valeur)
-            {
-                if ($indice == 'jour'){
-                    foreach($valeur as $index => $value){
+                        
                         if($index == 'exercice'){
                             foreach($value as $ind => $val){
                                 
                                 // toutes mes conditions ici :
                                 
-                                //echo '<pre>'; print_r($_POST[$indice][$index][$ind]['difficulte']); echo '</pre>'; 
-                                
+                                //echo '<pre>'; print_r($_POST[$indice][$index][$ind]['titre']); echo '</pre>'; 
                                 if(empty($_POST[$indice][$index][$ind]['titre']))
                                 {
                                     $errors['exercice_titre'] = 'Le titre de l\'exercice est obligatoire';
@@ -304,8 +311,27 @@ class ProgrammeController extends ControllerAbstract
                             }
                         }
                     }
-                }
-            }
+                }            
+            }            
+            /*
+            for ($i=1; $i<8; $i++) {// ceci ne fonctionne pas, est remplacé par le code ci-dessus
+                if(empty($_POST['jour'][$i]['statut'])) {
+                        $errors['statut'] = 'Le statut du jour est obligatoire';
+                    }    
+            }*/
+            
+            
+            // Contrôles des champs de la table EXERCICE
+            
+//            foreach($_POST as $indice => $valeur)
+//            {
+//                if ($indice == 'jour'){
+//                    
+//                    foreach($valeur as $index => $value){
+//                        
+//                    }
+//                }
+//            }
            
            
 
@@ -313,7 +339,7 @@ class ProgrammeController extends ControllerAbstract
 
             if (empty($errors)) {
                 $this->app['programme.repository']->save($programme);
-
+                
                 foreach ($tabJours as $jour) {
                     $this->app['jour.repository']->save($jour); 
                 }
@@ -335,7 +361,7 @@ class ProgrammeController extends ControllerAbstract
             }
 
         }
-
+        echo 'photoProgramme <pre>'; print_r($programme->getPhotoProgramme());echo '</pre>';
 
         return $this->render(
             'programme/edit.html.twig',
@@ -344,7 +370,9 @@ class ProgrammeController extends ControllerAbstract
                 'programme' => $programme,
                 //'exercice' => $exercice,
                 'jours'=> $tabJours,
-                'exercices' => $tabExercices
+                'exercices' => $tabExercices,
+                'post' => $_POST,
+                'file' => $_FILES
             ]
         );
 
