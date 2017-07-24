@@ -9,9 +9,9 @@ body{
     background: #EEE;
 }
 a{
-    text-decoration: none;
     margin: 0;
     cursor:default;
+    text-decoration:none;
 }
 ul, li{
     width:auto;
@@ -26,7 +26,6 @@ p{
 hr{
     margin:0;
 }
-
                 
 /***************************** HEADER ET BARRE DE NAVIGATION FIXE *******************************/
 header{
@@ -41,7 +40,7 @@ header nav ul li a{
 	color:#fff;
 	font-weight: 300;
 }
-nav{
+#navbar-principale{
 	text-align:right;
 }
 ul li{
@@ -75,28 +74,53 @@ header>nav>ul>li:last-child::before{
 	height:auto;
 }
 .menu-haut>nav{
-    text-align: left;
-}
-.menu-haut{
-    margin:0 auto;
-    padding:0;
+    display: block;
     width:100%;
-    background:#000;
+    height:75px;
+    background:#fff;
+    text-align:left;
+    margin:0;
+    padding:0;
 }
 .menu-haut>nav>ul{
     display:flex;
     flex-direction:row;
-    flex-wrap:nowrap;
-    justify-content: space-between;
-    display:block;
-    margin:0 auto;
-    margin:0;
-    padding:0;
-    width:100%;
+    flex-wrap:wrap;
+    justify-content:space-between;
+    width:auto;
+    list-style: none;
 }
 .menu-haut>nav>ul>li{
-    width:10%;
-    height:40px;
+    margin:0;
+    height:75px;
+    line-height:75px;
+    width:auto;
+    padding:0 25px;
+}
+.menu-haut>nav>ul>li>a{
+    text-decoration:none;
+    color:#000;
+}
+#mon-objectif{
+    color:#fff;
+    text-transform: uppercase;
+    background:#222;
+    margin:0;
+    padding:0 25px;
+    font-weight:bolder;
+}
+#mon-objectif::before{
+    font-family: 'FontAwesome';
+    content:'\f05b';
+    color:#000;
+    font-size: 22px;
+}
+.menu-haut>nav>ul>li:hover{
+    background:#18ffff;
+    color:#000;
+}
+.menu-haut>nav>ul>li>a:hover{
+    color:#000;
 }
 .colonne-menu>ul>li{
 	display:block;
@@ -276,27 +300,29 @@ figcaption>a>p{
 /* ACCUEIL ZONE 4 : slider */
 
 .zone4{
-	background: url(../image/fond-slider2.jpg) center center scroll no-repeat;
+	background: url(../image/fondslider.jpg) center center scroll no-repeat;
 	background-color: #fff;
 	background-size: cover;
-	padding:20px;
+	padding:30px;
+        height:auto;
 }
-/*.slider-photo{
+.slider-photo{
 	display:block;
 	margin:0 auto;
 	padding: 30px 0;
-	width:700px;
+	width:800px;
 	height:400px;
-	background:url(../image/toujours-a-la-pointe.jpg) center center scroll no-repeat;
+	background:url(../image/toujours-logo.jpg) center center scroll no-repeat;
 	background-size:contain;
-}*/
-/* #slides::after{
-	content:'"Toujours à la pointe"';
-	font-style: Dosis;
+}
+.slider-photo>p{
+	display:block;
+	position:relative;
 	font-style: italic;
 	font-size:33px;
-	z-index: 1;
-} */
+	top:70%;
+	left:5%;	
+}
 
 
 /* ACCUEIL ZONE 5 : bandeau pub avec juste le logo */
@@ -422,7 +448,7 @@ figcaption>a>p{
 
 /********************************* SLIDER DE LA PADE D'ACCUEIL *********************************/
 /****** CSS pour le slider ******/
-
+/*
 #slides{
     display:block;
     width:800px;
@@ -430,7 +456,7 @@ figcaption>a>p{
     padding: 20px 0;
 }
 #slides {
-  display: none
+  display: none;
 }
 #slides .slidesjs-navigation {
   margin-top:3px;
@@ -482,20 +508,20 @@ figcaption>a>p{
 }
 .navbar {
   overflow: hidden
-}
+}*/
 
 /****** CSS RESPONSIVE pour le slider ******/
-
+/*
 #slides {
 	display: none
 }
 
 .container-slider {
 	margin: 0 auto;
-}
+}*/
 
 /* For tablets & smart phones */
-@media (max-width: 767px) {
+/*@media (max-width: 767px) {
 	body {
 		padding-left: 20px;
 		padding-right: 20px;
@@ -503,34 +529,77 @@ figcaption>a>p{
 	.container-slider {
 		width: auto
 	}
-}
+}*/
 
 /* For smartphones */
-@media (max-width: 480px) {
+/*@media (max-width: 480px) {
 	.container-slider {
 	width: auto
 	}
-}
+}*/
 
 /* For smaller displays like laptops */
-@media (min-width: 768px) and (max-width: 979px) {
+/*@media (min-width: 768px) and (max-width: 979px) {
 	.container-slider {
 	width: 724px
 	}
-}
+}*/
 
 /* For larger displays */
-@media (min-width: 1200px) {
+/*@media (min-width: 1200px) {
 	.container-slider {
 	width: 1170px
 	}
-}
+}*/
 
+/***************************** FOOTER FIXE SUR TOUTES LES PAGES *******************************/
+/* FOOTER */
+		footer{
+			display:block;
+                        height:40px;
+                        width:100%;
+			bottom:0;
+			background: rgba(30,45,53,0.7);
+			width: 100%;
+                        clear:both;                       
+		}
+		footer ul{
+			padding: 0;
+			margin: 0 auto;
+			width:100%;
+			text-align: center;
+			align-content: center;
+			/*justify-content: space-between;*/			
+		}
+		footer nav ul li{
+			display: inline-block;
+			width: 11.6%;
+			height: 40px;
+                        line-height:40px;
+			text-align: center;
+			margin: 0 auto;
+		}
+		footer li a{
+			font-weight: 300;
+			color: #fff;
+			transition-duration: 0.1s;
+			line-height: 40px;
+		}
+	/* Animation texte */	
+		nav ul li a:hover{
+			font-weight: bolder;
+                        text-decoration: none;
+                        color:#fff;
+		}
+		.normal_foot>a:hover{
+			font-weight: 300;
+		}
 
-
+                
+                
 /******************************* PAGE AFFICHAGE D'UN PROGRAMME *********************************/
 /* CONTAINER PROGRAMME */
-		.container{
+		.container-programme{
 			text-align: center;
 			width: 50%;
 			margin: 40px auto;
@@ -604,16 +673,16 @@ figcaption>a>p{
 			margin: 0 30px;
 			text-align: left;
 		}
-                .materiel{
-                        display:block;
-                        margin:0;
-                        padding:0;
-                }
-                .materiel>ul{
-                        list-style: none;
-                        padding:0;
-                        margin:0;
-                }
+        .materiel{
+                display:block;
+                margin:0;
+                padding:0;
+        }
+        .materiel>ul{
+                list-style: none;
+                padding:0;
+                margin:0;
+        }
 		.materiel>li{
 			text-align: center;
 			margin-bottom: 20px;
@@ -660,6 +729,8 @@ figcaption>a>p{
 		.jour{
 			line-height: 50px;
 			border-bottom:solid 1px #222;
+                        width:100%;
+                        margin:0;
 		}
 	/* Titre jour */
 		.jour a{
@@ -805,164 +876,3 @@ figcaption>a>p{
 			text-align: center;
 			width: 100%;
 		}
-
-/***************************** FOOTER FIXE SUR TOUTES LES PAGES *******************************/
-/* FOOTER */
-		footer{
-			display:block;
-                        height:40px;
-                        width:100%;
-			bottom:0;
-			background: rgba(30,45,53,0.7);
-			width: 100%;
-                        clear:both;                       
-		}
-		footer ul{
-			padding: 0;
-			margin: 0 auto;
-			width:100%;
-			text-align: center;
-			align-content: center;
-			/*justify-content: space-between;*/			
-		}
-		footer nav ul li{
-			display: inline-block;
-			width: 11.6%;
-			height: 40px;
-                        line-height:40px;
-			text-align: center;
-			margin: 0 auto;
-		}
-		footer li a{
-			font-weight: 300;
-			color: #fff;
-			transition-duration: 0.1s;
-			line-height: 40px;
-		}
-	/* Animation texte */	
-		nav ul li a:hover{
-			font-weight: bolder;
-                        text-decoration: none;
-                        color:#fff;
-		}
-		.normal_foot>a:hover{
-			font-weight: 300;
-		}
-
-		
-/***************************************************************/ 
-/* FORMULAIRE*/
-
-	/* Formulaire programme */
-		/* supprime border des inputs */
-		input{
-			background: none;
-			border: solid 1px transparent;
-			border-bottom-color: #ccc;
-			padding:10px;
-			margin : 0 0 20px 0;
-		}
-		/* trait devient bleu quand clique */
-		input[type="texte"]:focus,input[type="email"]:focus{
-			border-bottom : solid 1.7px #2979ff;
-		}
-
-		[placeholder]{
-			width:auto;
-			font-size: 1rem;
-			color:#222;
-			transition-duration: 0.1s;
-			padding:10px;
-		}
-		[placeholder]:focus{
-			color:#222;
-		}
-		select{
-			border:none;
-			margin-top:20px;
-			cursor: pointer;
-		}
-		.menu_prog{
-			padding:10px 10px 0px 10px;
-		}
-		.materiel{
-			padding-left:0;
-		}
-		.materiel textarea{
-			width:80%;
-		}
-
-		button[type="submit"]{
-			width:100%;
-			background-color: #51a351;
-			background-image: linear-gradient(center bottom, rgba( 0, 0, 255 ,1.0), rgba( 0, 255, 255
-,1.0));
-			background-image: -moz-linear-gradient(center bottom, rgba( 0, 0, 255 ,1.0), rgba( 0, 255, 255
-,1.0));
-			background-image: -webkit-linear-gradient(center bottom, rgba( 0, 0, 255 ,1.0), rgba( 0, 255, 255
-,1.0));
-			/*text-shadow:-1px 1px 1px #222;*/
-			font:16px 'Open sans',sans-serif;
-			color:#fff;
-			font-size: 1rem;
-			font-weight: 600;
-			border:0;
-			padding : 7px;
-			
-		}
-		button[type="submit"]:hover{
-			background-color: #33FFCC;
-			background-image: none;
-			padding : 7px;
-			cursor: pointer;
-		}
-		/* Exercice formulaire 3eme col.*/
-		.recap_li_prog li{
-			padding-bottom: 2px;
-		}
-		.label-file-ex{
-		    text-align: center;
-		}
-		/* Exercice formulaire 2eme col.*/
-		.colonne2 p{
-			display: block;
-			width:80%;
-			margin: 0 auto;
-		}
-		.col2-bis>p:nth-child(1){
-			margin-bottom: 0;
-		}
-		.colonne2 input{
-			display: block;
-			width:80%;
-			margin: 0 auto 20px;
-		}
-		.colonne2 textarea{
-			display: block;
-			width:80%;
-			text-align: left;
-		}
-		#consigne{
-			margin: 0 auto;
-		}
-
-		/* Exercice formulaire 1ere col.*/
-		.col1-bis>div{
-			margin-top: 0;
-		}
-		.colonne1-bis>div:nth-child(1){
-			margin-bottom: 20px;
-		}
-		.col1-bis img{
-			display: block;
-			margin: 0 auto 20px;
-		}
-		.colonne1 label{
-			display: block;
-			line-height: normal;
-		}
-		.sub-menu button{
-			margin: 50px auto 0;
-		}                
-                
-                

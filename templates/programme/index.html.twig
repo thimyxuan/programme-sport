@@ -10,7 +10,7 @@
         </nav>
     </div>
     
-    <div class="container">
+    <div class="container-programme">
         
     <!-- INFOS DU PROGRAMME -->
         <img class="prog_photo" src="{{ asset('image/fitness.jpg') }}" alt="image">
@@ -53,7 +53,7 @@
             {% set index = loop.index0 %}
             <li class="jour jour{{ loop.index }}">
 
-                    <a class="jour_icon">Jour {{ loop.index }}</a><hr>
+                    <a class="jour_icon j{{ loop.index }}">Jour {{ loop.index }}</a><hr>
                     
             <!-- CONTENU -->
                 <ul class="sub-menu sub-menu-j{{ loop.index }}">

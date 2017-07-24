@@ -18,10 +18,10 @@
 	<!-- ZONE 2 : bandeau pub -->
 	<div class="zone2">
             <div class="zone2-container1">
-                <p>Bougez à votre rythme avec <img src="{{ asset('image/logo-blanc.gif') }}" alt="image" id="zone2-logo"></p>
+                <p>Bougez à votre rythme avec <img src="{{asset('image/logo-blanc.gif')}}" alt="image" id="zone2-logo"></p>
             </div>
             <div class="zone2-container2">
-                <img src="image/bougez.jpg" id="zone2-photo">
+                <img src="{{asset('image/bougez.jpg')}}" id="zone2-photo">
             </div>
 	</div>
 
@@ -48,28 +48,29 @@
 	</div>
 
 	<!-- ZONE 4 : slider -->
-	<!-- <div class="zone4">
+	<div class="zone4">
 		<div class="slider-photo">
 			<p>"Toujours à la pointe"</p>
 		</div>
-	</div> -->
+	</div>
 
+        <!--
 	<div class="zone4">
             <div class="container-slider">
                 <div id="slides">
-                    <img src="{{ asset('image/toujours-a-la-pointeok.jpg') }}" alt="image">
-                    <img src="{{ asset('image/toujours-a-la-pointe.jpg') }}" alt="image">
-                    <img src="{{ asset('image/toujours-a-la-pointeok.jpg') }}" alt="image">
-                    <img src="{{ asset('image/toujours-a-la-pointe.jpg') }}" alt="image">
+                    <img src="{ asset('image/toujours.jpg') }" alt="image">
+                    <img src="" alt="image">
+                    <img src="" alt="image">
+                    <img src="" alt="image">
                     <a href="#" class="slidesjs-previous slidesjs-navigation"><i class="icon-chevron-left icon-large"></i></a>
                     <a href="#" class="slidesjs-next slidesjs-navigation"><i class="icon-chevron-right icon-large"></i></a>
                 </div>
             </div>
-	</div>
+	</div>-->
 
 	<!-- ZONE 5 : bandeau pub avec juste le logo -->
 	<div class="zone5">
-            <p><img src="image/logo.gif"></p>
+            <p><img src="{{ asset('image/logo.gif') }}"></p>
 	</div>
 
 	<!-- ZONE 6 : les avantages / valeur ajoutée du site -->

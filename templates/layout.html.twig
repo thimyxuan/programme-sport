@@ -14,14 +14,13 @@
 
         {% block stylesheets %}
         <link href="{{ asset('css/main.css') }}" rel="stylesheet" type="text/css" />
-        <link href="{{ asset('css/bootstrap.min.css') }}" rel="stylesheet" type="text/css" />
         {% endblock %}
     </head>
     
     <body>
         
         <header>
-            <nav>
+            <nav id="navbar-principale">
                 
                 <a href="{{path('homepage')}}"><img src="{{ asset('image/logo-blanc.gif') }}" alt="image" id="logo-accueil"></a>
                 
@@ -98,12 +97,12 @@
 
     </main>
         
-        {% block javascripts %}
-        <script src="http://code.jquery.com/jquery-1.9.1.min.js"></script>
-        <script src="{{ asset('jquery.slides.min.js') }}"></script>
+        {% block javascripts %}        
         <script src="{{ asset('js/cdn-jquery.js') }}"></script>
         <script src="{{ asset('js/app_menu.js') }}"></script>
-        <script src="{{ asset('js/fonctions.js') }}"></script>
+        <script src="{{ asset('js/fonctions.js') }}"></script>        
+        <script src="{{ asset('jquery.slides.min.js') }}"></script>
+        <script src="http://code.jquery.com/jquery-1.9.1.min.js"></script>
         <script>
             $(function() {
               $('#slides').slidesjs({
