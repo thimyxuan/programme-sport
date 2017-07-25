@@ -34,14 +34,16 @@
                     <li><a href="{{path('liste_membre')}}">Gestion membres</a></li>
                     <li><a href="{{path('liste_programme')}}">Gestion programmes</a></li>
                     <li><a href="{{path('liste_objectif')}}">Gestion objectifs</a></li>
+                    <li><a href="{{path('programme_edit')}}">Créez votre programme</a></li>
                     
                     {% elseif user_manager.user %}
                     <li><a href="{{path('programme_edit')}}">Créez votre programme</a></li>
                     <li><a href="{{path('logout')}}">Déconnexion</a></li>     
                     
                     {% else %}
+                    <li><a href="{{path('inscription')}}">Créez votre programme</a></li>
                     <li><a href="{{path('inscription')}}">Je m'inscris</a></li>
-                    <li><a href="{{path('connexion')}}">Connexion</a></li>
+                    <li id="connexion-icon"><a href="{{path('connexion')}}">Connexion</a></li>
                     
                     {% endif %}
                     

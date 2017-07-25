@@ -32,31 +32,41 @@ header{
 	display:block;
 	width:100%;
 	margin: 0 auto;
-	height: 50px;
-	line-height:50px;
+	height: 70px;
+	line-height:70px;
 	background: rgba(30,45,53,0.7);
 }
 header nav ul li a{
 	color:#fff;
-	font-weight: 300;
+	font-weight:300;
 }
 #navbar-principale{
 	text-align:right;
+        height:70px;
 }
-ul li{
+#navbar-principale>ul>li{
 	display: inline-block;
 	margin : 0 25px;
 	text-align:center;
 }
-#logo-accueil{
-	width:120px;
-	float:left;
-	margin:15px 40px;
+#navbar-principale>ul{
+        height:70px;
 }
-header>nav>ul>li:last-child{
+.colonne-menu>ul>li{
+	display: inline-block;
+	margin : 0 25px;
+	text-align:center;
+        font-size:18px;
+}
+#logo-accueil{
+	width:200px;
+	float:left;
+	margin:18px 40px;
+}
+#connexion-icon{
 	text-transform: uppercase;
 }
-header>nav>ul>li:last-child::before{
+#connexion-icon::before{
 	content: '\f2be ';
 	font-family:'FontAwesome';
 	margin-right:5px;
@@ -73,14 +83,24 @@ header>nav>ul>li:last-child::before{
 	width:100%;
 	height:auto;
 }
+.menu-haut{
+    display:block;
+    position:absolute;
+    top:70px;
+    width:100%;
+    /*float:left;
+    margin-bottom:40px;*/
+}
 .menu-haut>nav{
     display: block;
     width:100%;
-    height:75px;
+    height:auto;
+    line-height:auto;
     background:#fff;
     text-align:left;
     margin:0;
     padding:0;
+    /*float:left;*/
 }
 .menu-haut>nav>ul{
     display:flex;
@@ -92,10 +112,10 @@ header>nav>ul>li:last-child::before{
 }
 .menu-haut>nav>ul>li{
     margin:0;
-    height:75px;
-    line-height:75px;
+    height:auto;
+    line-height:auto;
     width:auto;
-    padding:0 25px;
+    padding:35px 25px;
 }
 .menu-haut>nav>ul>li>a{
     text-decoration:none;
@@ -106,15 +126,17 @@ header>nav>ul>li:last-child::before{
     text-transform: uppercase;
     background:#222;
     margin:0;
-    padding:0 25px;
+    padding:35px 25px;
     font-weight:bolder;
 }
+/*
 #mon-objectif::before{
     font-family: 'FontAwesome';
     content:'\f05b';
-    color:#000;
+    color:#fff;
     font-size: 22px;
-}
+    margin-right:5px;
+}*/
 .menu-haut>nav>ul>li:hover{
     background:#18ffff;
     color:#000;
@@ -125,14 +147,11 @@ header>nav>ul>li:last-child::before{
 .colonne-menu>ul>li{
 	display:block;
 	margin:0;
-	padding: 35px 0;
+	padding: 35px 25px;
 	width:25%;
 	height:30px;
 	line-height:30px;
 	background:rgba(255,255,255,0.2);
-	/*display:flex;
-	flex-direction: column;
-	height:auto;*/
 }
 .colonne-menu ul{
 	background:url(../image/sportbook.jpg) center center scroll no-repeat;
@@ -143,8 +162,9 @@ header>nav>ul>li:last-child::before{
 	color:white;
 	font-weight:bolder;
 	text-transform: uppercase;
-        height:30px;
-	line-height:30px;
+        height:auto;
+	line-height:auto;
+        padding: 35px 25px;
 }
 .colonne-menu>ul>li>a{
 	color:black;
@@ -257,23 +277,27 @@ h2{
 	text-align: center;
 	padding: 50px 0;
 	margin:0;
+        font-size:40px;
 }
 .zone3{
 	background: #fff;
-	height:500px;
+	height:550px;
 }
 .zone3>ul{
 	display:block;
 	margin:0 auto;
 	text-align: center;
 	padding:30px 0;
+        height:auto;
 }
 .zone3>ul>li{
 	margin:0 5%;
+        display: inline-block;
+	text-align:center;
 }
 .zone3>ul>li>figure>img{
 	display:block;
-	width:150px;
+	width:200px;
 }
 figure{
 	position:relative;
@@ -286,7 +310,7 @@ figcaption{
 	width:100%;
 	height:auto;
 	font-family: Dosis;
-	font-size:16px;
+	font-size:18px;
 }
 figcaption a{
 	color:#000;
@@ -357,6 +381,7 @@ figcaption>a>p{
 	margin:0;
 	padding:0;
 	height:500px;
+        text-align:center;
 }
 .zone6-container{
 	display:block;
@@ -396,7 +421,7 @@ figcaption>a>p{
 	display:block;
 	width:70%;
 	height:auto;
-	line-height:auto;
+	line-height:30px;
 	margin:20px auto;
 	position:relative;
 	color:#fff;
@@ -600,12 +625,17 @@ figcaption>a>p{
 /******************************* PAGE AFFICHAGE D'UN PROGRAMME *********************************/
 /* CONTAINER PROGRAMME */
 		.container-programme{
+                        display:block;
+                        position:relative;
 			text-align: center;
 			width: 50%;
-			margin: 40px auto;
+			margin : 0 auto;
+                        margin-top:134px;
+                        margin-bottom:40px;
 			border :solid 1px #222;
 			background: #FFF;
 			border-radius: 10px;
+                        /*clear:both;*/
 		}
 /* INFOS DU PROGRAMME */
 
