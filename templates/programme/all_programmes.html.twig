@@ -1,0 +1,19 @@
+{% extends "layout.html.twig" %}
+
+{% block title 'Liste des programmes' %}
+    
+{% block content %}
+    
+    {% for programme in programmes %}
+        
+        <p>id : {{ programme.id }}</p>
+        <p>titre : {{ programme.titre }}</p>
+        <p>materiel : {{ programme.materiel }}</p>
+        <p>difficulte : {{ programme.difficulte }}</p>
+        <p>sport : {{ programme.sport }}</p>
+        <p>duree : {{ programme.duree }}</p>
+        <hr/>
+        
+    {% endfor %}    
+    
+{% endblock %}

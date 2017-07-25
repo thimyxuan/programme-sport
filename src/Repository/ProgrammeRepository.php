@@ -99,7 +99,31 @@ EOS;
         
     }
     
-    
+    public function findByMembre(Membre $membre)
+    {
+        $query = <<<EOS
+SELECT p.*, m.*,o.titre as objectif_titre, m.pseudo
+FROM programme p
+JOIN objectif o ON p.objectif_id = o.id
+JOIN membre m ON p.membre_id = m.id
+WHERE p.membre_id = :id
+EOS;
+        
+        $dbProgrammes = $this->db->fetchAll(
+                $query,
+                [':id' => $membre->getId()]
+            );
+        
+        $programmes = [];
+        foreach ($dbProgrammes as $dbProgramme) 
+        {
+            $programme = $this->buildFromArray($dbProgramme);            
+            
+            $programmes[] = $programme;
+        }
+        return $programmes;
+        
+    }
     
     // ---------- Enregistrement ou update d'un programme en bdd -----------
     /**

@@ -398,6 +398,18 @@ class ProgrammeController extends ControllerAbstract
 
     }
     
+    public function listAllProgrammesAction() {
+        
+        $programmes = $this->app['programme.repository']->findAll();
+        
+        return $this->render(
+            'programme/all_programmes.html.twig',
+            [
+                'programmes' => $programmes
+            ]
+        );
+    }
+    
     public function searchAction() {
         
         if(isset($_POST['form'])) {
