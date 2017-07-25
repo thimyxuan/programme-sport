@@ -151,14 +151,18 @@
         <button type="submit">Enregistrer</button>
     </form>#}
             
+    <div class="menu-haut">
+        <nav>           
+             {{ render(url('objectif_menu'))}}
+        </nav>
+    </div>        
             
-            
-    <div class="container">        
+    <div class="container-programme">        
     <form method="POST" enctype="multipart/form-data">
         
         {#    PARTIE ENREGISTREMENT PROGRAMME    #}
         <div>
-            <img class="prog_photo" src="{{ asset('image/') }}ajout-photo.jpg" alt="image">
+            <img class="prog_photo" src="{{ asset('image/seance.jpg') }}" alt="image">
             <label for="file" class="label-file">Ajouter une photo</label>
             <input id="file" class="input-file" type="file" name="photo" value="">
         </div>
@@ -174,15 +178,15 @@
             </select>
         </div>
         <div class="titre_prog">
-            <label>Titre du programme</label>
-            <input type="text" name="titre" value="{{ programme.titre }}" placeholder="...">
+            <label>Titre du programme :</label>
+            <input type="text" name="titre" value="{{ programme.titre }}" placeholder="... donnez un titre">
         </div>
         <div class="membre">proposé par </div>
         
         <!-- Menu Recap (table) -->
         <ul class="recap recap_li_prog">
             <li class="recap_image">
-                <img src="{{ asset('image/') }}objectif.jpg">
+                <img src="{{ asset('image/objectif.jpg') }}">
 
                 <div class="menu_prog">
                     <label>Objectif</label><br>
@@ -196,7 +200,7 @@
             </li>
 
             <li class="recap_image">
-                <img src="{{ asset('image/') }}level.jpg">
+                <img src="{{ asset('image/level.jpg') }}">
 
                 <div class="menu_prog">
                     <label>Difficulté</label><br>
@@ -211,16 +215,21 @@
             </li>
 
             <li class="recap_image">
-                <img src="{{ asset('image/') }}time.jpg">
+                <img src="{{ asset('image/time.jpg') }}">
 
                 <div class="menu_prog">
                     <label>Durée du programme</label><br>
-                    <input type="texte" name="duree" placeholder="... semaines">
+                    <select name="duree">
+                        <option value="">Choisir</option>
+                        {% for i in 1..15 %}
+                        <option value="{{ i }}" {% if programme.duree == i %}selected{% endif %}>{{ i }} semaines</option>
+                        {% endfor %}
+                    </select>
                 </div>
             </li>
 
             <li class="recap_image">
-                <img src="{{ asset('image/') }}altere.jpg">
+                <img src="{{ asset('image/altere.jpg') }}">
 
                 <div class="menu_prog">
                     <label>Matériel</label><br>
@@ -241,18 +250,22 @@
         <section>
             
             <div class="container-jour">
-                <p>Calendrier du programme</p>
+                <p id="calendrier-programme">Calendrier du programme</p>
                 
                 <!-- NOM JOURS -->
                 <ul>
                     
-                    {% for i in 1..1 %}
+                    {% for i in 1..2 %}
                         
                         <li class="jour jour{{ i }}">
                             
-                            <a class="jour_icon">Jour {{ i }}</a><hr>
+                            <a class="jour_icon j{{ i }}">Jour {{ i }}</a><hr>
                             
                             <input type="hidden" name="programme_id" value="">
+                            
+                            
+                            <!-- CONTENU -->
+                            <ul class="sub-menu sub-menu-j{{ i }}">
                             
                             <div>
                                 <label>Statut</label>
@@ -262,8 +275,6 @@
                                     <option value="repos">repos</option>
                                 </select>
                             </div> 
-                            <!-- CONTENU -->
-                            <ul class="sub-menu sub-menu-j{{ i }}">
                                
                             {% for j in 1..1 %}
                                 
@@ -278,21 +289,21 @@
                                 
                                 <ul class="recap_ex">
                                     <li>
-                                        <p>Nombre de répétition</p>
+                                        <label>Nombre de répétition</label>
 
                                         <div class="menu_prog">
                                             <input type="texte" name="jour[{{i}}][exercice][{{j}}][repetition]" placeholder="... fois">
                                         </div>
                                     </li>
                                     <li>
-                                        <p>Temps de repos</p>
+                                        <label>Temps de repos</label>
 
                                         <div class="menu_prog">
                                             <input type="texte" name="jour[{{i}}][exercice][{{j}}][temps_repos]" placeholder="... sec. / min.">
                                         </div>
                                     </li>
                                     <li>
-                                        <p>Nombre de série</p>
+                                        <label>Nombre de série</label>
 
                                         <div class="menu_prog">
                                             <input type="texte" name="jour[{{i}}][exercice][{{j}}][serie]" placeholder="...">
@@ -357,11 +368,14 @@
                                         </div>
                                     </li>
                                 </ul>
-                                <!-- séparateur -->
-				<div class="border"><hr></div>
+                                
                             {% endfor %}
+                            <button type="button" class="clone_exercice" data-added="0" data-jour="{{i}}">+ Ajouter un exercice</button>
+                            
+                            <!-- séparateur -->
+				<div class="border-blanc"></div>
                             </ul> 
-                            <button type="button" class="clone_exercice" data-added="0" data-jour="{{i}}">Ajouter un exercice</button>
+                            
                         </li>        
                         
                     {% endfor %}    
