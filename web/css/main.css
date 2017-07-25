@@ -628,9 +628,22 @@ figcaption>a>p{
                         display:block;
                         position:relative;
 			text-align: center;
-			width: 50%;
+			width:50%;
 			margin : 0 auto;
                         margin-top:134px;
+                        margin-bottom:40px;
+			border :solid 1px #222;
+			background: #FFF;
+			border-radius: 10px;
+                        /*clear:both;*/
+		}
+                .container-programmeform{
+                        display:block;
+                        position:relative;
+			text-align: center;
+			width:50%;
+			margin : 0 auto;
+                        margin-top:40px;
                         margin-bottom:40px;
 			border :solid 1px #222;
 			background: #FFF;
@@ -884,7 +897,7 @@ figcaption>a>p{
 		}
 		.colonne1 div{
                         display:block;
-			margin-bottom: 15px;
+			margin: 15px 0;
                         height:auto;
 		}
 		.colonne1 img{
@@ -1007,12 +1020,16 @@ figcaption>a>p{
     }
     .colonne2 textarea{
             display: block;
+            margin:0 auto;  
             width:80%;
             text-align: left;
+            resize:none;
+            margin-bottom:7px;
     }
-    #consigne{
-            margin: 0 auto;
+    .colonne2 textarea[placeholder]{
+        font-family: 'Open Sans'
     }
+   
 
     /* Exercice formulaire 1ere col.*/
     .col1-bis>div{
@@ -1029,10 +1046,17 @@ figcaption>a>p{
             display: block;
             line-height: normal;
     }
+    .col2-titre{
+        margin:10px 0;
+    }
+    .col2-texte{
+        margin-bottom:15px;
+        padding-bottom:15px;
+    }
     .clone_exercice{
         display:block;
         width:130px;
-        margin: 0 auto;
+        margin: 10px auto;
         height:auto;
         border:none;
         background:#dddddc;
@@ -1049,3 +1073,4 @@ figcaption>a>p{
         height:30px;
         background:#fff;
 }
+
