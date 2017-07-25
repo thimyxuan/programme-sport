@@ -137,8 +137,8 @@ header nav ul li a{
     font-size: 22px;
     margin-right:5px;
 }*/
-.menu-haut>nav>ul>li:hover{
-    background:#18ffff;
+.menu-haut>nav>ul>li:hover{    
+    background:#7affcc;
     color:#000;
 }
 .menu-haut>nav>ul>li>a:hover{
@@ -738,7 +738,6 @@ figcaption>a>p{
 			text-align: left;
 			background-color: #222;
 			color:#000;
-			border-radius : 10px;
                         padding-bottom:30px;
 		}
 		/* on cache les jours */
@@ -1062,23 +1061,27 @@ figcaption>a>p{
         height:30px;
         background:#fff;
 }
-.background-pattern{
+.background-1{
     display:block;
     margin:0 auto;
     width:100%;
     height:100%;
-    background:url('../image/pattern.jpg') center center fixed repeat;
+    background:url('../image/fondsport.jpg') bottom right fixed no-repeat;
+    background-size: cover;
     padding:40px 0;
     min-height:800px;
+    /*background:#fff;*/
 }
-.background-triangle{
+.background-2{
     display:block;
     margin:0 auto;
     width:100%;
     height:100%;
-    background:url('../image/triangle.jpg') center center fixed repeat;
+    background:url('../image/stade.jpg') bottom center fixed no-repeat;
+    background-size: cover;
     padding:40px 0;
     min-height:800px;
+    /*background:#fff;*/
 }
 
 
@@ -1228,3 +1231,145 @@ figcaption>a>p{
 			text-align: center;
 			padding-top: 5px; 
 		}
+                
+                
+                
+/**************************** RESPONSIVE ****************************/
+
+/*Responsive smartphone*/
+@media screen and (max-width:480px){
+
+	/* FORMULAIRE CONNEXION********************/
+		.container-connexion{
+			width: 90%;
+			border :solid 1px #222;
+			margin: 5% auto;
+			border-radius: 10px;
+		}
+		.container-inputs div{
+			display: block;
+			width: 100%;
+			padding: 5px;
+			margin: 0 auto;
+		}
+		.container-inputs div:nth-child(1){
+			width: 100%;
+		}
+		.container-inputs div:nth-child(2){
+			width: 100%;
+		}
+
+	/* FORMULAIRE INSCRIPTION********************/
+
+		.container-inputs div{
+			padding: 0;
+		}
+
+		/* Avatar- photo avec input browse */
+		.photo_inscription>img{
+			width: 100%;
+		}
+		.photo_inscription>label{
+			padding: 5px 0 25px 0; 
+		}
+		.container-inputs div:nth-child(3){
+			width: 100%;
+		}
+		.container-inputs div:nth-child(4){
+			width: 100%;
+		}
+		.container-inputs div:nth-child(5){
+			width: 100%;
+		}
+		.container-inputs div:nth-child(6){
+			width: 100%;
+		}
+}
+
+
+/*Responsive tablet*/          
+@media screen and (max-width:768px){
+    .container-programme{
+        min-width:90%;
+        margin-top:0px;
+    }
+    .menu-haut,.menu-liste{
+        display:none;
+    }
+    .background-triangle,
+    .background-pattern{
+        margin-top:0;
+    }
+    header{
+        height:100px;
+    }
+    #navbar-principale{
+        display:block;
+        text-align:center;
+        height:auto;
+    }
+    #navbar-principale ul li{
+        display:block;
+    }
+     #navbar-principale>ul>li{
+        display:block;
+        margin:0 auto;
+        width:100%;
+        height:auto;
+        border-botom: solid 1px #eee;
+        background:#222;
+    }
+    #logo-accueil{
+        display:inline-block;       
+        width:300px;
+        margin:20px auto;
+        text-align:center;
+        float:none;
+    }
+    /* FORMULAIRE CONNEXION********************/
+		.container-connexion{
+			width: 90%;
+			border :solid 1px #222;
+			margin: 5% auto;
+			border-radius: 10px;
+		}
+		.container-inputs div{
+			display: block;
+			width: 100%;
+			padding: 5px;
+			margin: 0 auto;
+		}
+		.container-inputs div:nth-child(1){
+			width: 100%;
+		}
+		.container-inputs div:nth-child(2){
+			width: 100%;
+		}
+
+	/* FORMULAIRE INSCRIPTION********************/
+
+		.container-inputs div{
+			padding: 0;
+		}
+
+		/* Avatar- photo avec input browse */
+		.photo_inscription>img{
+			width: 100%;
+		}
+		.photo_inscription>label{
+			padding: 5px 0 25px 0; 
+		}
+		.container-inputs div:nth-child(3){
+			width: 100%;
+		}
+		.container-inputs div:nth-child(4){
+			width: 100%;
+		}
+		.container-inputs div:nth-child(5){
+			width: 100%;
+		}
+		.container-inputs div:nth-child(6){
+			width: 100%;
+		}
+    
+}
