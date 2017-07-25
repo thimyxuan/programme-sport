@@ -2,19 +2,30 @@
 
 {% block title 'Inscription' %}
 
-{% block content %}
-    <h1>Connexion</h1>
+{% block content %}      
     
-    <form method ="post">
-        <div>            
-            <label>Email</label>
-            <input type="text" name="email" value="">
-        </div>
-        <div>
-            <label>Mot de passe</label>
-            <input type="password" name="mdp">
-        </div>
-        <button type="submit" class="btn btn-primary">Se connecter</button>
-    </form>
+    <div class="container-connexion">
+        <div class="container-debut">
+            <p>Connexion</p>
+        </div>    
+            <div class="container-co-bis">
             
+                <form method ="post">
+                    <div class="container-inputs">
+                        <div>            
+                            <label>Email</label>
+                            <input type="texte" name="email" value="" placeholder="...@...">
+                        </div>
+                        <div>
+                            <label>Mot de passe</label>
+                            <input type="password" name="mdp" placeholder="...">
+                        </div>
+                        <button type="submit" class="btn btn-primary">Se connecter</button>
+                    </div>
+                    
+                </form>
+
+            </div>
+        <div class="container-fin"></div>
+    </div>
 {% endblock %}
