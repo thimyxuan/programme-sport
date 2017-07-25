@@ -161,7 +161,7 @@ class MembreController extends ControllerAbstract {
         
         $membre = $this->app['user.manager']->getUser();
         
-        $programmes = $this->app['membre.repository']->findByMembre();
+        $programmes = $this->app['programme.repository']->findByMembre($membre);
         return $this->render(
             'membre/profil.html.twig',
             [

@@ -102,11 +102,11 @@ EOS;
     public function findByMembre(Membre $membre)
     {
         $query = <<<EOS
-SELECT p.*, m.*
+SELECT p.*, m.*,o.titre as objectif_titre, m.pseudo
 FROM programme p
+JOIN objectif o ON p.objectif_id = o.id
 JOIN membre m ON p.membre_id = m.id
 WHERE p.membre_id = :id
-ORDER BY id DESC
 EOS;
         
         $dbProgrammes = $this->db->fetchAll(
