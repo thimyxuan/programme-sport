@@ -40,7 +40,7 @@ class Programme
      *
      * @var string 
      */
-    private $photo;
+    private $photoProgramme;
     
     /**
      *
@@ -145,8 +145,8 @@ class Programme
      * 
      * @return string
      */
-    public function getPhoto() {
-        return $this->photo;
+    public function getPhotoProgramme() {
+        return $this->photoProgramme;
     }
 
     /**
@@ -262,8 +262,8 @@ class Programme
      * @param string $photo
      * @return Programme
      */
-    public function setPhoto($photo) {
-        $this->photo = $photo;
+    public function setPhotoProgramme($photoProgramme) {
+        $this->photoProgramme = $photoProgramme;
         return $this;
     }
 

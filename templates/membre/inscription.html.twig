@@ -2,47 +2,60 @@
 
 {% block title 'Inscription' %}
 
-{% block content %}
-    <h1>Inscription</h1>
+{% block content %}      
+        
+    <div class="container-connexion">
+        <div class="container-debut">
+            <p>Inscription</p>
+        </div>    
+            <div class="container-co-bis">
     
-    <form method ="post">
-        <div>            
-            <label for="pseudo">Pseudo</label>
-            <input type="text" name="pseudo" value="">
-        </div>
-        <div>            
-            <label for="prenom">Prénom</label>
-            <input type="text" name="prenom" value="">
-        </div>
-        <div>
-            <label for="nom">Nom</label>
-            <input type="text" name="nom" value="">
-        </div>
-        <div>
-            <label for="email">E-mail</label>
-            <input type="text" name="email" value="">
-        </div>
-        <div>
-            <label for="mdp">Mot de passe</label>
-            <input type="password" name="mdp">
-        </div>
-        <div>
-            <label for="mdp_confirm">Confirmation du mot de passe</label>
-            <input type="password" name="mdp_confirm">
-        </div>
-        <div>
-            <label for="civilite">Civilité</label>
-            <input type="radio" name="civilite" value="h" checked="checked"> : Homme
-            <input type="radio" name="civilite" value="f" > : Femme
-        </div>
-        
-         <div>
-            <label for="avatar">Photo du profil : </label>
-            <input type="file" name="avatar">
-        </div>
-        
-        {#<input type="hidden" name="statut" value="membre">#}
-        <button type="submit" class="btn btn-primary">Enregistrer</button>
-    </form>
-            
+                <form method ="post" enctype="multipart/form-data">
+                    <div class="container-inputs">
+
+                        <div class="right-margin form-column">
+                            <label for="prenom">Votre Prénom</label>
+                            <input type="texte" name="prenom" value="" placeholder="...">
+                        </div>
+                        <div class="right-margin form-column">
+                            <label for="nom">Votre Nom</label>
+                            <input type="texte" name="nom" value="" placeholder="...">
+                        </div>
+                        <div class="form-column">
+                            <label for="email">Votre email</label>
+                            <input type="email" name="email" value="" placeholder="...@...">
+                        </div>
+                        <div class="right-margin form-column">
+                            <label for="pseudo">Votre pseudo</label>
+                            <input type="texte" name="pseudo" value="" placeholder="...">
+                        </div>
+                        <div class="form-column">
+                            <label for="mdp">Votre mot de passe</label>
+                            <input type="password" name="mdp" placeholder="...">
+                        </div>
+                        <div>
+                            <label for="mdp_confirm">Confirmation du mot de passe</label>
+                            <input type="password" name="mdp_confirm" placeholder="...">
+                        </div>
+                        <div class="radio">
+                            <label for="civilite">Vous êtes</label>
+                            <input class="marge_radio" type="radio" name="civilite" value="h" checked="checked"> : Homme |
+                            <input class="marge_radio" type="radio" name="civilite" checked="" value="f" > : Femme
+                        </div>
+                        
+                         <div class="photo_inscription">
+                            <img src="no-image.png" alt="image">
+                            <label for="avatar" class="label-file">Ajouter une photo</label>
+                            <input class="input-file" type="file" name="avatar">
+                        </div>
+                        
+                        <input type="hidden" name="statut" value="membre">
+                        <button type="submit" class="btn btn-primary">Enregistrer</button>
+                    </div>    
+
+                </form>
+
+            </div>
+        <div class="container-fin"></div>
+    </div>    
 {% endblock %}

@@ -1,7 +1,104 @@
 {% extends "layout.html.twig" %}
 
 {% block content %}
-    Welcome to your new Silex Application!
+    
+        <main>
+	<!-- ZONE 1  : background avec menu en colonne -->
+	<div class="zone1">
+            <div class="zone1-texte">
+                <div class="slogan"><h1>Zone de libre échange</h1></div>
+                <div class="slogan-detail"><p>Découvrez et partagez vos meilleurs programmes sportifs</p></div>
+            </div>
+            <div class="colonne-menu">                    
+                    {{ render(url('objectif_menu'))}}
+            </div>
+        </div>
+            
+
+	<!-- ZONE 2 : bandeau pub -->
+	<div class="zone2">
+            <div class="zone2-container1">
+                <p>Bougez à votre rythme avec <img src="{{asset('image/logo-blanc.gif')}}" alt="image" id="zone2-logo"></p>
+            </div>
+            <div class="zone2-container2">
+                <img src="{{asset('image/bougez.jpg')}}" id="zone2-photo">
+            </div>
+	</div>
+
+	<!-- ZONE 3 : comment ça marche -->
+	<div class="zone3">
+            <h2>Comment ça marche ?</h2>
+            <ul>
+                <li>
+                    <figure><img src="{{ asset('image/decouvrez.jpg') }}" alt="image">
+                    <figcaption><a href="#"><p>Découvrez</p> les programmes sportifs des membres par objectifs</a></figcaption>
+                    </figure>
+                </li>
+                <li>
+                    <figure><img src="{{ asset('image/inscrire.jpg') }}" alt="image">
+                    <figcaption><a href="#"><p>Adhérez</p> pour partagez vos propres programmes personnalisés</a></figcaption>
+                    </figure>
+                </li>
+                <li>
+                    <figure><img src="{{ asset('image/retrouver.jpg') }}" alt="image">
+                    <figcaption><a href="#"><p>Retrouvez</p> facilement vos programmes dans votre espace personnel</a></figcaption>
+                    </figure>
+                </li>
+            </ul>
+	</div>
+
+	<!-- ZONE 4 : slider -->
+	<div class="zone4">
+		<div class="slider-photo">
+			<p>"Toujours à la pointe"</p>
+		</div>
+	</div>
+
+        <!--
+	<div class="zone4">
+            <div class="container-slider">
+                <div id="slides">
+                    <img src="{ asset('image/toujours.jpg') }" alt="image">
+                    <img src="" alt="image">
+                    <img src="" alt="image">
+                    <img src="" alt="image">
+                    <a href="#" class="slidesjs-previous slidesjs-navigation"><i class="icon-chevron-left icon-large"></i></a>
+                    <a href="#" class="slidesjs-next slidesjs-navigation"><i class="icon-chevron-right icon-large"></i></a>
+                </div>
+            </div>
+	</div>-->
+
+	<!-- ZONE 5 : bandeau pub avec juste le logo -->
+	<div class="zone5">
+            <p><img src="{{ asset('image/logo.gif') }}"></p>
+	</div>
+
+	<!-- ZONE 6 : les avantages / valeur ajoutée du site -->
+	<div class="zone6">
+            <ul>
+                <li>
+                    <div class="zone6-container" id="zone6-container1">
+                    <p class="zone6-titre"><a>Toujours à la pointe</a></p>
+                    <p class="zone6-texte">Le partage de programmes par la communauté permet d’être à la pointe des nouvelles pratiques sportives. De nouveaux exercices peuvent être proposés à tout moment.</p></div>
+                </li>
+                <li>
+                    <div class="zone6-container" id="zone6-container2">
+                    <p class="zone6-titre"><a>Jamais sans mon coach</a></p>
+                    <p class="zone6-texte">Un site web pratique et accessible partout pour retrouver votre programme. Disponible sur mobile, tablette, ordinateur... !</p></div>
+                </li>
+                <li>
+                    <div class="zone6-container" id="zone6-container3">
+                    <p class="zone6-titre"><a>Chacun sa scéance</a></p>
+                    <p class="zone6-texte">Vous connaissez tout de suite la diﬃculté et la durée du programme ainsi que le matériel nécessaire. A vous de faire votre choix !</p></div>
+                </li>
+                <li>
+                    <div class="zone6-container" id="zone6-container4">
+                    <p><img src="{{ asset('image/logo-blanc.gif') }}"></p>	
+                    </div>       	
+                </li>
+            </ul>
+	</div>
+
 
     
 {% endblock %}

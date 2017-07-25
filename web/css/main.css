@@ -1,41 +1,641 @@
 @import url('https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,700,800');
+@import url('https://fonts.googleapis.com/css?family=Dosis:200,300,400,500,600,700,800');
 
-		body{
-			font:16px 'Open sans',sans-serif;
-			font-size-adjust:0.5;
-			margin:0;
-			background: #EEE;
+/* GENERAL */
+body{
+    font:16px 'Open sans',sans-serif;
+    font-size-adjust:0.5;
+    margin:0;
+    background: #EEE;
+}
+a{
+    margin: 0;
+    cursor:default;
+    text-decoration:none;
+}
+ul, li{
+    width:auto;
+    list-style: none;
+    padding:0;
+    margin:0;
+}		
+p{
+    margin:0;
+    padding:0;
+}
+hr{
+    margin:0;
+}
+                
+/***************************** HEADER ET BARRE DE NAVIGATION FIXE *******************************/
+header{
+	display:block;
+	width:100%;
+	margin: 0 auto;
+	height: 70px;
+	line-height:70px;
+	background: rgba(30,45,53,0.7);
+}
+header nav ul li a{
+	color:#fff;
+	font-weight:300;
+}
+#navbar-principale{
+	text-align:right;
+        height:70px;
+}
+#navbar-principale>ul>li{
+	display: inline-block;
+	margin : 0 25px;
+	text-align:center;
+}
+#navbar-principale>ul{
+        height:70px;
+}
+.colonne-menu>ul>li{
+	display: inline-block;
+	margin : 0 25px;
+	text-align:center;
+        font-size:18px;
+}
+#logo-accueil{
+	width:200px;
+	float:left;
+	margin:18px 40px;
+}
+#connexion-icon{
+	text-transform: uppercase;
+}
+#connexion-icon::before{
+	content: '\f2be ';
+	font-family:'FontAwesome';
+	margin-right:5px;
+	color:#fff;
+}
+
+/******************************** COLONNE DE MENU FIXE **********************************/
+
+/* ACCUEIL ZONE 1 : background + colonne menu */
+.zone1, .zone2, .zone3, .zone5, .zone6{
+	display:block;
+	margin:0 auto;
+	padding:0;
+	width:100%;
+	height:auto;
+}
+.menu-haut{
+    display:block;
+    position:absolute;
+    top:70px;
+    width:100%;
+    /*float:left;
+    margin-bottom:40px;*/
+}
+.menu-haut>nav{
+    display: block;
+    width:100%;
+    height:auto;
+    line-height:auto;
+    background:#fff;
+    text-align:left;
+    margin:0;
+    padding:0;
+    /*float:left;*/
+}
+.menu-haut>nav>ul{
+    display:flex;
+    flex-direction:row;
+    flex-wrap:wrap;
+    justify-content:space-between;
+    width:auto;
+    list-style: none;
+}
+.menu-haut>nav>ul>li{
+    margin:0;
+    height:auto;
+    line-height:auto;
+    width:auto;
+    padding:35px 25px;
+}
+.menu-haut>nav>ul>li>a{
+    text-decoration:none;
+    color:#000;
+}
+#mon-objectif{
+    color:#fff;
+    text-transform: uppercase;
+    background:#222;
+    margin:0;
+    padding:35px 25px;
+    font-weight:bolder;
+}
+/*
+#mon-objectif::before{
+    font-family: 'FontAwesome';
+    content:'\f05b';
+    color:#fff;
+    font-size: 22px;
+    margin-right:5px;
+}*/
+.menu-haut>nav>ul>li:hover{
+    background:#18ffff;
+    color:#000;
+}
+.menu-haut>nav>ul>li>a:hover{
+    color:#000;
+}
+.colonne-menu>ul>li{
+	display:block;
+	margin:0;
+	padding: 35px 25px;
+	width:25%;
+	height:30px;
+	line-height:30px;
+	background:rgba(255,255,255,0.2);
+}
+.colonne-menu ul{
+	background:url(../image/sportbook.jpg) center center scroll no-repeat;
+        margin:0;
+}
+.colonne-menu>ul>li:first-child{
+	background:black;
+	color:white;
+	font-weight:bolder;
+	text-transform: uppercase;
+        height:auto;
+	line-height:auto;
+        padding: 35px 25px;
+}
+.colonne-menu>ul>li>a{
+	color:black;
+}
+.colonne-menu>ul>li:hover{
+	font-weight:bolder;
+	background:rgba(255,255,255,0.9);
+        text-decoration:none;
+}
+.colonne-menu>ul>li:first-child:hover{
+	background:black;
+}
+.zone1-texte{
+	display:block;
+	position:absolute;
+	width:50%;
+	margin:0 auto;
+	right:10%;
+	top:55%;
+	transform:translateY(-50%);	
+	padding:10px 25px;
+	text-align: center;        
+}
+.slogan, .slogan-detail{
+	background:rgba(255,255,255,0.5);
+	margin:10px 0;
+	padding:0 20px;
+	font-family: Dosis;
+}
+.slogan>h1{
+	text-transform: uppercase;
+	margin:10px 15px;
+	font-size:40px;
+        font-weight:bolder;
+
+}
+.slogan-detail{
+	font-size:24px;
+	padding: 5px 20px;
+}
+
+/************************************* PAGE D'ACCUEIl ****************************************/
+
+/* ACCUEIL ZONE 2 : bandeau pub */
+.zone2{
+	width:100%;
+	height:250px;
+	background: #000;
+	color:#fff;
+}
+.zone2-container1{
+	display:inline-block;
+	width:60%;
+	margin:0 auto;
+	font-family:Dosis;
+	font-size:28px;
+	text-align:right;
+	height:250px;
+	line-height: 250px;
+	vertical-align: top;
+}
+.zone2-container2{
+	display:inline-block;
+	height:250px;
+	line-height: 250px;
+	position:relative;
+	top:42px;
+}
+#zone2-logo{
+	display:inline-block;
+	width:150px;
+	vertical-align: center;
+}
+#zone2-photo{
+	display:block;
+	width:250px;
+	margin:0 20px;
+}
+
+/*.zone2-container1>p{
+	display:block;
+	color:#fff;
+	font-family:Dosis;
+	font-size:28px;
+	text-align:center;
+	position:relative;
+	width:100%;
+	top:25%;
+	transform:translateY(-50%);
+
+}
+#zone2-logo{
+	display: inline-block;
+	width:150px;
+	vertical-align:bottom;
+}
+#zone2-photo{
+	display:inline-block;
+	width:250px;
+	position:relative;
+	vertical-align: center;
+	margin-left:10px;
+
+}*/
+
+/* ACCUEIL ZONE 3 : comment ça marche */
+h2{
+	font-family: Dosis;
+	font-weight: lighter;
+	text-align: center;
+	padding: 50px 0;
+	margin:0;
+        font-size:40px;
+}
+.zone3{
+	background: #fff;
+	height:550px;
+}
+.zone3>ul{
+	display:block;
+	margin:0 auto;
+	text-align: center;
+	padding:30px 0;
+        height:auto;
+}
+.zone3>ul>li{
+	margin:0 5%;
+        display: inline-block;
+	text-align:center;
+}
+.zone3>ul>li>figure>img{
+	display:block;
+	width:200px;
+}
+figure{
+	position:relative;
+	margin:0 auto;
+}
+figcaption{
+	display:block;
+	text-align:center;
+	position:absolute;
+	width:100%;
+	height:auto;
+	font-family: Dosis;
+	font-size:18px;
+}
+figcaption a{
+	color:#000;
+}
+figcaption>a>p{
+	font-weight: bolder;
+	font-size:22px;
+	margin-top:20px;
+}
+
+/* ACCUEIL ZONE 4 : slider */
+
+.zone4{
+	background: url(../image/fondslider.jpg) center center scroll no-repeat;
+	background-color: #fff;
+	background-size: cover;
+	padding:30px;
+        height:auto;
+}
+.slider-photo{
+	display:block;
+	margin:0 auto;
+	padding: 30px 0;
+	width:800px;
+	height:400px;
+	background:url(../image/toujours-logo.jpg) center center scroll no-repeat;
+	background-size:contain;
+}
+.slider-photo>p{
+	display:block;
+	position:relative;
+	font-style: italic;
+	font-size:33px;
+	top:70%;
+	left:5%;	
+}
+
+
+/* ACCUEIL ZONE 5 : bandeau pub avec juste le logo */
+.zone5{
+	background: #fff;
+	height:120px;
+}
+.zone5>p{
+	display:block;
+	height:120px;
+	text-align: center;
+}
+.zone5>p>img{
+	width:200px;
+	display:inline-block;
+	position:relative;
+	top:50%;
+	transform:translateY(-50%);
+}
+
+/* ACCUEIL ZONE 6 : les avantages du site */
+.zone6>ul{
+	display:block;
+	margin:0 auto;
+	width:100%
+	height:500px;
+}
+.zone6>ul>li{
+	display:block;
+	float:left;
+	width:25%;
+	margin:0;
+	padding:0;
+	height:500px;
+        text-align:center;
+}
+.zone6-container{
+	display:block;
+	float:left;
+	width:100%;
+	height:100%;
+}
+/*.zone6>ul>li>div>p{
+	display:inline-block;	
+	color:#fff;
+	vertical-align: center;
+	margin:10%;
+}*/
+.zone6-titre{
+	display:block;
+	width:70%;
+	height:40px;
+	line-height:40px;
+	margin:0 auto;
+	border:solid 1px #fff;
+	border-radius: 4px;
+	position: relative;
+	color:#fff;
+	font-weight: bolder;
+	top:33%;
+	font-size:18px;
+}
+.zone6-titre>a{
+        text-decoration:none;
+        color:#fff;
+}
+.zone6-titre>a:hover{
+        text-decoration:none;
+        color:#fff;
+}
+.zone6-texte{
+	display:block;
+	width:70%;
+	height:auto;
+	line-height:30px;
+	margin:20px auto;
+	position:relative;
+	color:#fff;
+	top:30%;
+}
+
+.zone6>ul>li:first-child{
+	background:url(../image/photo-bas1.jpg) center center scroll no-repeat;
+	background-size: cover;
+	z-index:0;
+}
+.zone6>ul>li:nth-child(2){
+	background:url(../image/photo-bas2.jpg) center center scroll no-repeat;
+	background-size: cover;
+}
+.zone6>ul>li:nth-child(3){
+	background:url(../image/photo-bas3.jpg) center center scroll no-repeat;
+	background-size: cover;
+}
+.zone6>ul>li:nth-child(4){
+	background:url(../image/photo-bas4.jpg) center center scroll no-repeat;
+	background-size: cover;
+}
+
+#zone6-container1{
+	background:rgba(239,71,36,0.5);
+}
+#zone6-container2{
+	background:rgba(112,204,221,0.5);
+}
+#zone6-container3{
+	background:rgba(45,47,122,0.5);
+}
+#zone6-container4{
+	background:rgba(0,0,0,0.5);
+}
+#zone6-container4>p{
+	display:block;
+	height:500px;
+}
+#zone6-container4>p>img{
+	display:inline-block;
+	width:180px;
+	margin:0 auto;
+	position:relative;
+	top:80%;
+}
+
+
+/********************************* SLIDER DE LA PADE D'ACCUEIL *********************************/
+/****** CSS pour le slider ******/
+/*
+#slides{
+    display:block;
+    width:800px;
+    margin:0 auto;
+    padding: 20px 0;
+}
+#slides {
+  display: none;
+}
+#slides .slidesjs-navigation {
+  margin-top:3px;
+}
+#slides .slidesjs-previous {
+  margin-right: 5px;
+  float: left;
+}
+#slides .slidesjs-next {
+  margin-right: 5px;
+  float: left;
+}
+.slidesjs-pagination {
+  margin: 6px 0 0;
+  float: right;
+  list-style: none;
+}
+.slidesjs-pagination li {
+  float: left;
+  margin: 0 1px;
+}
+.slidesjs-pagination li a {
+  display: block;
+  width: 13px;
+  height: 0;
+  padding-top: 13px;
+  background-image: url(img/pagination.png);
+  background-position: 0 0;
+  float: left;
+  overflow: hidden;
+  background-color: #fff;
+}
+.slidesjs-pagination li a.active,
+.slidesjs-pagination li a:hover.active {
+  background-position: 0 -13px;
+  color:#fff;
+}
+.slidesjs-pagination li a:hover {
+  background-position: 0 -26px;
+  color:#fff;
+}
+#slides a:link,
+#slides a:visited {
+  color: #fff
+}
+#slides a:hover,
+#slides a:active {
+  color: #fff
+}
+.navbar {
+  overflow: hidden
+}*/
+
+/****** CSS RESPONSIVE pour le slider ******/
+/*
+#slides {
+	display: none
+}
+
+.container-slider {
+	margin: 0 auto;
+}*/
+
+/* For tablets & smart phones */
+/*@media (max-width: 767px) {
+	body {
+		padding-left: 20px;
+		padding-right: 20px;
+	}
+	.container-slider {
+		width: auto
+	}
+}*/
+
+/* For smartphones */
+/*@media (max-width: 480px) {
+	.container-slider {
+	width: auto
+	}
+}*/
+
+/* For smaller displays like laptops */
+/*@media (min-width: 768px) and (max-width: 979px) {
+	.container-slider {
+	width: 724px
+	}
+}*/
+
+/* For larger displays */
+/*@media (min-width: 1200px) {
+	.container-slider {
+	width: 1170px
+	}
+}*/
+
+/***************************** FOOTER FIXE SUR TOUTES LES PAGES *******************************/
+/* FOOTER */
+		footer{
+			display:block;
+                        height:40px;
+                        width:100%;
+			bottom:0;
+			background: rgba(30,45,53,0.7);
+			width: 100%;
+                        clear:both;                       
 		}
-		a{
-			text-decoration: none;
-			margin: 0;
+		footer ul{
+			padding: 0;
+			margin: 0 auto;
+			width:100%;
+			text-align: center;
+			align-content: center;
+			/*justify-content: space-between;*/			
 		}
-		li{
-			width:auto;
-			list-style: none;
-                        padding:0;
-                        margin:0;
-			/*transition-duration:0.5s;*/
-			/*background: #FFF;*/
-			/*margin-bottom: 1px;*/
-		}		
-		ul li p{
-			margin:0;
-			padding:0;
+		footer nav ul li{
+			display: inline-block;
+			width: 11.6%;
+			height: 40px;
+                        line-height:40px;
+			text-align: center;
+			margin: 0 auto;
 		}
-		hr{
-			margin:0;
+		footer li a{
+			font-weight: 300;
+			color: #fff;
+			transition-duration: 0.1s;
+			line-height: 40px;
+		}
+	/* Animation texte */	
+		nav ul li a:hover{
+			font-weight: bolder;
+                        text-decoration: none;
+                        color:#fff;
+		}
+		.normal_foot>a:hover{
+			font-weight: 300;
 		}
 
-		
+                
+                
+/******************************* PAGE AFFICHAGE D'UN PROGRAMME *********************************/
 /* CONTAINER PROGRAMME */
-		.container{
+		.container-programme{
+                        display:block;
+                        position:relative;
 			text-align: center;
 			width: 50%;
-			margin: 40px auto;
+			margin : 0 auto;
+                        margin-top:134px;
+                        margin-bottom:40px;
 			border :solid 1px #222;
 			background: #FFF;
 			border-radius: 10px;
+                        /*clear:both;*/
 		}
 /* INFOS DU PROGRAMME */
 
@@ -103,16 +703,16 @@
 			margin: 0 30px;
 			text-align: left;
 		}
-                .materiel{
-                        display:block;
-                        margin:0;
-                        padding:0;
-                }
-                .materiel>ul{
-                        list-style: none;
-                        padding:0;
-                        margin:0;
-                }
+        .materiel{
+                display:block;
+                margin:0;
+                padding:0;
+        }
+        .materiel>ul{
+                list-style: none;
+                padding:0;
+                margin:0;
+        }
 		.materiel>li{
 			text-align: center;
 			margin-bottom: 20px;
@@ -125,19 +725,20 @@
 		.border{
 			width : 40%;
 			margin: 50px auto;
-			bottom-border :solid 1px #222;
 		}
 
 /* MENU DES JOURS */
+                #calendrier-programme{
+                    color:#fff;
+                }
 		.container-jour{
 			width: 100%;
 			border :solid 1px #222;
 			border-radius: 10px;
 			text-align: left;
 			background-color: #222;
-			color:#FFF;
-			border-radius : 10px;
-			padding-bottom: 10px;
+			color:#000;
+			border-radius : 10px;			
 		}
 		/* on cache les jours */
 		.container-jour ul>li>ul{
@@ -159,6 +760,9 @@
 		.jour{
 			line-height: 50px;
 			border-bottom:solid 1px #222;
+                        width:100%;
+                        margin:0;
+                        background:#fff;
 		}
 	/* Titre jour */
 		.jour a{
@@ -206,7 +810,10 @@
 /* EXERCICES */
 
 		.sub-menu{
+                        display:block;
 			background: #FFF;
+                        padding-bottom:30px;
+                        
 		}
 
 	/* Menu Recap exercice (table) */
@@ -305,80 +912,140 @@
 			width: 100%;
 		}
 
+                
+                
+/******************************* FORMULAIRE CREATION D'UN PROGRAMME *********************************/
+/* Formulaire programme */
+    /* supprime border des inputs */
+    input{
+            background: none;
+            border: solid 1px transparent;
+            border-bottom-color: #ccc;
+            padding:10px;
+            margin : 0 0 20px 0;
+    }
+    /* trait devient bleu quand clique */
+    input[type="texte"]:focus,input[type="email"]:focus{
+            border-bottom : solid 1.7px #2979ff;
+    }
 
-/* FOOTER */
-		footer{
-			position:relative;
-			bottom:0;
-			background: rgba(30,45,53,0.7);
-			width: 100%;
-		}
-		footer ul{
-			padding: 0;
-			margin: 0 auto;
-			width:100%;
-			text-align: center;
-			align-content: center;
-			/*justify-content: space-between;*/			
-		}
-		footer nav ul li{
-			display: inline-block;
-			width: 11.6%;
-			height: 40px;
-			text-align: center;
-			margin: 0 auto;
-		}
-		footer li a{
-			font-weight: 300;
-			color: #fff;
-			transition-duration: 0.1s;
-			line-height: 40px;
-		}
-	/* Animation texte */	
-		nav ul li a:hover{
-			font-weight: 600;
-		}
-		.normal_foot>a:hover{
-			font-weight: 300;
-		}
+    [placeholder]{
+            width:auto;
+            font-size: 1rem;
+            color:#222;
+            transition-duration: 0.1s;
+            padding:10px;
+    }
+    [placeholder]:focus{
+            color:#222;
+    }
+    select{
+            border:none;
+            margin-top:20px;
+            cursor: pointer;
+    }
+    .menu_prog{
+            padding:10px 10px 0px 10px;
+    }
+    .materiel{
+            padding-left:0;
+    }
+    .materiel textarea{
+            width:80%;
+    }
 
+    button[type="submit"]{
+            width:100%;
+            background-color: #51a351;
+            background-image: linear-gradient(center bottom, rgba( 0, 0, 255 ,1.0), rgba( 0, 255, 255
+,1.0));
+            background-image: -moz-linear-gradient(center bottom, rgba( 0, 0, 255 ,1.0), rgba( 0, 255, 255
+,1.0));
+            background-image: -webkit-linear-gradient(center bottom, rgba( 0, 0, 255 ,1.0), rgba( 0, 255, 255
+,1.0));
+            /*text-shadow:-1px 1px 1px #222;*/
+            font:16px 'Open sans',sans-serif;
+            color:#fff;
+            font-size: 1rem;
+            font-weight: 600;
+            border:0;
+            padding : 7px;
 
-		
+    }
+    button[type="submit"]:hover{
+            background-color: #33FFCC;
+            background-image: none;
+            padding : 7px;
+            cursor: pointer;
+    }
+    /* Exercice formulaire 3eme col.*/
+    .recap_li_prog li{
+            padding-bottom: 2px;
+    }
+    .recap_ex>li>label{
+            line-height: normal;
+            margin-bottom: 5px;
+            padding: 0;
+            font-size:18px;
+    }
+    .label-file-ex{
+        text-align: center;
+    }
+    /* Exercice formulaire 2eme col.*/
+    .colonne2 p{
+            display: block;
+            width:80%;
+            margin: 0 auto;
+    }
+    .col2-bis>p:nth-child(1){
+            margin-bottom: 0;
+    }
+    .colonne2 input{
+            display: block;
+            width:80%;
+            margin: 0 auto 20px;
+    }
+    .colonne2 textarea{
+            display: block;
+            width:80%;
+            text-align: left;
+    }
+    #consigne{
+            margin: 0 auto;
+    }
 
-
-		/*p {
-  			white-space: nowrap;
-		}
-		Specify that the text in <p> elements will never wrap:*/
-		/*button,
-		input,
-		optgroup,
-		select,
-		textarea {
-		  color: inherit;
-		  font: inherit;
-		  margin: 0;
-		}*/
-
-		/* line 185, sass/_init.scss */
-		/*button {
-		  overflow: visible;
-		}
-
-		body,
-		button,
-		input,
-		select,
-		textarea {
-		  color: #404040;
-		  font-size: 16px;
-		  font-size: 1rem;
-		  line-height: 1.5;
-		}
-		blockquote:before,
-		blockquote:after,
-		q:before,
-		q:after {
-		  content: "";
-		}*/
-
+    /* Exercice formulaire 1ere col.*/
+    .col1-bis>div{
+            margin-top: 0;
+    }
+    .colonne1-bis>div:nth-child(1){
+            margin-bottom: 20px;
+    }
+    .col1-bis img{
+            display: block;
+            margin: 0 auto 20px;
+    }
+    .colonne1 label{
+            display: block;
+            line-height: normal;
+    }
+    .clone_exercice{
+        display:block;
+        width:130px;
+        margin: 0 auto;
+        height:auto;
+        border:none;
+        background:#dddddc;
+        border-box:box-sizing;
+        font:16px 'Open sans',sans-serif;
+        color:#000;
+        font-size: 1rem;
+        padding : 15px;
+        border-radius:4px;
+    }
+.border-blanc{
+        display:block;
+        width:100%;
+        height:30px;
+        background:#fff;
+}

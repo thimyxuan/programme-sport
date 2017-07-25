@@ -112,7 +112,7 @@ EOS;
                 'objectif_id'=>$programme->getObjectifId(),
                 'materiel'=>$programme->getMateriel(),
                 'difficulte'=>$programme->getDifficulte(),
-                'photo'=>$programme->getPhoto(),
+                'photo_programme'=>$programme->getPhotoProgramme(),
                 'sport'=>$programme->getSport(),
                 'duree'=>$programme->getDuree(),            
                 'membre_id'=>$programme->getMembreId(),
@@ -174,7 +174,7 @@ EOS;
                 ->setTitre($dbProgramme['titre'])
                 ->setMateriel($dbProgramme['materiel'])
                 ->setDifficulte($dbProgramme['difficulte'])
-                ->setPhoto($dbProgramme['photo'])
+                ->setPhotoProgramme($dbProgramme['photo_programme'])
                 ->setSport($dbProgramme['sport'])
                 ->setDuree($dbProgramme['duree'])
                 ->setDatePublication(new \DateTime($dbProgramme['date_publication']))
