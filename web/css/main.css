@@ -630,21 +630,8 @@ figcaption>a>p{
 			text-align: center;
 			width:50%;
 			margin : 0 auto;
-                        margin-top:134px;
-                        margin-bottom:40px;
-			border :solid 1px #222;
-			background: #FFF;
-			border-radius: 10px;
-                        /*clear:both;*/
-		}
-                .container-programmeform{
-                        display:block;
-                        position:relative;
-			text-align: center;
-			width:50%;
-			margin : 0 auto;
-                        margin-top:40px;
-                        margin-bottom:40px;
+                        margin-top:100px;
+                        margin-bottom:15px;
 			border :solid 1px #222;
 			background: #FFF;
 			border-radius: 10px;
@@ -751,7 +738,8 @@ figcaption>a>p{
 			text-align: left;
 			background-color: #222;
 			color:#000;
-			border-radius : 10px;			
+			border-radius : 10px;
+                        padding-bottom:30px;
 		}
 		/* on cache les jours */
 		.container-jour ul>li>ul{
@@ -983,6 +971,7 @@ figcaption>a>p{
             font-weight: 600;
             border:0;
             padding : 7px;
+       
 
     }
     button[type="submit"]:hover{
@@ -1029,7 +1018,7 @@ figcaption>a>p{
     .colonne2 textarea[placeholder]{
         font-family: 'Open Sans'
     }
-   
+    
 
     /* Exercice formulaire 1ere col.*/
     .col1-bis>div{
@@ -1073,4 +1062,19 @@ figcaption>a>p{
         height:30px;
         background:#fff;
 }
-
+.background-pattern{
+    display:block;
+    margin:0 auto;
+    width:100%;
+    height:100%;
+    background:url('../image/pattern.jpg') center center fixed repeat;
+    padding:40px 0;
+}
+.background-triangle{
+    display:block;
+    margin:0 auto;
+    width:100%;
+    height:100%;
+    background:url('../image/triangle.jpg') center center fixed repeat;
+    padding:40px 0;
+}

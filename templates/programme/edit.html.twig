@@ -4,8 +4,8 @@
     
 {% block content %}
 {#{{ dump(file) }}#}
-{{ dump(programme) }}
-{{ dump(jours) }}
+{# dump(programme) #}
+{# dump(jours) #}
 {#{{ dump(exercices) }}
 {{ dump(post) }}#}
 
@@ -152,13 +152,15 @@
         <button type="submit">Enregistrer</button>
     </form>#}
             
+<div class="background-pattern">
+            
     <div class="menu-haut">
         <nav>           
              {{ render(url('objectif_menu'))}}
         </nav>
     </div>        
             
-    <div class="container-programmeform">        
+    <div class="container-programme">        
     <form method="POST" enctype="multipart/form-data">
         
         {#    PARTIE ENREGISTREMENT PROGRAMME    #}
@@ -380,13 +382,13 @@
                         </li>        
                         
                     {% endfor %}    
-                    
+                    <button type="submit">Enregistrer</button>
                 </ul>
                 
             </div>
             
         </section>
-        <button type="submit">Enregistrer</button>
+        
     </form>      
     </div>    
                    
@@ -494,6 +496,7 @@
         </ul>
  </div>
  
+</div>
                                     
                                     
 {#    ---------------- CLONE POUR AJOUT EXERCICE -------------    ANCIENNE VERSION #}
