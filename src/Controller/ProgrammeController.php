@@ -142,6 +142,23 @@ class ProgrammeController extends ControllerAbstract
                                     ->setTempsRepos($formExercice['temps_repos'])
                                     ->setJour($jour)
                                     ;
+                                
+                                if ($formJour['statut'] == 'repos') {
+                                    
+                                    $exercice
+                                    ->setTitre('repos')
+                                    ->setConsigne('repos')
+                                    ->setDifficulte('facile')
+                                    ->setZoneMusculaire('cou')
+                                    ->setMuscleCible('repos')
+                                    ->setSerie(0)
+                                    ->setRepetition(0)
+                                    ->setDetailSerie('repos')
+                                    ->setTempsRepos(0)
+                                    ->setJour($jour)
+                                    ;
+                                }
+                                
                                 if(!empty($_FILES['jour'][$index]['exercice']['photo']['name'])) {
 
                                     $nom_photo_exercice = $formExercice['titre'] . '_' . $_FILES['jour'][$index]['exercice']['photo']['name']; // ondéfinit le nom de la photo
@@ -154,7 +171,7 @@ class ProgrammeController extends ControllerAbstract
                                     copy($_FILES['photo']['tmp_name'], $photo_dossier_exercice);
                                     
                                     $exercice->setPhoto($photo_bdd_exercice);
-                                } 
+                                }
 
                                 $tabExercices[] = $exercice;
                             }   
