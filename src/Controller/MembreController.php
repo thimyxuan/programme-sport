@@ -7,6 +7,7 @@ use DateTime;
 use Controller\ControllerAbstract;
 use Entity\Membre;
 use Repository\MembreRepository;
+use Repository\ProgrammeRepository;
 
 class MembreController extends ControllerAbstract {
     
@@ -159,10 +160,13 @@ class MembreController extends ControllerAbstract {
     public function membreDetailAction() {
         
         $membre = $this->app['user.manager']->getUser();
+        
+        $programmes = $this->app['membre.repository']->findByMembre();
         return $this->render(
             'membre/profil.html.twig',
             [
-                'membre' => $membre
+                'membre' => $membre,
+                'programmes' => $programmes
             ]
             );
     }
