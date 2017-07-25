@@ -2,7 +2,15 @@
 
 {% block title 'Inscription' %}
 
-{% block content %}      
+{% block content %}   
+
+<div class="background-pattern">
+    
+    <div class="menu-haut">
+        <nav>           
+             {{ render(url('objectif_menu'))}}
+        </nav>
+    </div> 
         
     <div class="container-connexion">
         <div class="container-debut">
@@ -44,7 +52,7 @@
                         </div>
                         
                          <div class="photo_inscription">
-                            <img src="no-image.png" alt="image">
+                            <img src="{{ asset('image/ajout-photo.jpg') }}" alt="image">
                             <label for="avatar" class="label-file">Ajouter une photo</label>
                             <input class="input-file" type="file" name="avatar">
                         </div>
@@ -57,5 +65,6 @@
 
             </div>
         <div class="container-fin"></div>
-    </div>    
+    </div> 
+</div>
 {% endblock %}
