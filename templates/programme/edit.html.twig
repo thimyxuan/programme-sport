@@ -3,9 +3,10 @@
 {% block title 'Création et modification programme' %}
     
 {% block content %}
-{#{{ dump(file) }}
+{#{{ dump(file) }}#}
 {{ dump(programme) }}
-{{ dump(exercices) }}
+{{ dump(jours) }}
+{#{{ dump(exercices) }}
 {{ dump(post) }}#}
 
 {#<form method="POST" enctype="multipart/form-data">#}
@@ -164,7 +165,7 @@
         <div>
             <img class="prog_photo" src="{{ asset('image/seance.jpg') }}" alt="image">
             <label for="file" class="label-file">Ajouter une photo</label>
-            <input id="file" class="input-file" type="file" name="photo" value="">
+            <input id="file" class="input-file" type="file" name="photo_programme" value="">
         </div>
         <div class="sport custom-dropdown">
             <label>Sport</label>
