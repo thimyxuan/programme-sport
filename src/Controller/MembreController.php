@@ -29,9 +29,23 @@ class MembreController extends ControllerAbstract {
                     ->setMdp($_POST['mdp'])
                     ->setEmail($_POST['email'])    
                     ->setCivilite($_POST['civilite']) 
-                    ->setAvatar($_POST['avatar'])
+                    //->setAvatar($_POST['avatar'])
                     ->setStatut($membre->getStatut())
                 ;
+                
+                if(!empty($_FILES['avatar']['name'])) {
+
+                    $nom_photo = str_replace('', '_', $_POST['email']) . '_' . $_FILES['avatar']['name']; // ondéfinit le nom de la photo
+                    // on définit le nom complet de la photo. Nous nous servirons de cette variable pour enregistrer 
+                    // le chemin complet de la photo en BDD puisqu'on ne garde jamais la photo, mais le lien en bdd
+                    $photo_bdd = "http://localhost/programme-sport/web/photo/avatar/$nom_photo";
+                    // on définit le chemin physique du dossier de destination pour enregistrer la photo
+                    $photo_dossier = $_SERVER['DOCUMENT_ROOT'] . "/programme-sport/" . "web/photo/avatar/$nom_photo";
+                    // la fonction copy permet de copier la photo directement dans le dossier de destination
+                    copy($_FILES['avatar']['tmp_name'], $photo_dossier);
+
+                    $membre->setAvatar($photo_bdd);
+                }
             }
 
             if(empty($_POST['nom']))
