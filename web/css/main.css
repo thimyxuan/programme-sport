@@ -1232,7 +1232,43 @@ figcaption>a>p{
 			padding-top: 5px; 
 		}
                 
-                
+/******************************** PARTIE BACK **************************************/
+.container-admin{
+    display:block;
+    margin: 20px auto;
+    width:880px;
+    min-height:800px;
+    background: #fff;
+    padding:20px;
+}
+.table-admin{
+    display:block;
+    width:870px;
+    margin:0 auto;
+    border-collapse: collapse;
+    text-align:center;
+}
+.table-admin tr th,
+.table-admin tr td{
+    border-bottom:solid 1px #222;
+    padding:6px 20px;
+    border-collapse: collapse;
+}
+/*.table-admin tr:nth-child(even){
+    background:#fff;
+}*/
+.table-admin tr{
+    background:#fff;
+}
+.btn-supprimer>a{
+    color:red;
+}
+.btn-voir>a{
+    color:blue;
+}
+
+
+
                 
 /**************************** RESPONSIVE ****************************/
 
