@@ -12,6 +12,10 @@ $app->get('/', 'index.controller:indexAction')
     ->bind('homepage') // nom de la route
 ;
 
+$app->get('/programme/liste_programmes', 'programme.controller:listAllProgrammesAction')
+    ->bind('liste_all_programmes') // nom de la route
+;
+
 $app
     ->get('/rubriques/menu', 'objectif.controller:menuAction')
     ->bind('objectif_menu')

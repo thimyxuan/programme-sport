@@ -56,6 +56,7 @@
                     <a class="jour_icon j{{ loop.index }}">Jour {{ loop.index }}</a><hr>
                     
             <!-- CONTENU -->
+            {% if jour.statut == 'entrainement' %}
                 <ul class="sub-menu sub-menu-j{{ loop.index }}">
 
                     {% for i in 0..indexLength %}
@@ -112,8 +113,15 @@
                         </ul>
                         
                     {% endfor %}
-                </ul>   
-            
+                </ul>
+                {#        block si jour de repos  => à adapter      #}
+                {% else %}
+                    <ul class="sub-menu sub-menu-j{{ loop.index }}">
+                        <div style="width:100%;">    
+                    <img style="width:100%;height:200px;" src="{{ asset('photo/panda-repos.jpg') }}">
+                        </div>
+                    </ul>
+                {% endif %}
             </li>          
             {% endfor %}
         </ul>  
