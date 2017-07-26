@@ -22,11 +22,7 @@ class ProgrammeController extends ControllerAbstract
             
             $exercices = $this->app['exercice.repository']->findByJour($jour);
             $allExercices[] = $exercices;
-            //echo '<pre>'; print_r($allExercices); echo '</pre>';
         }
-        
-        //$allExercices = $allExercices[0]; // commenter cette ligne après avoir bouclé dans TWIG
-        //echo '<pre>'; print_r($allExercices); echo '</pre>';
         
         return $this->render(
            'programme/index.html.twig',
@@ -48,10 +44,6 @@ class ProgrammeController extends ControllerAbstract
         if(!is_null($id))
         {
             $programme = $this->app['programme.repository']->find($id);
-            //$jour = $this->app['jour.repository']->findByProgramme($programme);
-            //echo '<pre>'; print_r($jour) ; echo '</pre>';
-            //$exercice = $this->app['exercice.repository']->findByJour($jour);
-            //echo '<pre>'; print_r($exercice) ; echo '</pre>';
         }        
         else
         {        
@@ -67,7 +59,6 @@ class ProgrammeController extends ControllerAbstract
         $errors = [];
         
         $membre_id = $this->app['user.manager']->getUser()->getId();
-        //echo '<pre>'; print_r($membre_id);echo '</pre>';
         
         if ($_POST) {
             
@@ -84,7 +75,6 @@ class ProgrammeController extends ControllerAbstract
                     ->setObjectif($objectif)
                     ->setMateriel($_POST['materiel'])
                     ->setDifficulte($_POST['difficulte'])    
-                    //->setPhotoProgramme($_POST['photo_'])    
                     ->setSport($_POST['sport'])    
                     ->setDuree($_POST['duree'])
                     ->setMembre($membre)
@@ -93,7 +83,7 @@ class ProgrammeController extends ControllerAbstract
                 
                 if(!empty($_FILES['photo_programme']['name'])) {
 
-                    $nom_photo_programme = str_replace('', '_', $_POST['titre']) . '_' . $_FILES['photo_programme']['name']; // ondéfinit le nom de la photo
+                    $nom_photo_programme = str_replace(' ', '_', $_POST['titre']) . '_' . $_FILES['photo_programme']['name']; // ondéfinit le nom de la photo
                     // on définit le nom complet de la photo. Nous nous servirons de cette variable pour enregistrer 
                     // le chemin complet de la photo en BDD puisqu'on ne garde jamais la photo, mais le lien en bdd
                     $photo_bdd_programme = "http://localhost/programme-sport/web/photo/$nom_photo_programme";
@@ -110,7 +100,7 @@ class ProgrammeController extends ControllerAbstract
                 // 
 
                 if (isset($_POST['jour'])) {
-
+                    $i = 0;
                     foreach ($_POST['jour'] as $index => $formJour) {
 
                         $jour = new Jour();
@@ -120,13 +110,13 @@ class ProgrammeController extends ControllerAbstract
                                 ->setStatut($formJour['statut'])
                                 ->setProgramme($programme)
                             ;
-
+                        echo '<pre>'; print_r($jour); echo '</pre>';    
                         $tabJours[] = $jour;
 
                         
                         if (isset($_POST['jour'][$index]['exercice'])) {
                             
-                            foreach ($_POST['jour'][$index]['exercice'] as $index => $formExercice) {
+                            foreach ($_POST['jour'][$index]['exercice'] as $ind => $formExercice) {
                                 
                                 $exercice = new Exercice();
                                 
@@ -159,32 +149,30 @@ class ProgrammeController extends ControllerAbstract
                                     ;
                                 }
                                 
-                                if(!empty($_FILES['jour'][$index]['exercice']['photo']['name'])) {
-
-                                    $nom_photo_exercice = $formExercice['titre'] . '_' . $_FILES['jour'][$index]['exercice']['photo']['name']; // ondéfinit le nom de la photo
+                                if(!empty($_FILES['jour']['name'][$index]['exercice'][$ind]['photo'])) {
+                                    var_dump($_FILES['jour']['name'][$index]['exercice'][$ind]['photo']);
+                                    $nom_photo_exercice = str_replace(' ', '_', $formExercice['titre']) . '_' . $_FILES['jour']['name'][$index]['exercice'][$ind]['photo']; // ondéfinit le nom de la photo
                                     // on définit le nom complet de la photo. Nous nous servirons de cette variable pour enregistrer 
                                     // le chemin complet de la photo en BDD puisqu'on ne garde jamais la photo, mais le lien en bdd
                                     $photo_bdd_exercice = "http://localhost/programme-sport/web/photo/$nom_photo_exercice";
                                     // on définit le chemin physique du dossier de destination pour enregistrer la photo
                                     $photo_dossier_exercice = $_SERVER['DOCUMENT_ROOT'] . "/programme-sport/" . "web/photo/$nom_photo_exercice";
                                     // la fonction copy permet de copier la photo directement dans le dossier de destination
-                                    copy($_FILES['photo']['tmp_name'], $photo_dossier_exercice);
+                                    copy($_FILES['jour']['tmp_name'][$index]['exercice'][$ind]['photo'], $photo_dossier_exercice);
                                     
                                     $exercice->setPhoto($photo_bdd_exercice);
                                 }
 
-                                $tabExercices[] = $exercice;
+                                $tabExercices[$i][] = $exercice;
                             }   
                         }
+                        $i++;
                     }
                 }            
             }
             
 
             //--------- Vérification des champs du formulaire avant entrée en bdd
-            
-                       
-            //echo '<pre>'; print_r($_POST); echo '</pre>';
             
             // Condition addslashes() pour la table PROGRAMME
             foreach($_POST as $indice => $valeur)
@@ -245,119 +233,77 @@ class ProgrammeController extends ControllerAbstract
                 $errors['duree'] = 'La durée n\'est pas valide';
             }
             
-            
-            // Contrôles des champs de la table JOUR
-            
             foreach($_POST as $indice => $valeur)
             {
                 if ($indice == 'jour'){
                     foreach($valeur as $index => $value){                        
                         //echo '<pre>'; print_r($_POST[$indice][$index]['statut']); echo '</pre>';                        
-                        if(empty($_POST[$indice][$index]['statut']))
+                        if(empty($value['statut']))
                         {
                             $errors['statut'] = 'Le statut du jour est obligatoire';
+                           
                         }
-                        
-                        if($index == 'exercice'){
-                            foreach($value as $ind => $val){
-                                
-                                // toutes mes conditions ici :
-                                
-
-                                //echo '<pre>'; print_r($_POST[$indice][$index][$ind]['titre']); echo '</pre>'; 
-
-
-                                if(empty($_POST[$indice][$index][$ind]['titre']))
+                        echo '<pre>'; print_r($value); echo '</pre>';
+                            foreach($value['exercice'] as $ind => $val){
+                            if($value['statut'] == 'entrainement') {       
+                                if(empty($val['titre']))
                                 {
                                     $errors['exercice_titre'] = 'Le titre de l\'exercice est obligatoire';
                                 }
-                                elseif(strlen($_POST[$indice][$index][$ind]['titre'])>100)
+                                elseif(strlen($val['titre'])>100)
                                 {
                                     $errors['exercice_titre'] = 'Le titre de l\'exercice ne doit pas faire plus de 100 caractères' ;
                                 }
-                                if(empty($_POST[$indice][$index][$ind]['consigne']))
-                                {
-                                    $errors['exercice_consigne'] = 'La consigne est obligatoire';
-                                }
-                                elseif(strlen($_POST[$indice][$index][$ind]['consigne'])>600)
+                                if(strlen($val['consigne'])>600)
                                 {
                                     $errors['exercice_consigne'] = 'La consigne ne doit pas faire plus de 600 caractères' ;
                                 }
-                                if(empty($_POST[$indice][$index][$ind]['zone_musculaire']))
+                                if(empty($val['zone_musculaire']))
                                 {
                                     $errors['exercice_zone'] = 'La zone musculaire est obligatoire';
                                 }
-                                if(empty($_POST[$indice][$index][$ind]['muscle_cible']))
-                                {
-                                    $errors['exercice_muscle'] = '' ;
-                                }
-                                elseif(strlen($_POST[$indice][$index][$ind]['muscle_cible'])>200)
+                                if(strlen($val['muscle_cible'])>200)
                                 {
                                     $errors['exercice_muscle'] = 'Le champs muscle ciblé ne doit pas faire plus de 200 caractères ' ;
                                 }
-                                if(empty($_POST[$indice][$index][$ind]['serie']))
+                                if(empty($val['serie']))
                                 {
                                     $errors['exercice_serie'] = 'Le nombre de séries est obligatoire';
                                 }
-                                elseif(!is_numeric($_POST[$indice][$index][$ind]['serie']))
+                                elseif(!is_numeric($val['serie']))
                                 {
                                     $errors['exercice_serie'] = 'Le nombre de séries n\'est pas valide';
                                 }
-                                if(empty($_POST[$indice][$index][$ind]['repetition']))
+                                if(empty($val['repetition']))
                                 {
                                     $errors['exercice_repetition'] = 'Le nombre de répétitions est obligatoire';
                                 }
-                                elseif(!is_numeric($_POST[$indice][$index][$ind]['repetition']))
+                                elseif(!is_numeric($val['repetition']))
                                 {
                                     $errors['exercice_repetition'] = 'Le nombre de répétitions n\'est pas valide';
                                 }
-                                if(empty($_POST[$indice][$index][$ind]['temps_repos']))
+                                if(empty($val['temps_repos']))
                                 {
                                     $errors['exercice_repos'] = 'Le temps de repos est obligatoire';
                                 }
-                                elseif(!is_numeric($_POST[$indice][$index][$ind]['temps_repos']))
+                                elseif(!is_numeric($val['temps_repos']))
                                 {
                                     $errors['exercice_repos'] = 'Le temps de repos n\'est pas valide';
                                 }
-                                if(empty($_POST[$indice][$index][$ind]['detail_serie']))
+                                if(strlen($val['detail_serie'])>600)
                                 {
-                                    $errors['exercice_detail'] = '' ;
-                                }
-                                elseif(strlen($_POST[$indice][$index][$ind]['detail_serie'])>600)
-                                {
-                                    $errors['exercic_edetail'] = 'Le champ détail série ne doit pas faire plus de 600 caractères' ;
-                                }
-                                
+                                    $errors['exercice_detail'] = 'Le champ détail série ne doit pas faire plus de 600 caractères' ;
+                                }  
                             }
                         }
                     }
                 }            
-            }            
-            /*
-            for ($i=1; $i<8; $i++) {// ceci ne fonctionne pas, est remplacé par le code ci-dessus
-                if(empty($_POST['jour'][$i]['statut'])) {
-                        $errors['statut'] = 'Le statut du jour est obligatoire';
-                    }    
-            }*/
+            }
             
-            
-            // Contrôles des champs de la table EXERCICE
-            
-//            foreach($_POST as $indice => $valeur)
-//            {
-//                if ($indice == 'jour'){
-//                    
-//                    foreach($valeur as $index => $value){
-//                        
-//                    }
-//                }
-//            }
-           
-           
-
             // Si pas d'erreur c'est ok pour envoyer en bdd :
 
             if (empty($errors)) {
+                
                 $this->app['programme.repository']->save($programme);
                 
                 foreach ($tabJours as $jour) {
@@ -373,6 +319,7 @@ class ProgrammeController extends ControllerAbstract
 
             else
             {
+                var_dump($errors);
                 $msg='<strong>Le formulaire contient des erreurs</strong>';
                 $msg .= '<br>' . implode('<br>', $errors);
                 // on utilise IMPLODE car on stock les erreurs dans un array errors=[];
@@ -380,19 +327,29 @@ class ProgrammeController extends ControllerAbstract
                 $this->addFlashMessage($msg, 'error');
             }
 
+        } else {
+            
+            $tabJours = $this->app['jour.repository']->findByProgramme($programme);
+            
+            foreach($tabJours as $index => $jour) {
+                
+            $tabExercices[$index] = $this->app['exercice.repository']->findByJour($jour);
+            }
+            
+            
         }
         //echo 'photoProgramme <pre>'; print_r($programme->getPhotoProgramme());echo '</pre>';
-
+        
+        $membre = $this->app['user.manager']->getUser();
+        
         return $this->render(
             'programme/edit.html.twig',
             [
                 'objectifs' => $objectifs,
                 'programme' => $programme,
-                //'exercice' => $exercice,
                 'jours'=> $tabJours,
                 'exercices' => $tabExercices,
-                'post' => $_POST,
-                'file' => $_FILES
+                'membre' => $membre
             ]
         );
 

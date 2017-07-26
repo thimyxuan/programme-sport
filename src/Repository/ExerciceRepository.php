@@ -19,7 +19,7 @@ SELECT e.*
 FROM exercice e
 JOIN jour j ON e.jour_id = j.id
 WHERE e.jour_id = :id
-ORDER BY ordre ASC
+ORDER BY e.id ASC
 EOS;
     
         $dbExercices = $this->db->fetchAll(

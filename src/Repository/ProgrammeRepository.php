@@ -102,7 +102,7 @@ EOS;
     public function findByMembre(Membre $membre)
     {
         $query = <<<EOS
-SELECT p.*, m.*,o.titre as objectif_titre, m.pseudo
+SELECT p.*, m.pseudo, o.titre as objectif_titre
 FROM programme p
 JOIN objectif o ON p.objectif_id = o.id
 JOIN membre m ON p.membre_id = m.id
