@@ -4,7 +4,7 @@
 
 {% block content %}   
 
-<div class="background-pattern">
+<div class="background-1">
     
     <div class="menu-haut">
         <nav>           
@@ -19,7 +19,8 @@
             <div class="container-co-bis">
     
                 <form method ="post" enctype="multipart/form-data">
-                    <div class="container-inputs">
+                    <div class="container-inputs">                    
+                        
 
                         <div class="right-margin form-column">
                             <label for="prenom">Votre Prénom</label>
@@ -48,14 +49,15 @@
                         <div class="radio">
                             <label for="civilite">Vous êtes</label>
                             <input class="marge_radio" type="radio" name="civilite" value="h" checked="checked"> : Homme |
-                            <input class="marge_radio" type="radio" name="civilite" checked="" value="f" > : Femme
+                            <input class="marge_radio" type="radio" name="civilite" value="f" checked=""> : Femme
                         </div>
                         
-                         <div class="photo_inscription">
+                        <div class="photo_inscription">
                             <img src="{{ asset('image/ajout-photo.jpg') }}" alt="image">
-                            <label for="avatar" class="label-file">Ajouter une photo</label>
+                            <label for="avatar" class="label-file">Ajouter une photo de profil</label>
                             <input class="input-file" type="file" name="avatar">
                         </div>
+                        
                         
                         <input type="hidden" name="statut" value="membre">
                         <button type="submit" class="btn btn-primary">Enregistrer</button>

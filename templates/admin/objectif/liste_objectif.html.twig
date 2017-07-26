@@ -3,30 +3,42 @@
 
 {% block title 'Listing Objectifs' %}
 
-{% block content %}
+{% block content %}    
+    
+<div class="background-1">
+    
+    <div class="container-admin">
     
     <h1>Gestion des objectifs</h1>
        
     <p><a href="{{ path('admin_objectif_edit') }}">Ajouter un objectif</a></p>
     
-    <table class="table table-striped">
+    <table class="table-admin">
         <tr>
             <th>Id</th>
             <th>Titre</th>
-            <th></th>
+            <th>Supprimer</th> 
+            <th>Modifier</th>            
         </tr>
         
         {% for objectif in objectifs %}
         <tr>
             <td>{{ objectif.id }}</td>
             <td>{{ objectif.titre }}</td>
+            <td>                
+                <div class="btn-supprimer"><a href="{{path('admin_objectif_delete', {id: objectif.id}) }}">Supprimer</a></div>
+            </td> 
             <td>
-                <a href="{{path('admin_objectif_edit', {id: objectif.id}) }}">Modifier</a>
-                <a href="{{path('admin_objectif_delete', {id: objectif.id}) }}">Supprimer</a>
-            </td>    
+                <div class="btn-modifier"><a href="{{path('admin_objectif_edit', {id: objectif.id}) }}">Modifier</a></div>                
+            </td>
+                       
         </tr>
         {% endfor %}
     </table>
+    
+    </div>
+    
+</div>
     
 {% endblock %}
 
