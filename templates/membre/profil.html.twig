@@ -10,7 +10,13 @@
     <p>{{ membre.nom }}</p>
     <p>{{ membre.email }}</p>
     <p>{{ membre.statut }}</p>
-    
+    <hr/>
+    {% for programme in programmes %}
+    <h1>Programmes</h1>    
+        
+    <p>id :{{ programme.id }}</p>
+    <p>titre :{{ programme.titre }}</p>
+    {% endfor %}
     
     
 {% endblock %}

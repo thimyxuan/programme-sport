@@ -3,6 +3,8 @@
 {% block title '' %}
     
 {% block content %}
+    
+<div class="background-triangle">
 
     <div class="menu-haut">
         <nav>           
@@ -56,6 +58,7 @@
                     <a class="jour_icon j{{ loop.index }}">Jour {{ loop.index }}</a><hr>
                     
             <!-- CONTENU -->
+            {% if jour.statut == 'entrainement' %}
                 <ul class="sub-menu sub-menu-j{{ loop.index }}">
 
                     {% for i in 0..indexLength %}
@@ -97,12 +100,17 @@
                         </li>
 
                         <li class="colonne2">
-                            <p><i class="fa fa-ellipsis-v" aria-hidden="true"></i> 
-                            Muscles ciblés :  {{ exercices[index][i].muscleCible }}</p>
-                            <p> {{ exercices[index][i].consigne }}</p>
+                            <p class="col2-titre"><i class="fa fa-ellipsis-v" aria-hidden="true"></i>                             
+                            Muscle(s) ciblé(s) : </p>
+                            <p class="col2-texte"> {{ exercices[index][i].muscleCible }}</p>
                             
-                            <p><i class="fa fa-ellipsis-v" aria-hidden="true"></i> 
-                            Détails : {{ exercices[index][i].detailSerie }}</p>
+                            <p class="col2-titre"><i class="fa fa-ellipsis-v" aria-hidden="true"></i>                             
+                            Consignes : </p>
+                            <p class="col2-texte"> {{ exercices[index][i].consigne }}</p>
+                            
+                            <p class="col2-titre"><i class="fa fa-ellipsis-v" aria-hidden="true"></i> 
+                            Détails : </p>
+                            <p class="col2-texte"> {{ exercices[index][i].detailSerie }}</p>
 
                         </li>
 
@@ -112,8 +120,15 @@
                         </ul>
                         
                     {% endfor %}
-                </ul>   
-            
+                </ul>
+                {#        block si jour de repos  => à adapter      #}
+                {% else %}
+                    <ul class="sub-menu sub-menu-j{{ loop.index }}">
+                        <div style="width:100%;">    
+                    <img style="width:100%;height:200px;" src="{{ asset('photo/panda-repos.jpg') }}">
+                        </div>
+                    </ul>
+                {% endif %}
             </li>          
             {% endfor %}
         </ul>  
@@ -122,5 +137,7 @@
      </div>
 
     </div>
+        
+</div>
     
 {% endblock %}

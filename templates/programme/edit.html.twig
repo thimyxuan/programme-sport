@@ -4,8 +4,8 @@
     
 {% block content %}
 {#{{ dump(file) }}#}
-{{ dump(programme) }}
-{{ dump(jours) }}
+{# dump(programme) #}
+{# dump(jours) #}
 {#{{ dump(exercices) }}
 {{ dump(post) }}#}
 
@@ -152,6 +152,8 @@
         <button type="submit">Enregistrer</button>
     </form>#}
             
+<div class="background-pattern">
+            
     <div class="menu-haut">
         <nav>           
              {{ render(url('objectif_menu'))}}
@@ -163,7 +165,7 @@
         
         {#    PARTIE ENREGISTREMENT PROGRAMME    #}
         <div>
-            <img class="prog_photo" src="{{ asset('image/seance.jpg') }}" alt="image">
+            <img class="prog_photo" src="{{ asset('image/ajout-photo.jpg') }}" alt="image">
             <label for="file" class="label-file">Ajouter une photo</label>
             <input id="file" class="input-file" type="file" name="photo_programme" value="">
         </div>
@@ -348,15 +350,15 @@
                                     </li>
 
                                     <li class="colonne2 col2-bis">
-                                        <p>
-                                        <i class="fa fa-ellipsis-v" aria-hidden="true"></i> Muscles ciblés :
+                                        <p class="col2-titre"><i class="fa fa-ellipsis-v" aria-hidden="true"></i> Muscles ciblés : </p>
                                         <div>
                                             <input type="texte" name="jour[{{i}}][exercice][{{j}}][muscle_cible]" placeholder="...">
                                         </div>
-                                            </p>
-
-                                            <textarea type="texte" name="jour[{{i}}][exercice][{{j}}][consigne]" id="consigne" placeholder= "Décrire l'exercice..."></textarea>
-                                            <textarea type="texte" name="jour[{{i}}][exercice][{{j}}][detail_serie]" id="detail_serie" placeholder= "Décrire les séries..."></textarea>
+                                        
+                                        <p class="col2-titre"><i class="fa fa-ellipsis-v" aria-hidden="true"></i> Consignes : </p>
+                                            <textarea type="texte" name="jour[{{i}}][exercice][{{j}}][consigne]" id="consigne" placeholder= "Ecrivez les consignes de l'exercice" rows="4"></textarea>
+                                        <p class="col2-titre"><i class="fa fa-ellipsis-v" aria-hidden="true"></i> Détails : </p>
+                                            <textarea type="texte" name="jour[{{i}}][exercice][{{j}}][detail_serie]" id="detail_serie" placeholder= "Ajouter les détails des séries" rows="1"></textarea>
                                     </li>
 
                                     <li class="colonne3">
@@ -380,13 +382,13 @@
                         </li>        
                         
                     {% endfor %}    
-                    
+                    <button type="submit">Enregistrer</button>
                 </ul>
                 
             </div>
             
         </section>
-        <button type="submit">Enregistrer</button>
+        
     </form>      
     </div>    
                    
@@ -394,12 +396,112 @@
             
             
                 
-    
-
-    
 {#    ---------------- CLONE POUR AJOUT EXERCICE -------------    #}
+<div style="display: none;" class="exercice exercice_template">
+    <h2>Exercice #EXERCICE#</h2>
+                        <p class="ex_titre">
+                        <strong class="titre_prog">#JOUR#/.
+                        <label>Titre</label>
+                        <input type="texte" name="jour[#JOUR#][exercice][#EXERCICE#][titre]" placeholder="de l'exercice...">
+                            :</strong>
+                        </p>
+
+                        <ul class="recap_ex">
+                            <li>
+                                <label>Nombre de répétition</label>
+
+                                <div class="menu_prog">
+                                    <input type="texte" name="jour[#JOUR#][exercice][#EXERCICE#][repetition]" placeholder="... fois">
+                                </div>
+                            </li>
+                            <li>
+                                <label>Temps de repos</label>
+
+                                <div class="menu_prog">
+                                    <input type="texte" name="jour[#JOUR#][exercice][#EXERCICE#][temps_repos]" placeholder="... sec. / min.">
+                                </div>
+                            </li>
+                            <li>
+                                <label>Nombre de série</label>
+
+                                <div class="menu_prog">
+                                    <input type="texte" name="jour[#JOUR#][exercice][#EXERCICE#][serie]" placeholder="...">
+                                </div>
+                            </li>
+                        </ul>
+                        <ul class="corps_ex">
+                            <li class="colonne1">
+                                <hr>
+                                <div class="col1-bis">
+                                    <img src="{{ asset('image/') }}level.jpg">
+                                    <div>
+                                        <label>Difficulté</label>
+                                        <select name="jour[#JOUR#][exercice][#EXERCICE#][difficulte]">
+                                            <option value="">choisir</option>
+                                            <option value="facile">Facile</option>
+                                            <option value="moyen">Moyen</option>
+                                            <option value="difficile">Difficile</option>
+                                            <option value="infernal">Infernal</option>
+                                        </select>
+                                    </div>
+                                </div>
+                                <hr>
+                                <div class="col1-bis">
+                                    <img src="{{ asset('image/') }}location.jpg">
+
+                                    <div>
+                                        <label>Zone Musculaire</label>
+                                        <select name="jour[#JOUR#][exercice][#EXERCICE#][zone_musculaire]">
+                                            <option value="">Choisir</option>
+                                            <option value="bras">Bras</option>
+                                            <option value="cou">Cou</option>
+                                            <option value="dos">Dos</option>
+                                            <option value="epaule">Epaules</option>
+                                            <option value="fessiers">Fessiers</option>
+                                            <option value="jambes">Jambes</option>
+                                        </select>
+                                    </div>
+                                </div>
+                                <hr>
+                            </li>
+
+                            <li class="colonne2 col2-bis">
+                                <p class="col2-titre"><i class="fa fa-ellipsis-v" aria-hidden="true"></i> Muscles ciblés : </p>
+                                <div>
+                                    <input type="texte" name="jour[#JOUR#][exercice][#EXERCICE#][muscle_cible]" placeholder="...">
+                                </div>
+
+                                <p class="col2-titre"><i class="fa fa-ellipsis-v" aria-hidden="true"></i> Consignes : </p>
+                                    <textarea type="texte" name="jour[#JOUR#][exercice][#EXERCICE#][consigne]" id="consigne" placeholder= "Ecrivez les consignes de l'exercice" rows="4"></textarea>
+                                <p class="col2-titre"><i class="fa fa-ellipsis-v" aria-hidden="true"></i> Détails : </p>
+                                    <textarea type="texte" name="jour[#JOUR#][exercice][#EXERCICE#][detail_serie]" id="detail_serie" placeholder= "Ajouter les détails des séries" rows="1"></textarea>
+                            </li>
+
+                            <li class="colonne3">
+                                <div class="label-file label-file-ex">
+                                    <img class="prog_photo" src="{{ asset('image/') }}ajout-photo.jpg" alt="image">
+
+                                    <label for="file">Ajouter une photo</label>
+
+                                    <input id="file" class="input-file" type="file" name="jour[#JOUR#][exercice][#EXERCICE#][photo]" value="">
+                                </div>
+                            </li>
+                        </ul>                   
+                    
+
+                    <!-- séparateur -->
+                        <div class="border-blanc"></div>
+                    </ul> 
+                </li>       
+        </ul>
+ </div>
+ 
+</div>
+                                    
+                                    
+{#    ---------------- CLONE POUR AJOUT EXERCICE -------------    ANCIENNE VERSION #}
             
-    <div style="display: none;" class="exercice exercice_template">
+    {# <div style="display: none;" class="exercice exercice_template">
                         <h2>Exercice #EXERCICE#</h2>
                         <input type="hidden" name="jour_id" value="">
                         <div>
@@ -455,6 +557,6 @@
                             <label>Temps de repos entre chaque série</label>
                             <input type="text" name="jour[#JOUR#][exercice][#EXERCICE#][temps_repos]">
                         </div>
-                    </div>
+                    </div>#}
 
 {% endblock %}
