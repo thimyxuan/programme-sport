@@ -52,7 +52,7 @@ class Membre {
      *
      * @var string 
      */
-    private $statut = 'admin';
+    private $statut = 'membre';
     
     /**
      *

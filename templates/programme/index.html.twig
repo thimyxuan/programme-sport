@@ -59,7 +59,7 @@
                     
             <!-- CONTENU -->
             {% if jour.statut == 'entrainement' %}
-                <ul class="sub-menu sub-menu-j{{ loop.index }}">
+                <div class="sub-menu sub-menu-j{{ loop.index }}">
 
                     {% for i in 0..indexLength %}
                     <!-- 1er exercice -->
@@ -131,7 +131,7 @@
                 {% endif %}
             </li>          
             {% endfor %}
-        </ul>  
+        </div>  
 
 
      </div>

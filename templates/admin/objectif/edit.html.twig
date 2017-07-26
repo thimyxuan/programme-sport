@@ -3,6 +3,11 @@
 {% block title 'Edit' %}
 
 {% block content %}
+    
+<div class="background-1">
+
+<div class="container-admin">
+    
     <h1>    
     {% if objectif.id is empty %}
             Nouvel
@@ -21,6 +26,9 @@
         <button type="submit" class="btn btn-primary">Enregistrer</button>
         <a href="{{ path('liste_objectif') }}" class="">Annuler</a>
     </form>
+    
+</div>
+</div>
         
 {% endblock %}
 
