@@ -4,19 +4,65 @@
 
 {% block content %}
     
-    <h1>{{ membre.pseudo }}</h1>
-    
-    <p>{{ membre.prenom }}</p>
-    <p>{{ membre.nom }}</p>
-    <p>{{ membre.email }}</p>
-    <p>{{ membre.statut }}</p>
-    <hr/>
-    {% for programme in programmes %}
-    <h1>Programmes</h1>    
-        
-    <p>id :{{ programme.id }}</p>
-    <p>titre :{{ programme.titre }}</p>
-    {% endfor %}
+    <div class="container-profil">
+
+	<!-- INFOS PROFIL -->
+		<img class="prog_photo" src="image/bg-profil.jpg" alt="image">
+
+
+		<div class="avatar">	
+			<img src="{{ membre.avatar }}" alt="image">
+
+			<div class="profil-membre">{{ membre.statut }}</div>
+			<div class="profil-pseudo">{{ membre.pseudo }}</div>
+		</div>
+		
+		<div class="profil-div">
+		<!-- Liste profil -->
+			<ul class="profil-liste">
+				<li>Prénom et Nom : <p class="">{{ membre.prenom }} {{ membre.nom }}</p></li>
+				<li>Civilité : <p class="">{{ membre.civilite }}</p></li>
+				<li>Email : <p class="">{{ membre.email }}</p></li>
+				<li>Inscrit le <p class="">{#{{ membre.dateEnregistrement }}#}</p></li>
+				<li><img class="logo-profil" src="image/logo.gif" alt="logo"></li>
+			</ul>
+		</div>
+
+
+		
+	<!-- PROGRAMMES DU PROFIL -->	
+	        <div class="container-profil-debut">
+	            <p>Mes programmes</p>
+	        </div> 
+                    {% for programme in programmes %}
+	            <div class="container-profil-bis">
+
+					<div class="col-left">
+		            	<div class="sport-profil">{{ programme.sport }}</div>
+						<div class="titre-prog-profil">{{ programme.titre }}</div>
+
+							<!-- Menu Recap (table) -->
+							<ul class="recap-list">
+								<li class="recap_image"><img src="image/objectif.jpg"><p class="menu_prog">{{ programme.objectif }}</p></li>
+								<li class="recap_image"><img src="image/level.jpg"><p class="menu_prog">{{ programme.difficulte }}</p></li>
+								<li class="recap_image"><img src="image/time.jpg"><p class="menu_prog">{{ programme.duree }}</p></li>
+								<li class="recap_image"><img src="image/altere.jpg"><p class="menu_prog">{{ programme.materiel }}</p></li>
+							</ul>
+					</div>
+
+					<div class="col-right">
+						<img src="image/fitness.jpg" alt="logo">
+					</div>
+					<br>
+
+						<p class="date-publication">Publié le {#{{ programme.dateEnregistrement }}#}</p>
+
+						<div class="bandeau"></div>
+				</div>
+                                {% endfor %}
+
+			<div class="container-profil-fin"></div>	
+</div>
     
     
 {% endblock %}
