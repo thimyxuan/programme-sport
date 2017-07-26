@@ -40,16 +40,18 @@ class ProgrammeController extends ControllerAbstract
     public function editAction($id = null) 
     {        
         $objectifs = $this->app['objectif.repository']->findAll();
+        $objectif = new Objectif;
         
         if(!is_null($id))
         {
             $programme = $this->app['programme.repository']->find($id);
+            
         }        
         else
         {        
             $programme = new Programme;
             
-            $objectif = new Objectif;
+            
         }
         
         $tabJours = [];
@@ -110,13 +112,19 @@ class ProgrammeController extends ControllerAbstract
                                 ->setStatut($formJour['statut'])
                                 ->setProgramme($programme)
                             ;
-                        echo '<pre>'; print_r($jour); echo '</pre>';    
+                            
                         $tabJours[] = $jour;
 
                         
                         if (isset($_POST['jour'][$index]['exercice'])) {
                             
                             foreach ($_POST['jour'][$index]['exercice'] as $ind => $formExercice) {
+                                
+//                                if (isset($formExercice)) {
+//                                    $index_modif = count($formExercice);
+//                                } else {
+//                                    $index_modif = 1;
+//                                }
                                 
                                 $exercice = new Exercice();
                                 
@@ -243,7 +251,7 @@ class ProgrammeController extends ControllerAbstract
                             $errors['statut'] = 'Le statut du jour est obligatoire';
                            
                         }
-                        echo '<pre>'; print_r($value); echo '</pre>';
+                        
                             foreach($value['exercice'] as $ind => $val){
                             if($value['statut'] == 'entrainement') {       
                                 if(empty($val['titre']))
@@ -303,15 +311,16 @@ class ProgrammeController extends ControllerAbstract
             // Si pas d'erreur c'est ok pour envoyer en bdd :
 
             if (empty($errors)) {
-                
                 $this->app['programme.repository']->save($programme);
                 
                 foreach ($tabJours as $jour) {
                     $this->app['jour.repository']->save($jour); 
                 }
 
-                foreach ($tabExercices as $exercice) {
+                foreach ($tabExercices as $exercices) {
+                    foreach ($exercices as $exercice) {
                     $this->app['exercice.repository']->save($exercice);
+                    }
                 }
                 $msg='<strong>Enregistrement réussi !</strong>';
                 $this->addFlashMessage($msg, 'success');
@@ -328,7 +337,6 @@ class ProgrammeController extends ControllerAbstract
             }
 
         } else {
-            
             $tabJours = $this->app['jour.repository']->findByProgramme($programme);
             
             foreach($tabJours as $index => $jour) {
@@ -350,6 +358,7 @@ class ProgrammeController extends ControllerAbstract
                 'jours'=> $tabJours,
                 'exercices' => $tabExercices,
                 'membre' => $membre
+                //'i' => $index_modif
             ]
         );
 
