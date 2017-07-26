@@ -128,7 +128,7 @@ class MembreController extends ControllerAbstract {
     
     public function deleteAction($id)
     {
-        $membre = $this->app['membre.repository']->find($id);
+        $membre = $this->app['membre.repository']->findById($id);
         $this->app['membre.repository']->delete($membre);
         $this->addFlashMessage('Le membre est supprimé !');
         return $this->redirectRoute('liste_membre');
