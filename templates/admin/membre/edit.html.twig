@@ -3,6 +3,11 @@
 {% block title 'Edit' %}
 
 {% block content %}
+    
+    
+<div class="background-1">
+
+<div class="container-admin">
     <h1>    
     {% if membre.id is empty %}
             Nouveau
@@ -55,5 +60,8 @@
         <a href="{{ path('liste_membre') }}" class="">Annuler</a>
         
     </form>
+
+</div>
+</div>
         
 {% endblock %}

@@ -371,7 +371,7 @@ figcaption>a>p{
 .zone6>ul{
 	display:block;
 	margin:0 auto;
-	width:100%
+	width:100%;
 	height:500px;
 }
 .zone6>ul>li{
@@ -1273,6 +1273,207 @@ figcaption>a>p{
 
 
 
+/******************************* PAGE PROFIL ****************************************/
+		
+/* CONTAINER PROFIL ***************************************************/
+		.container-profil{
+			width: 65%;
+			border :solid 1px #222;
+			margin: 60px auto 0;
+			border :solid 1px #222;
+			background: #FFF;
+			border-radius: 10px;
+		}
+		.avatar{
+			position: relative;
+			top: 18%;
+			left :50%;
+			transform: translateX(-50%);
+			text-align: center;
+		}
+		.avatar img{
+			position: relative;
+			width: 25%;
+			border-radius: 10px;
+			transform: translateY(-40%);
+		}
+
+		/* Titres membre-pseudo */
+		.profil-membre{
+			font: 1.6rem 'Open sans',sans-serif;
+			color:#222;
+			font-weight: 300;
+			margin: 0 auto;
+			text-align: center;
+		}
+		.profil-pseudo{
+			font: 2rem 'Open sans',sans-serif;
+			color:#222;
+			font-weight: 700;
+			margin:0 auto;
+			text-align: center;
+		}
+
+		/* Liste profil */
+		.profil-liste{
+			padding: 0;
+		}
+		.profil-liste ul{
+			display: block;
+			width: 100%;
+			background: #fff;
+		}
+		.profil-liste li{
+			padding: 10px 10px 10px 25px;
+		}
+		.profil-liste li:last-child{
+			padding: 10px 10px 5px 25px;
+		}
+		.profil-liste li:nth-child(odd){
+			background: #DDDDDC;
+		}
+		.profil-liste p{
+			display: inline-block;
+			position: relative;
+		}
+		.logo-profil{
+			width: 10%;
+		}
+
+	/* CONTAINER PROGRAMMES DU PROFIL ***************************/
+
+		.container-profil-debut{
+			width: 100%;
+			border :solid 1px #222;
+			margin: 60px auto 0;
+			border-radius: 10px 10px 0 0;
+		}
+		/* Titre container */
+		.container-profil-debut{
+			background-color: #222;
+			height:50px;
+		}
+		.container-profil-fin{
+			border-radius: 0 0 10px 10px;
+			background-color: #222;
+			height:50px;
+		}
+		.container-profil-debut p{	
+			font:1.2rem 'Dosis',sans-serif;
+			color:#FFF;
+			text-align: left;
+			margin: 0;
+			padding: 10px 10px;
+		}
+                .container-profil-fin p{	
+			font:1.2rem 'Dosis',sans-serif;
+			color:#FFF;
+			text-align: left;
+			margin: 0;
+			padding: 10px 10px;
+		}
+
+		/* Titres programmes */
+		.sport-profil{
+			font: 1.5rem 'Open sans',sans-serif;
+			color:#222;
+			font-weight: 300;
+		}
+		.titre-prog-profil{
+			font: 1.2rem 'Open sans',sans-serif;
+			color:#222;
+			font-weight: 700;
+			margin:0;
+		}
+		.container-profil-bis div:nth-child(1){
+			padding: 10px 10px 0px;
+		}
+		.container-profil-bis div:nth-child(2){
+			padding: 0px 10px;
+		}
+
+		/* Menu Recap programme (table) */
+		.recap-list{
+			display:table;
+			width:100%;
+			padding: 10px;
+		}
+		.recap-list>li{
+			display:table-cell;
+			width: 25%;
+			height:35px;
+			background-color:#fff;
+			color:#222;
+			text-align: center;
+			border-right:solid 1px #222;
+			padding: 20px 0;
+		}
+		.recap-list li:nth-child(4){
+			border-right:0;
+		}
+		.container-profil-bis{
+			display: inline-block;
+			width:100%;
+		}
+		.col-left{
+			float: left;
+			width: 55%;
+		}
+		.col-right{
+			position:relative;
+			transform: translateY(5%);
+			float: right;
+			width: 30%;
+		}
+		.col-right>img{
+			width: 100%;
+			border-radius: 10px;
+		}
+		.date-publication{
+			width: 100%;
+			display: inline-block;
+			text-align: left;
+			padding: 0 20px;
+                        
+		}
+		/* bandeau sportbook */
+		.bandeau{
+			display: block;
+			width: 100%;
+			height: 30px;
+			margin: 0 auto;
+			background:url('../image/bandeau-logo.jpg') repeat top left scroll;
+			/*background-repeat: repeat-x;*/
+			background-size: contain;
+		}
+                
+                
+
+/******************* PAGE LISTE DES PROGRAMMES DES MEMBRES *****************/
+
+.container-proglist{
+    width: 80%;
+    border :solid 1px #222;
+    margin: 60px auto 0;
+    border :solid 1px #222;
+    background: #FFF;
+    border-radius: 10px;
+}
+.container-profil-deb{
+    border-radius: 10px 10px 0 0;
+    background-color: #222;
+    height:50px;     
+}
+.container-profil-deb p{	
+    font:1.2rem 'Dosis',sans-serif;
+    color:#FFF;
+    text-align: left;
+    margin: 0;
+    padding: 10px 10px;
+}
+
+
+
                 
 /**************************** RESPONSIVE ****************************/
 
@@ -1324,6 +1525,91 @@ figcaption>a>p{
         .container-inputs div:nth-child(6){
                 width: 100%;
         }
+        
+        
+        /******** CREATION PAGE PROFIL ********/
+		
+/* CONTAINER PROFIL ***************************************************/
+		.container-profil{
+			width: 90%;
+			margin: 5% auto;
+		}
+		.avatar{
+			position: relative;
+			top: 18%;
+			left :50%;
+			transform: translateX(-50%);
+			text-align: center;
+		}
+		.avatar img{
+			position: relative;
+			width: 50%;
+			border-radius: 10px;
+			transform: translateY(-20%);
+		}
+
+		/* Titres membre-pseudo */
+		.profil-membre{
+			font: 1.2rem 'Open sans',sans-serif;
+			color:#222;
+			font-weight: 300;
+			margin: 0 auto;
+			text-align: center;
+		}
+		.profil-pseudo{
+			font: 1.6rem 'Open sans',sans-serif;
+			color:#222;
+			font-weight: 700;
+			margin:0 auto;
+			text-align: center;
+		}
+		
+		/* logo noir dans liste */
+		.profil-liste li{
+			padding: 10px 10px 5px 10px;
+		}
+		.profil-liste li:last-child{
+			padding: 10px 10px 5px 10px;
+		}
+		.logo-profil{
+			width: 30%;
+		}
+		/* liste programmes */
+		.container-profil-bis div:nth-child(1) {
+    		padding: 0;
+		}
+
+		.col-left{
+			display:block;
+			width: 100%;
+			padding: 0;
+		}
+		.col-left div:nth-child(1){
+			padding: 20px 0 0 10px;
+		}
+		.recap-list{
+			padding: 0;
+			font-size: 0.7rem;
+		}
+		.col-right{
+			display:block;
+			width: 80%;
+			margin: 0 auto;
+			padding: 10px;
+		}
+		.col-right>img{
+			width: 100%;
+			border-radius: 10px;
+			transform: translateX(-15%);
+			padding: 10px;
+		}
+		.date-publication{
+			transform: translateY(-800%);                       
+		}
+                .container-proglist{
+                    width:100%;
+                }
+      
 }
 
 
@@ -1399,8 +1685,7 @@ figcaption>a>p{
         min-width:100%;
         margin:0px;
         font-size:4vw; 
-    }
-    
+    } 
     
     
     /* FORMULAIRE CONNEXION********************/
@@ -1454,12 +1739,32 @@ figcaption>a>p{
     .container-admin{
         display:block;
         margin:0 auto;
-        width:90%;
+        width:100%;
     }
     table .table-admin tbody{}
         display:inline-block;
         width:100%;        
-    }    
-   
+    }
+    table .table-admin{}
+        display:inline-block;
+        width:100%;          
+    }
+    .table-admin tr th,
+    .table-admin tr td,{
+        font-size:4vw;
+    }
+    /**********LISTE PROGRAMMES*******/
+    .container-proglist{
+        width:80%;
+
+    }
+    /*.col-right img{
+        display:block;
+        width:100%;
+        position:relative;
+        transform: translateY(50%);
+    }*/   
+    
+    
    
 }
