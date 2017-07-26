@@ -4,12 +4,6 @@
     
 {% block content %}
 
-{#{{ dump(file) }}#}
-{# dump(programme) #}
-{# dump(jours) #}
-{#{{ dump(exercices) }}
-{{ dump(post) }}#}
-
 {#<form method="POST" enctype="multipart/form-data">#}
         
         {#    PARTIE ENREGISTREMENT PROGRAMME    #}
@@ -279,7 +273,13 @@
                                     <option value="repos" {% if jours[i-1] is defined %}{% if jours[i-1].statut == 'repos'%}selected{% endif %}{% endif %}>repos</option>
                                 </select>
                             </div> 
-                            <div class="exercices">   
+                            <div class="exercices"> 
+                            {#{% if jours[i-1] is defined %}
+                            {% set j = (jours[i-1])|length %} 
+                            {{ dump(j) }}
+                            {% else %}
+                            {% set j = 1 %}
+                            {% endif %}#}
                             {% for j in 1..1 %}
                                 <div class="exercice">
                                 <!-- exercice -->
@@ -304,7 +304,7 @@
                                         <label>Temps de repos</label>
 
                                         <div class="menu_prog">
-                                            <input type="texte" name="jour[{{i}}][exercice][{{j}}][temps_repos]" placeholder="... sec. / min." value="{% if exercices[i-1][j-1] is defined %}{{ exercices[i-1][j-1].tempsRepos }}{% endif %}">
+                                            <input type="texte" name="jour[{{i}}][exercice][{{j}}][temps_repos]" placeholder="... sec." value="{% if exercices[i-1][j-1] is defined %}{{ exercices[i-1][j-1].tempsRepos }}{% endif %}">
                                         </div>
                                     </li>
                                     <li>
