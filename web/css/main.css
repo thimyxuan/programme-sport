@@ -42,7 +42,7 @@ header nav ul li a{
 }
 #navbar-principale{
 	text-align:right;
-        height:70px;
+        height:70px;        
 }
 #navbar-principale>ul>li{
 	display: inline-block;
@@ -137,8 +137,8 @@ header nav ul li a{
     font-size: 22px;
     margin-right:5px;
 }*/
-.menu-haut>nav>ul>li:hover{
-    background:#18ffff;
+.menu-haut>nav>ul>li:hover{    
+    background:#7affcc;
     color:#000;
 }
 .menu-haut>nav>ul>li>a:hover{
@@ -738,7 +738,6 @@ figcaption>a>p{
 			text-align: left;
 			background-color: #222;
 			color:#000;
-			border-radius : 10px;
                         padding-bottom:30px;
 		}
 		/* on cache les jours */
@@ -1062,23 +1061,27 @@ figcaption>a>p{
         height:30px;
         background:#fff;
 }
-.background-pattern{
+.background-1{
     display:block;
     margin:0 auto;
     width:100%;
     height:100%;
-    background:url('../image/pattern.jpg') center center fixed repeat;
+    background:url('../image/fondsport.jpg') bottom right fixed no-repeat;
+    background-size: cover;
     padding:40px 0;
     min-height:800px;
+    /*background:#fff;*/
 }
-.background-triangle{
+.background-2{
     display:block;
     margin:0 auto;
     width:100%;
     height:100%;
-    background:url('../image/triangle.jpg') center center fixed repeat;
+    background:url('../image/stade.jpg') bottom center fixed no-repeat;
+    background-size: cover;
     padding:40px 0;
     min-height:800px;
+    /*background:#fff;*/
 }
 
 
@@ -1145,12 +1148,12 @@ figcaption>a>p{
 		}
 		.container-inputs div:nth-child(1){
 			width: 40%;
-			float: right;
+			float: left;
 			padding-left: 0;
 		}
 		.container-inputs div:nth-child(2){
 			width: 40%;
-			float: left;
+			float: right;
 			padding-left: 0;
 		}
 		.container-inputs input[type="texte"],input[type="email"],input[type="password"]{
@@ -1220,7 +1223,7 @@ figcaption>a>p{
 		/* Avatar- photo avec input browse */
 		.photo_inscription>img{
 			display: block;
-			width: 20%;
+			width: 33%;
 			margin: 0 auto;
 		}
 		.photo_inscription>label{
@@ -1228,3 +1231,235 @@ figcaption>a>p{
 			text-align: center;
 			padding-top: 5px; 
 		}
+                
+/******************************** PARTIE BACK **************************************/
+.container-admin{
+    display:block;
+    margin: 20px auto;
+    width:880px;
+    min-height:800px;
+    background: #fff;
+    padding:20px;
+}
+.table-admin{
+    display:block;
+    width:870px;
+    margin:0 auto;
+    border-collapse: collapse;
+    text-align:center;
+}
+.table-admin tr th,
+.table-admin tr td{
+    border-bottom:solid 1px #222;
+    padding:6px 20px;
+    border-collapse: collapse;
+    width:12%;
+}
+/*.table-admin tr:nth-child(even){
+    background:#fff;
+}*/
+.table-admin tr{
+    background:#fff;
+}
+.btn-supprimer>a{
+    color:red;
+}
+.btn-voir>a{
+    color:blue;
+}
+.btn-modifier>a{
+    color:blue;
+}
+
+
+
+                
+/**************************** RESPONSIVE ****************************/
+
+/*Responsive smartphone*/
+@media screen and (max-width:480px){
+
+/* FORMULAIRE CONNEXION********************/
+        .container-connexion{
+                width: 90%;
+                border :solid 1px #222;
+                margin: 5% auto;
+                border-radius: 10px;
+        }
+        .container-inputs div{
+                display: block;
+                width: 100%;
+                padding: 5px;
+                margin: 0 auto;
+        }
+        .container-inputs div:nth-child(1){
+                width: 100%;
+        }
+        .container-inputs div:nth-child(2){
+                width: 100%;
+        }
+
+/* FORMULAIRE INSCRIPTION********************/
+
+        .container-inputs div{
+                padding: 0;
+        }
+
+        /* Avatar- photo avec input browse */
+        .photo_inscription>img{
+                width: 100%;
+        }
+        .photo_inscription>label{
+                padding: 5px 0 25px 0; 
+        }
+        .container-inputs div:nth-child(3){
+                width: 100%;
+        }
+        .container-inputs div:nth-child(4){
+                width: 100%;
+        }
+        .container-inputs div:nth-child(5){
+                width: 100%;
+        }
+        .container-inputs div:nth-child(6){
+                width: 100%;
+        }
+}
+
+
+/*Responsive tablet*/          
+@media screen and (max-width:768px){
+    
+    /* GENERAL ********************************/
+    header{
+        height:95px;
+        background:background: rgba(30,45,53,0.7);
+    }    
+    header #navbar-principale{
+        text-align:center;       
+    }
+    .background-1,
+    .background-2{
+        margin:0;
+        padding:0;
+    }  
+    #logo-accueil{
+        display:inline-block;       
+        width:300px;
+        margin:20px auto;
+        text-align:center;
+        float:none;
+    }
+    .menu-haut,
+    .menu-liste,
+    .menu-liste ul li,
+    .menu-haut ul li{
+        display:block;
+        position:relative;
+        top:0;
+    }
+    .menu-liste>ul>li,
+    .menu-haut>ul>li{
+        display:block;
+        width:100%; 
+    }
+    #mon-objectif,
+    .menu-haut>nav>ul>li{
+        display:block;
+        width:100%;
+        padding:5px 0;
+        margin:0;
+        font-size: 5vw;
+        text-align:center;
+    }
+    /* FOOTER **********************************/
+    footer{
+        display:block;
+        margin:0 auto;
+        font-size:3vw;
+        height:200px;
+        text-align:left;
+    }
+    footer>nav, footer>nav>ul{
+        text-align:center;
+    }
+    nav .footer>ul>li{
+        display:inline-block;
+        text-align:left;
+        width:10%;
+    }
+    footer nav ul li{
+        width:100%;
+        height:15px;
+    }
+  
+    /* PAGE PROGRAMME **************************/
+    .container-programme{
+        display:block;
+        min-width:100%;
+        margin:0px;
+        font-size:4vw; 
+    }
+    
+    
+    
+    /* FORMULAIRE CONNEXION********************/
+    .container-connexion{
+            width: 90%;
+            border :solid 1px #222;
+            margin: 5% auto;
+            border-radius: 10px;
+    }
+    .container-inputs div{
+            display: block;
+            width: 100%;
+            padding: 5px;
+            margin: 0 auto;
+    }
+    .container-inputs div:nth-child(1){
+            width: 100%;
+    }
+    .container-inputs div:nth-child(2){
+            width: 100%;
+    }
+
+    /* FORMULAIRE INSCRIPTION********************/
+
+    .container-inputs div{
+            padding: 0;
+    }
+
+    /* Avatar- photo avec input browse */
+    .photo_inscription>img{
+            width: 100%;
+    }
+    .photo_inscription>label{
+            padding: 5px 0 25px 0; 
+    }
+    .container-inputs div:nth-child(3){
+            width: 100%;
+    }
+    .container-inputs div:nth-child(4){
+            width: 100%;
+    }
+    .container-inputs div:nth-child(5){
+            width: 100%;
+    }
+    .container-inputs div:nth-child(6){
+            width: 100%;
+    }                
+                
+                
+    /* PARTIE BACK********************/
+    .container-admin{
+        display:block;
+        margin:0 auto;
+        width:90%;
+    }
+    table .table-admin tbody{}
+        display:inline-block;
+        width:100%;        
+    }    
+   
+   
+}

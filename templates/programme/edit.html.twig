@@ -3,6 +3,7 @@
 {% block title 'Création et modification programme' %}
     
 {% block content %}
+
 {#{{ dump(file) }}#}
 {# dump(programme) #}
 {# dump(jours) #}
@@ -152,8 +153,8 @@
         <button type="submit">Enregistrer</button>
     </form>#}
             
-<div class="background-pattern">
-            
+<div class="background-2">
+
     <div class="menu-haut">
         <nav>           
              {{ render(url('objectif_menu'))}}
@@ -184,7 +185,7 @@
             <label>Titre du programme :</label>
             <input type="text" name="titre" value="{{ programme.titre }}" placeholder="... donnez un titre">
         </div>
-        <div class="membre">proposé par </div>
+        <div class="membre">proposé par {{ membre.pseudo }}</div>
         
         <!-- Menu Recap (table) -->
         <ul class="recap recap_li_prog">
@@ -268,25 +269,26 @@
                             
                             
                             <!-- CONTENU -->
-                            <ul class="sub-menu sub-menu-j{{ i }}">
+                            <div class="sub-menu sub-menu-j{{ i }}">
                             
                             <div>
                                 <label>Statut</label>
-                                <select type="text" name="jour[{{i}}][statut]">
+                                <select type="text" name="jour[{{i}}][statut]" class="jour_statut">
                                     <option value="">choisir</option>
-                                    <option value="entrainement" {#{% if jours.statut == 'entrainement'%}selected{% endif %}#}>entrainement</option>
-                                    <option value="repos">repos</option>
+                                    <option value="entrainement" {% if jours[i-1] is defined %}{% if jours[i-1].statut == 'entrainement'%}selected{% endif %}{% endif %}>entrainement</option>
+                                    <option value="repos" {% if jours[i-1] is defined %}{% if jours[i-1].statut == 'repos'%}selected{% endif %}{% endif %}>repos</option>
                                 </select>
                             </div> 
-                               
+                            <div class="exercices">   
                             {% for j in 1..1 %}
-                                
+                                <div class="exercice">
                                 <!-- exercice -->
+                                <h2>Exercice {{ j }}</h2>
                                 <input type="hidden" name="jour_id" value="">
                                 <p class="ex_titre">
-                                <strong class="titre_prog">{{ j }}/.
+                                <strong class="titre_prog">{#{{ j }}/.#}
                                 <label>Titre</label>
-                                <input type="texte" name="jour[{{i}}][exercice][{{j}}][titre]" placeholder="de l'exercice...">
+                                <input type="texte" name="jour[{{i}}][exercice][{{j}}][titre]" placeholder="de l'exercice..." value="{% if exercices[i-1][j-1] is defined %}{{ exercices[i-1][j-1].titre }}{% endif %}">
                                     :</strong>
                                 </p>
                                 
@@ -295,21 +297,21 @@
                                         <label>Nombre de répétition</label>
 
                                         <div class="menu_prog">
-                                            <input type="texte" name="jour[{{i}}][exercice][{{j}}][repetition]" placeholder="... fois">
+                                            <input type="texte" name="jour[{{i}}][exercice][{{j}}][repetition]" placeholder="... fois" value="{% if exercices[i-1][j-1] is defined %}{{ exercices[i-1][j-1].repetition }}{% endif %}">
                                         </div>
                                     </li>
                                     <li>
                                         <label>Temps de repos</label>
 
                                         <div class="menu_prog">
-                                            <input type="texte" name="jour[{{i}}][exercice][{{j}}][temps_repos]" placeholder="... sec. / min.">
+                                            <input type="texte" name="jour[{{i}}][exercice][{{j}}][temps_repos]" placeholder="... sec. / min." value="{% if exercices[i-1][j-1] is defined %}{{ exercices[i-1][j-1].tempsRepos }}{% endif %}">
                                         </div>
                                     </li>
                                     <li>
                                         <label>Nombre de série</label>
 
                                         <div class="menu_prog">
-                                            <input type="texte" name="jour[{{i}}][exercice][{{j}}][serie]" placeholder="...">
+                                            <input type="texte" name="jour[{{i}}][exercice][{{j}}][serie]" placeholder="..." value="{% if exercices[i-1][j-1] is defined %}{{ exercices[i-1][j-1].serie }}{% endif %}">
                                         </div>
                                     </li>
                                 </ul>
@@ -322,10 +324,10 @@
                                                 <label>Difficulté</label>
                                                 <select name="jour[{{i}}][exercice][{{j}}][difficulte]">
                                                     <option value="">choisir</option>
-                                                    <option value="facile">Facile</option>
-                                                    <option value="moyen">Moyen</option>
-                                                    <option value="difficile">Difficile</option>
-                                                    <option value="infernal">Infernal</option>
+                                                    <option value="facile" {% if exercices[i-1][j-1] is defined %}{% if exercices[i-1][j-1].difficulte == 'facile'%}selected{% endif %}{% endif %}>Facile</option>
+                                                    <option value="moyen" {% if exercices[i-1][j-1] is defined %}{% if exercices[i-1][j-1].difficulte == 'moyen'%}selected{% endif %}{% endif %}>Moyen</option>
+                                                    <option value="difficile" {% if exercices[i-1][j-1] is defined %}{% if exercices[i-1][j-1].difficulte == 'difficile'%}selected{% endif %}{% endif %}>Difficile</option>
+                                                    <option value="infernal" {% if exercices[i-1][j-1] is defined %}{% if exercices[i-1][j-1].difficulte == 'infernal'%}selected{% endif %}{% endif %}>Infernal</option>
                                                 </select>
                                             </div>
                                         </div>
@@ -337,12 +339,12 @@
                                                 <label>Zone Musculaire</label>
                                                 <select name="jour[{{i}}][exercice][{{j}}][zone_musculaire]">
                                                     <option value="">Choisir</option>
-                                                    <option value="bras">Bras</option>
-                                                    <option value="cou">Cou</option>
-                                                    <option value="dos">Dos</option>
-                                                    <option value="epaule">Epaules</option>
-                                                    <option value="fessiers">Fessiers</option>
-                                                    <option value="jambes">Jambes</option>
+                                                    <option value="bras" {% if exercices[i-1][j-1] is defined %}{% if exercices[i-1][j-1].zoneMusculaire == 'bras'%}selected{% endif %}{% endif %}>Bras</option>
+                                                    <option value="cou" {% if exercices[i-1][j-1] is defined %}{% if exercices[i-1][j-1].zoneMusculaire == 'cou'%}selected{% endif %}{% endif %}>Cou</option>
+                                                    <option value="dos" {% if exercices[i-1][j-1] is defined %}{% if exercices[i-1][j-1].zoneMusculaire == 'dos'%}selected{% endif %}{% endif %}>Dos</option>
+                                                    <option value="epaule" {% if exercices[i-1][j-1] is defined %}{% if exercices[i-1][j-1].zoneMusculaire == 'epaule'%}selected{% endif %}{% endif %}>Epaules</option>
+                                                    <option value="fessiers" {% if exercices[i-1][j-1] is defined %}{% if exercices[i-1][j-1].zoneMusculaire == 'fessiers'%}selected{% endif %}{% endif %}>Fessiers</option>
+                                                    <option value="jambes" {% if exercices[i-1][j-1] is defined %}{% if exercices[i-1][j-1].zoneMusculaire == 'jambes'%}selected{% endif %}{% endif %}>Jambes</option>
                                                 </select>
                                             </div>
                                         </div>
@@ -352,13 +354,13 @@
                                     <li class="colonne2 col2-bis">
                                         <p class="col2-titre"><i class="fa fa-ellipsis-v" aria-hidden="true"></i> Muscles ciblés : </p>
                                         <div>
-                                            <input type="texte" name="jour[{{i}}][exercice][{{j}}][muscle_cible]" placeholder="...">
+                                            <input type="texte" name="jour[{{i}}][exercice][{{j}}][muscle_cible]" placeholder="..." value="{% if exercices[i-1][j-1] is defined %}{{ exercices[i-1][j-1].muscleCible }}{% endif %}">
                                         </div>
                                         
                                         <p class="col2-titre"><i class="fa fa-ellipsis-v" aria-hidden="true"></i> Consignes : </p>
-                                            <textarea type="texte" name="jour[{{i}}][exercice][{{j}}][consigne]" id="consigne" placeholder= "Ecrivez les consignes de l'exercice" rows="4"></textarea>
+                                            <textarea type="texte" name="jour[{{i}}][exercice][{{j}}][consigne]" id="consigne" placeholder= "Ecrivez les consignes de l'exercice" rows="4">{% if exercices[i-1][j-1] is defined %}{{ exercices[i-1][j-1].consigne }}{% endif %}</textarea>
                                         <p class="col2-titre"><i class="fa fa-ellipsis-v" aria-hidden="true"></i> Détails : </p>
-                                            <textarea type="texte" name="jour[{{i}}][exercice][{{j}}][detail_serie]" id="detail_serie" placeholder= "Ajouter les détails des séries" rows="1"></textarea>
+                                            <textarea type="texte" name="jour[{{i}}][exercice][{{j}}][detail_serie]" id="detail_serie" placeholder= "Ajouter les détails des séries" rows="1">{% if exercices[i-1][j-1] is defined %}{{ exercices[i-1][j-1].detailSerie }}{% endif %}</textarea>
                                     </li>
 
                                     <li class="colonne3">
@@ -367,17 +369,17 @@
 
                                             <label for="file">Ajouter une photo</label>
 
-                                            <input id="file" class="input-file" type="file" name="jour[{{i}}][exercice][{{j}}][photo]" value="">
+                                            <input id="file" class="input-file" type="file" name="jour[{{i}}][exercice][{{j}}][photo]" value="{% if exercices[i-1][j-1] is defined %}{{ exercices[i-1][j-1].photo }}{% endif %}">
                                         </div>
                                     </li>
                                 </ul>
-                                
+                                </div>
                             {% endfor %}
                             <button type="button" class="clone_exercice" data-added="0" data-jour="{{i}}">+ Ajouter un exercice</button>
-                            
+                            </div>
                             <!-- séparateur -->
 				<div class="border-blanc"></div>
-                            </ul> 
+                            </div> 
                             
                         </li>        
                         
@@ -397,12 +399,12 @@
             
                 
 {#    ---------------- CLONE POUR AJOUT EXERCICE -------------    #}
-<div style="display: none;" class="exercice exercice_template">
-    <h2>Exercice #EXERCICE#</h2>
+                    <div style="display: none;" class="exercice exercice_template">
+                        <h2>Exercice #EXERCICE#</h2>
                         <p class="ex_titre">
-                        <strong class="titre_prog">#JOUR#/.
+                        <strong class="titre_prog">{##JOUR#/.#}
                         <label>Titre</label>
-                        <input type="texte" name="jour[#JOUR#][exercice][#EXERCICE#][titre]" placeholder="de l'exercice...">
+                        <input type="texte" name="jour[#JOUR#][exercice][#EXERCICE#][titre]" placeholder="de l'exercice..." value="">
                             :</strong>
                         </p>
 

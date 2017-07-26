@@ -105,6 +105,17 @@ class MembreRepository extends RepositoryAbstract {
         return $membres;
     }
     
+    // ----------- Méthode delete() pour supprimer un membre --------------
+    
+    /**
+     * 
+     * @param Membre $membre
+     */
+    public function delete(Membre $membre)
+    {
+        $this->db->delete('membre', ['id' => $membre->getId()]);
+    }
+    
     
     // ---------------  Méthode buildFromArray() --------------- 
     /**

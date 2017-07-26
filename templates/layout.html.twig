@@ -28,7 +28,7 @@
                     
                     <li><a href="{{path('homepage')}}">Home</a></li>
                     <li><a href="">Contact</a></li>
-                    <li><a href="">Programmes</a></li>
+                    <li><a href="{{path('liste_all_programmes')}}">Programmes</a></li>
                     
                     {% if user_manager.admin %}
                     <li><a href="{{path('liste_membre')}}">Gestion membres</a></li>
