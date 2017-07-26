@@ -3,63 +3,56 @@
     <head>
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
-        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="viewport" content="width=device-width">
+        <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>        
         <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
+        <script type="text/javascript" src="js/cdn-jquery.js"></script>
+	<link rel="stylesheet" href="css/font-awesome.min.css">
+	<link rel="stylesheet" type="text/css" href="css/style.css">	
         
         <title>{% block title '' %} Sportbook</title>
 
         {% block stylesheets %}
         <link href="{{ asset('css/main.css') }}" rel="stylesheet" type="text/css" />
-        <link href="{{ asset('css/bootstrap.min.css') }}" rel="stylesheet" type="text/css" />
         {% endblock %}
     </head>
     
     <body>
         
-        {% if user_manager.admin %}
-        <nav>
-            <div>
-                <a>Menu admin</a>
-                <ul>
-                    <li>
-                        <a href="{{path('liste_membre')}}">Gestion membres</a>
-                    </li>
-                    <li>
-                        <a href="{{path('liste_programme')}}">Gestion programmes</a>
-                    </li>
-                    <li>
-                        <a href="{{path('liste_objectif')}}">Gestion objectifs</a>
-                    </li>
-                </ul>
-            </div>
-        </nav>
-        {% endif %}
-        
-        <nav class="">
-            <div class="">
-                <a class = "" href="{{path('homepage')}}">Sportbook</a>
+        <header>
+            <nav id="navbar-principale">
                 
-                {# affiche le rendu de la route category_menu p#}
-                {{ render(url('objectif_menu'))}}
-            </div>
-            {% if user_manager.user %}
-                <div class="">
-                    <a class = "" href="{{path('programme_edit')}}">Créez votre programme</a>
-                </div>
-                <div class="">
-                    <a class = "" href="{{path('logout')}}">déconnexion</a>
-                </div>
-            {% else %}
-            <div class="">
-                <a class = "" href="{{path('connexion')}}">Connexion</a>
-            </div>
-            <div class="">
-                <a class = "" href="{{path('inscription')}}">Inscription</a>
-            </div>
-            {% endif %}
-        </nav>
-        
+                <a href="{{path('homepage')}}"><img src="{{ asset('image/logo-blanc.gif') }}" alt="image" id="logo-accueil"></a>
+                
+                <ul>
+                    
+                    <li><a href="{{path('homepage')}}">Home</a></li>
+                    <li><a href="">Contact</a></li>
+                    <li><a href="">Programmes</a></li>
+                    
+                    {% if user_manager.admin %}
+                    <li><a href="{{path('liste_membre')}}">Gestion membres</a></li>
+                    <li><a href="{{path('liste_programme')}}">Gestion programmes</a></li>
+                    <li><a href="{{path('liste_objectif')}}">Gestion objectifs</a></li>
+                    <li><a href="{{path('programme_edit')}}">Créez votre programme</a></li>
+                    
+                    {% elseif user_manager.user %}
+                    <li><a href="{{path('programme_edit')}}">Créez votre programme</a></li>
+                    <li><a href="{{path('logout')}}">Déconnexion</a></li>     
+                    
+                    {% else %}
+                    <li><a href="{{path('inscription')}}">Créez votre programme</a></li>
+                    <li><a href="{{path('inscription')}}">Je m'inscris</a></li>
+                    <li id="connexion-icon"><a href="{{path('connexion')}}">Connexion</a></li>
+                    
+                    {% endif %}
+                    
+                </ul>
+            </nav>
+        </header>
+
+
+    <main>
         
         <div>
             {# bloc d'affichage des messages flash #}
@@ -77,6 +70,7 @@
             {% block content %}{% endblock %}
         </div>
         
+<<<<<<< HEAD
         <footer>		
 		<nav class="footer">
 		<!--navigation de la page-->
@@ -106,9 +100,52 @@
 	</footer>
             
         {% block javascripts %}
+=======
+
+   <footer>
+        <nav class="footer">
+            <ul>
+                <li>
+                    <a href="#" title="cgu" target="_blank">CGU</a>
+                </li>
+                <li>
+                    <a href="#" title="contact" target="_blank">Contact</a>
+                </li>
+                <li>
+                    <a href="#" title="mentions_legales" target="_blank">Mentions Légales</a>
+                </li>
+
+                <li>
+                    <a href="#" title="plan_de_site" target="_blank">Plan de site</a>
+                </li>
+                <li>
+                    <a href="#" title="team" target="_blank">Team</a>
+                </li>
+                <li class="normal_foot">
+                    <a>&#169; 2017 SPORTBOOK</a>
+                </li>
+            </ul>
+        </nav>
+    </footer>
+
+    </main>
+        
+        {% block javascripts %}        
+>>>>>>> master
         <script src="{{ asset('js/cdn-jquery.js') }}"></script>
         <script src="{{ asset('js/app_menu.js') }}"></script>
-        <script src="{{ asset('js/fonctions.js') }}"></script>
+        <script src="{{ asset('js/fonctions.js') }}"></script>        
+        <script src="{{ asset('jquery.slides.min.js') }}"></script>
+        <script src="http://code.jquery.com/jquery-1.9.1.min.js"></script>
+        <script>
+            $(function() {
+              $('#slides').slidesjs({
+                width: 940,
+                height: 528,
+                navigation: false
+              });
+            });
+        </script>
         {% endblock %}
     </body>
 </html>
