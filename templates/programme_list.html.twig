@@ -1,11 +1,48 @@
-{% for programme in programmes %}    
-    <h2>{{ programme.titre }} <small>{{ programme.objectifTitre }}</small></h2>
-    <p><b>{{ programme.sport }}</b></p>
-    <p>{{ programme.duree }}</p>
-    <p><em>{{ programme.materiel }}</em></p>   
-    <a href="{{ path('programme', {id: programme.id}) }}">Lire</a>
-    {% if not loop.last %}
-    <hr>    
-    {% endif %}
+
+
+<div class="background-2">
     
-{% endfor %}
+    <div class="menu-haut">
+        <nav>           
+             {{ render(url('objectif_menu'))}}
+        </nav>
+    </div>
+    
+    <div class="container-proglist">
+    
+        <div class="container-profil-deb">
+            <p>Les programmes pour <strong>{{ objectif }}</strong></p>
+        </div>
+
+        {% for programme in programmes %}
+
+            <div class="container-profil-bis">
+                <div class="col-left">
+                    <div class="sport-profil">{{ programme.sport }}</div>
+                    <div class="titre-prog-profil">{{ programme.titre }}</div>
+
+                        <!-- Menu Recap (table) -->
+                        <ul class="recap-list">
+                            <li class="recap_image"><img src="{{ asset('image//objectif.jpg') }}"><p class="menu_prog">{{ programme.objectif }}</p></li>
+                            <li class="recap_image"><img src="{{ asset('image//level.jpg') }}"><p class="menu_prog">{{ programme.difficulte }}</p></li>
+                            <li class="recap_image"><img src="{{ asset('image//time.jpg') }}"><p class="menu_prog">{{ programme.duree }}</p></li>
+                            <li class="recap_image"><img src="{{ asset('image//altere.jpg') }}"><p class="menu_prog">{{ programme.materiel }}</p></li>
+                        </ul>
+                </div>
+
+                <div class="col-right">
+                        <img src="{{ asset('image/fitness.jpg') }}" alt="logo">
+                </div>
+                <br>
+
+                <p class="date-publication">Publié le {#{{ programme.dateEnregistrement }}#}</p>
+
+                <div class="bandeau"></div>        
+            </div>
+
+        {% endfor %}
+
+        <div class="container-profil-fin"></div>	
+    </div>
+</div>  
+    
