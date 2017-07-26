@@ -17,17 +17,21 @@
         <tr>
             <th>Id</th>
             <th>Titre</th>
-            <th>Action</th>
+            <th>Supprimer</th> 
+            <th>Modifier</th>            
         </tr>
         
         {% for objectif in objectifs %}
         <tr>
             <td>{{ objectif.id }}</td>
             <td>{{ objectif.titre }}</td>
-            <td>
-                <div class="btn-voir"><a href="{{path('admin_objectif_edit', {id: objectif.id}) }}">Modifier</a></div>
+            <td>                
                 <div class="btn-supprimer"><a href="{{path('admin_objectif_delete', {id: objectif.id}) }}">Supprimer</a></div>
-            </td>    
+            </td> 
+            <td>
+                <div class="btn-modifier"><a href="{{path('admin_objectif_edit', {id: objectif.id}) }}">Modifier</a></div>                
+            </td>
+                       
         </tr>
         {% endfor %}
     </table>

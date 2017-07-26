@@ -13,9 +13,9 @@
        
     <table class="table-admin">
         <tr>
-            <th>Id</th>
+            <th>Numéro ID</th>
             <th>Nom du programme</th>
-            <th>Créé par le membre</th>
+            <th>Créé par</th>
             <th>Date de création</th>
             <th>Action</th>
             <th>Voir</th>
@@ -31,7 +31,7 @@
                 <div class="btn-supprimer"><a href="{{path('admin_programme_delete', {id: programme.id}) }}">Supprimer</a></div>
             </td>
             <td>                
-                <div class="btn-voir"><a href="{{ path('programme', {id: programme.id}) }}">Voir</a></div>
+                <div class="btn-voir"><a href="{{ path('programme', {id: programme.id}) }}" target="_blank">Voir</a></div>
             </td>  
         </tr>
         {% endfor %}

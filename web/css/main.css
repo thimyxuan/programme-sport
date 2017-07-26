@@ -42,7 +42,7 @@ header nav ul li a{
 }
 #navbar-principale{
 	text-align:right;
-        height:70px;
+        height:70px;        
 }
 #navbar-principale>ul>li{
 	display: inline-block;
@@ -1148,12 +1148,12 @@ figcaption>a>p{
 		}
 		.container-inputs div:nth-child(1){
 			width: 40%;
-			float: right;
+			float: left;
 			padding-left: 0;
 		}
 		.container-inputs div:nth-child(2){
 			width: 40%;
-			float: left;
+			float: right;
 			padding-left: 0;
 		}
 		.container-inputs input[type="texte"],input[type="email"],input[type="password"]{
@@ -1223,7 +1223,7 @@ figcaption>a>p{
 		/* Avatar- photo avec input browse */
 		.photo_inscription>img{
 			display: block;
-			width: 20%;
+			width: 33%;
 			margin: 0 auto;
 		}
 		.photo_inscription>label{
@@ -1253,6 +1253,7 @@ figcaption>a>p{
     border-bottom:solid 1px #222;
     padding:6px 20px;
     border-collapse: collapse;
+    width:12%;
 }
 /*.table-admin tr:nth-child(even){
     background:#fff;
@@ -1266,6 +1267,9 @@ figcaption>a>p{
 .btn-voir>a{
     color:blue;
 }
+.btn-modifier>a{
+    color:blue;
+}
 
 
 
@@ -1275,86 +1279,70 @@ figcaption>a>p{
 /*Responsive smartphone*/
 @media screen and (max-width:480px){
 
-	/* FORMULAIRE CONNEXION********************/
-		.container-connexion{
-			width: 90%;
-			border :solid 1px #222;
-			margin: 5% auto;
-			border-radius: 10px;
-		}
-		.container-inputs div{
-			display: block;
-			width: 100%;
-			padding: 5px;
-			margin: 0 auto;
-		}
-		.container-inputs div:nth-child(1){
-			width: 100%;
-		}
-		.container-inputs div:nth-child(2){
-			width: 100%;
-		}
+/* FORMULAIRE CONNEXION********************/
+        .container-connexion{
+                width: 90%;
+                border :solid 1px #222;
+                margin: 5% auto;
+                border-radius: 10px;
+        }
+        .container-inputs div{
+                display: block;
+                width: 100%;
+                padding: 5px;
+                margin: 0 auto;
+        }
+        .container-inputs div:nth-child(1){
+                width: 100%;
+        }
+        .container-inputs div:nth-child(2){
+                width: 100%;
+        }
 
-	/* FORMULAIRE INSCRIPTION********************/
+/* FORMULAIRE INSCRIPTION********************/
 
-		.container-inputs div{
-			padding: 0;
-		}
+        .container-inputs div{
+                padding: 0;
+        }
 
-		/* Avatar- photo avec input browse */
-		.photo_inscription>img{
-			width: 100%;
-		}
-		.photo_inscription>label{
-			padding: 5px 0 25px 0; 
-		}
-		.container-inputs div:nth-child(3){
-			width: 100%;
-		}
-		.container-inputs div:nth-child(4){
-			width: 100%;
-		}
-		.container-inputs div:nth-child(5){
-			width: 100%;
-		}
-		.container-inputs div:nth-child(6){
-			width: 100%;
-		}
+        /* Avatar- photo avec input browse */
+        .photo_inscription>img{
+                width: 100%;
+        }
+        .photo_inscription>label{
+                padding: 5px 0 25px 0; 
+        }
+        .container-inputs div:nth-child(3){
+                width: 100%;
+        }
+        .container-inputs div:nth-child(4){
+                width: 100%;
+        }
+        .container-inputs div:nth-child(5){
+                width: 100%;
+        }
+        .container-inputs div:nth-child(6){
+                width: 100%;
+        }
 }
 
 
 /*Responsive tablet*/          
 @media screen and (max-width:768px){
-    .container-programme{
-        min-width:90%;
-        margin-top:0px;
-    }
-    .menu-haut,.menu-liste{
-        display:none;
-    }
-    .background-triangle,
-    .background-pattern{
-        margin-top:0;
-    }
+    
+    /* GENERAL ********************************/
     header{
-        height:100px;
+        height:95px;
+        background:background: rgba(30,45,53,0.7);
+    }    
+    header #navbar-principale{
+        text-align:center;       
     }
-    #navbar-principale{
-        display:block;
-        text-align:center;
-        height:auto;
-    }
-    #navbar-principale ul li{
-        display:block;
-    }
-     #navbar-principale>ul>li{
-        display:block;
-        margin:0 auto;
-        width:100%;
-        height:auto;
-        border-botom: solid 1px #eee;
-        background:#222;
-    }
+    .background-1,
+    .background-2{
+        margin:0;
+        padding:0;
+    }  
     #logo-accueil{
         display:inline-block;       
         width:300px;
@@ -1362,50 +1350,116 @@ figcaption>a>p{
         text-align:center;
         float:none;
     }
-    /* FORMULAIRE CONNEXION********************/
-		.container-connexion{
-			width: 90%;
-			border :solid 1px #222;
-			margin: 5% auto;
-			border-radius: 10px;
-		}
-		.container-inputs div{
-			display: block;
-			width: 100%;
-			padding: 5px;
-			margin: 0 auto;
-		}
-		.container-inputs div:nth-child(1){
-			width: 100%;
-		}
-		.container-inputs div:nth-child(2){
-			width: 100%;
-		}
-
-	/* FORMULAIRE INSCRIPTION********************/
-
-		.container-inputs div{
-			padding: 0;
-		}
-
-		/* Avatar- photo avec input browse */
-		.photo_inscription>img{
-			width: 100%;
-		}
-		.photo_inscription>label{
-			padding: 5px 0 25px 0; 
-		}
-		.container-inputs div:nth-child(3){
-			width: 100%;
-		}
-		.container-inputs div:nth-child(4){
-			width: 100%;
-		}
-		.container-inputs div:nth-child(5){
-			width: 100%;
-		}
-		.container-inputs div:nth-child(6){
-			width: 100%;
-		}
+    .menu-haut,
+    .menu-liste,
+    .menu-liste ul li,
+    .menu-haut ul li{
+        display:block;
+        position:relative;
+        top:0;
+    }
+    .menu-liste>ul>li,
+    .menu-haut>ul>li{
+        display:block;
+        width:100%; 
+    }
+    #mon-objectif,
+    .menu-haut>nav>ul>li{
+        display:block;
+        width:100%;
+        padding:5px 0;
+        margin:0;
+        font-size: 5vw;
+        text-align:center;
+    }
+    /* FOOTER **********************************/
+    footer{
+        display:block;
+        margin:0 auto;
+        font-size:3vw;
+        height:200px;
+        text-align:left;
+    }
+    footer>nav, footer>nav>ul{
+        text-align:center;
+    }
+    nav .footer>ul>li{
+        display:inline-block;
+        text-align:left;
+        width:10%;
+    }
+    footer nav ul li{
+        width:100%;
+        height:15px;
+    }
+  
+    /* PAGE PROGRAMME **************************/
+    .container-programme{
+        display:block;
+        min-width:100%;
+        margin:0px;
+        font-size:4vw; 
+    }
     
+    
+    
+    /* FORMULAIRE CONNEXION********************/
+    .container-connexion{
+            width: 90%;
+            border :solid 1px #222;
+            margin: 5% auto;
+            border-radius: 10px;
+    }
+    .container-inputs div{
+            display: block;
+            width: 100%;
+            padding: 5px;
+            margin: 0 auto;
+    }
+    .container-inputs div:nth-child(1){
+            width: 100%;
+    }
+    .container-inputs div:nth-child(2){
+            width: 100%;
+    }
+
+    /* FORMULAIRE INSCRIPTION********************/
+
+    .container-inputs div{
+            padding: 0;
+    }
+
+    /* Avatar- photo avec input browse */
+    .photo_inscription>img{
+            width: 100%;
+    }
+    .photo_inscription>label{
+            padding: 5px 0 25px 0; 
+    }
+    .container-inputs div:nth-child(3){
+            width: 100%;
+    }
+    .container-inputs div:nth-child(4){
+            width: 100%;
+    }
+    .container-inputs div:nth-child(5){
+            width: 100%;
+    }
+    .container-inputs div:nth-child(6){
+            width: 100%;
+    }                
+                
+                
+    /* PARTIE BACK********************/
+    .container-admin{
+        display:block;
+        margin:0 auto;
+        width:90%;
+    }
+    table .table-admin tbody{}
+        display:inline-block;
+        width:100%;        
+    }    
+   
+   
 }
