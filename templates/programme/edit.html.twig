@@ -168,11 +168,14 @@
             <label>Sport</label>
             <select name="sport">
                 <option value="">Choisir</option>
+                <option value="cardio" {% if programme.sport == 'cardio'%}selected{% endif %}>Cardio</option>
                 <option value="fitness" {% if programme.sport == 'fitness'%}selected{% endif %}>Fitness</option>
                 <option value="muscu" {% if programme.sport == 'muscu'%}selected{% endif %}>Musculation</option>
+                <option value="renforcement" {% if programme.sport == 'muscu'%}selected{% endif %}>Renforcement</option>
                 <option value="running" {% if programme.sport == 'running'%}selected{% endif %}>Running</option>
                 <option value="stretching" {% if programme.sport == 'stretching'%}selected{% endif %}>Stretching</option>
                 <option value="yoga" {% if programme.sport == 'yoga'%}selected{% endif %}>Yoga</option>
+                <option value="autre" {% if programme.sport == 'yoga'%}selected{% endif %}>Autre sport</option>
             </select>
         </div>
         <div class="titre_prog">
@@ -253,7 +256,7 @@
                 <!-- NOM JOURS -->
                 <ul>
                     
-                    {% for i in 1..2 %}
+                    {% for i in 1..7 %}
                         
                         <li class="jour jour{{ i }}">
                             
@@ -280,7 +283,7 @@
                             {% else %}
                             {% set j = 1 %}
                             {% endif %}#}
-                            {% for j in 1..1 %}
+                            {% for j in 1..7 %}
                                 <div class="exercice">
                                 <!-- exercice -->
                                 <h2>Exercice {{ j }}</h2>
