@@ -1490,11 +1490,16 @@ figcaption>a>p{
 @media screen and (max-width:480px){
     
 /* ACCUEIL ********************************/
+
         .zone1-texte{
             display:none;
         }
         .colonne-menu>ul{
             height:420px;
+        }
+        .colonne-menu ul{
+            background:url(../image/sportbook.jpg) top center scroll no-repeat;
+            background-size:cover;
         }
         .colonne-menu>ul>li{
             width:100%;
