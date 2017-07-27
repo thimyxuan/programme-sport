@@ -61,16 +61,17 @@ class ProgrammeController extends ControllerAbstract
         $errors = [];
         
         $membre_id = $this->app['user.manager']->getUser()->getId();
+        echo '<pre>'; print_r($membre_id = $this->app['user.manager']->getUser()->getId()); echo '</pre>';
         
         if ($_POST) {
             
             
             if(!empty($_POST))
             {
-                $membre = new Membre();
-                $membre->setId($membre_id);
-//              $membre = $this->app['user.manager']->getUser();
-
+                //$membre_id = $this->app['user.manager']->getUser()->getId();
+                $membre = $this->app['user.manager']->getUser();
+              
+                // echo '<pre>'; print_r($membre_id = $this->app['user.manager']->getUser()->getId()); echo '</pre>';
                 $objectif->setId($_POST['objectif_id']);
                 $programme
                     ->setTitre($_POST['titre'])
