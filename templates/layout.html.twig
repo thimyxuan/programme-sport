@@ -31,14 +31,15 @@
                     <li><a href="{{path('liste_all_programmes')}}">Programmes</a></li>
                     
                     {% if user_manager.admin %}
-                    <li><a href="{{path('liste_membre')}}">Gestion membres</a></li>
-                    <li><a href="{{path('liste_programme')}}">Gestion programmes</a></li>
-                    <li><a href="{{path('liste_objectif')}}">Gestion objectifs</a></li>
-                    <li><a href="{{path('programme_edit')}}">Créez votre programme</a></li>
+                    <li><a href="{{path('liste_membre')}}">Gestion Membres</a></li>
+                    <li><a href="{{path('liste_programme')}}">Gestion Programmes</a></li>
+                    <li><a href="{{path('liste_objectif')}}">Gestion Objectifs</a></li>
+                    {#<li><a href="{{path('programme_edit')}}">Créez votre programme</a></li>#}
                     <li><a href="{{path('logout')}}">Déconnexion</a></li> 
                     
                     {% elseif user_manager.user %}
                     <li><a href="{{path('programme_edit')}}">Créez votre programme</a></li>
+                    <li><a href="{{path('profil')}}">Mon profil</a></li>
                     <li><a href="{{path('logout')}}">Déconnexion</a></li>     
                     
                     {% else %}

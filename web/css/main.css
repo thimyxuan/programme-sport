@@ -10,7 +10,6 @@ body{
 }
 a{
     margin: 0;
-    cursor:default;
     text-decoration:none;
 }
 ul, li{
@@ -372,7 +371,7 @@ figcaption>a>p{
 	display:block;
 	margin:0 auto;
 	width:100%;
-	height:500px;
+	height:700px;
 }
 .zone6>ul>li{
 	display:block;
@@ -380,7 +379,7 @@ figcaption>a>p{
 	width:25%;
 	margin:0;
 	padding:0;
-	height:500px;
+	height:700px;
         text-align:center;
 }
 .zone6-container{
@@ -460,7 +459,7 @@ figcaption>a>p{
 }
 #zone6-container4>p{
 	display:block;
-	height:500px;
+	height:700px;
 }
 #zone6-container4>p>img{
 	display:inline-block;
@@ -947,6 +946,16 @@ figcaption>a>p{
     .menu_prog{
             padding:10px 10px 0px 10px;
     }
+    .menu_prog>a{
+        text-decoration:none;
+        color:black;
+        font-weight:bolder;
+    }
+    .menu_prog>a:hover{
+        text-decoration:none;
+        color:#7affcc;
+        font-weight:bolder;
+    }
     .materiel{
             padding-left:0;
     }
@@ -1400,7 +1409,7 @@ figcaption>a>p{
 		}
 		.recap-list>li{
 			display:table-cell;
-			width: 25%;
+			width: 20%;
 			height:35px;
 			background-color:#fff;
 			color:#222;
@@ -1408,7 +1417,7 @@ figcaption>a>p{
 			border-right:solid 1px #222;
 			padding: 20px 0;
 		}
-		.recap-list li:nth-child(4){
+		.recap-list li:nth-child(5){
 			border-right:0;
 		}
 		.container-profil-bis{
@@ -1417,7 +1426,7 @@ figcaption>a>p{
 		}
 		.col-left{
 			float: left;
-			width: 55%;
+			width: 66%;
 		}
 		.col-right{
 			position:relative;
@@ -1479,6 +1488,107 @@ figcaption>a>p{
 
 /*Responsive smartphone*/
 @media screen and (max-width:480px){
+    
+/* ACCUEIL ********************************/
+
+        .zone1-texte{
+            display:none;
+        }
+        .colonne-menu>ul{
+            height:380px;
+        }
+        .colonne-menu ul{
+            background:url(../image/sportbook.jpg) top center scroll no-repeat;
+            background-size:cover;
+        }
+        .colonne-menu>ul>li{
+            width:100%;
+            height:40px;
+            margin:5px auto;
+            padding:1px;
+            font-size:5vw;
+            background:rgba(255,255,255,0.6);
+            
+        }	
+        .zone2{
+            height:300px;
+        }
+        .zone2>.zone2-container1,
+        .zone2>.zone2-container2{
+            display:block;
+            height:75px;
+        }
+        .zone2-container1>p{
+            height:75px;
+            line-height: 55px;
+            padding:20px 0;
+            text-align:center;
+        }
+        .zone2-container2{
+            top:75px;        
+        }
+        #zone2-photo{
+            margin:0 auto;
+            width:100%
+        }
+        .zone3{
+            display:block;
+            width:100%;
+            background: #fff;
+            height:auto;
+        }
+        .zone3>h2{
+            display:block;
+            margin:0 auto;
+            position: relative;
+            top:140px;
+            font-size:8vw;
+        }
+        .zone3>ul{
+            display:block;
+            width:100%;
+            margin:0 auto;
+            text-align:center;
+            position:relative;
+            top:80px;
+        }
+        .zone3>ul>li{
+            display:block;
+            width:80%;
+            margin:0 auto;
+            height:300px;
+            text-align:center;
+            font-size:4vw;
+        }
+        .zone3>ul>li>figure{
+            display:block;
+            width:100%;
+            margin:0 auto;
+        }
+        .zone3>ul>li>figure>img{
+            display:block;
+            width:40%;
+            margin:0 auto;
+        }
+        .zone3>ul>li>figure>figcaption{
+            display:block;
+            width:100%;
+            margin:0 auto;
+        }
+        .zone4{
+            padding:2%;
+            height:auto;
+        }
+        .zone4>.slider-photo{
+            width:100%;            
+        }
+        .zone6>ul>li{
+            height:400px;
+            width:100%;
+        }
+        .zone6>ul>li:last-child{
+            display:none
+        }
 
 /* FORMULAIRE CONNEXION********************/
         .container-connexion{
@@ -1527,88 +1637,90 @@ figcaption>a>p{
         }
         
         
-        /******** CREATION PAGE PROFIL ********/
+/******** CREATION PAGE PROFIL ********/
 		
 /* CONTAINER PROFIL ***************************************************/
-		.container-profil{
-			width: 90%;
-			margin: 5% auto;
-		}
-		.avatar{
-			position: relative;
-			top: 18%;
-			left :50%;
-			transform: translateX(-50%);
-			text-align: center;
-		}
-		.avatar img{
-			position: relative;
-			width: 50%;
-			border-radius: 10px;
-			transform: translateY(-20%);
-		}
+        .container-profil{
+                width: 90%;
+                margin: 5% auto;
+        }
+        .avatar{
+                position: relative;
+                top: 18%;
+                left :50%;
+                transform: translateX(-50%);
+                text-align: center;
+        }
+        .avatar img{
+                position: relative;
+                width: 50%;
+                border-radius: 10px;
+                transform: translateY(-20%);
+        }
 
-		/* Titres membre-pseudo */
-		.profil-membre{
-			font: 1.2rem 'Open sans',sans-serif;
-			color:#222;
-			font-weight: 300;
-			margin: 0 auto;
-			text-align: center;
-		}
-		.profil-pseudo{
-			font: 1.6rem 'Open sans',sans-serif;
-			color:#222;
-			font-weight: 700;
-			margin:0 auto;
-			text-align: center;
-		}
-		
-		/* logo noir dans liste */
-		.profil-liste li{
-			padding: 10px 10px 5px 10px;
-		}
-		.profil-liste li:last-child{
-			padding: 10px 10px 5px 10px;
-		}
-		.logo-profil{
-			width: 30%;
-		}
-		/* liste programmes */
-		.container-profil-bis div:nth-child(1) {
-    		padding: 0;
-		}
+        /* Titres membre-pseudo */
+        .profil-membre{
+                font: 1.2rem 'Open sans',sans-serif;
+                color:#222;
+                font-weight: 300;
+                margin: 0 auto;
+                text-align: center;
+        }
+        .profil-pseudo{
+                font: 1.6rem 'Open sans',sans-serif;
+                color:#222;
+                font-weight: 700;
+                margin:0 auto;
+                text-align: center;
+        }
 
-		.col-left{
-			display:block;
-			width: 100%;
-			padding: 0;
-		}
-		.col-left div:nth-child(1){
-			padding: 20px 0 0 10px;
-		}
-		.recap-list{
-			padding: 0;
-			font-size: 0.7rem;
-		}
-		.col-right{
-			display:block;
-			width: 80%;
-			margin: 0 auto;
-			padding: 10px;
-		}
-		.col-right>img{
-			width: 100%;
-			border-radius: 10px;
-			transform: translateX(-15%);
-			padding: 10px;
-		}
-		.date-publication{
-			transform: translateY(-800%);                       
-		}
-                .container-proglist{
-                    width:100%;
-                }
+        /* logo noir dans liste */
+        .profil-liste li{
+                padding: 10px 10px 5px 10px;
+        }
+        .profil-liste li:last-child{
+                padding: 10px 10px 5px 10px;
+        }
+        .logo-profil{
+                width: 30%;
+        }
+        
+        /* liste programmes */
+        .container-profil-bis div:nth-child(1) {
+            display:block;
+            padding: 0;
+        }
+        .col-left{
+                display:block;
+                width: 100%;
+                padding: 0;
+                font-size:4vw;
+        }
+        .col-left div:nth-child(1){
+                padding: 20px 0 0 10px;
+        }
+        .recap-list{
+                padding: 0;
+                font-size: 0.7rem;
+        }
+        .col-right{
+                display:block;
+                width: 80%;
+                margin: 0 auto;
+                padding: 10px;
+        }
+        .col-right>img{
+                width: 100%;
+                border-radius: 10px;
+                transform: translateX(-15%);
+                padding: 10px;
+        }
+        .date-publication{
+            display:none;                       
+        }
+        .container-proglist{
+            width:100%;
+        }        
       
 }
 
@@ -1655,9 +1767,18 @@ figcaption>a>p{
         width:100%;
         padding:5px 0;
         margin:0;
+        font-size: 4vw;
+        text-align:center;
+    }
+    #mon-objectif{
+        display:block;
+        width:100%;
+        padding:5px 0;
+        margin:0;
         font-size: 5vw;
         text-align:center;
     }
+    
     /* FOOTER **********************************/
     footer{
         display:block;
@@ -1741,11 +1862,11 @@ figcaption>a>p{
         margin:0 auto;
         width:100%;
     }
-    table .table-admin tbody{}
+    table .table-admin tbody{
         display:inline-block;
         width:100%;        
     }
-    table .table-admin{}
+    table .table-admin{
         display:inline-block;
         width:100%;          
     }
@@ -1753,18 +1874,48 @@ figcaption>a>p{
     .table-admin tr td,{
         font-size:4vw;
     }
+    
     /**********LISTE PROGRAMMES*******/
     .container-proglist{
         width:80%;
-
     }
-    /*.col-right img{
+    .col-right,.col-left{
         display:block;
+        font-size:4vw;
+    }
+    .col-right>img{
+	width: 100%;
+    }
+    .col-left{
+            display:block;
+            width: 100%;
+            padding: 0;
+    }
+    .col-left div:nth-child(1){
+            padding: 20px 0 0 10px;
+    }
+    .recap-list{
+            padding: 0;
+            font-size: 4vw;
+    }
+    .col-right{
+            display:block;
+            width: 80%;
+            margin: 0 auto;
+            padding: 10px;
+    }
+    .col-right>img{
+            width: 90%;
+            border-radius: 10px;
+            transform: translateX(-10%);
+            padding: 10px;
+    }
+    .date-publication{
+            display:none;                       
+    }
+    .container-proglist{
         width:100%;
-        position:relative;
-        transform: translateY(50%);
-    }*/   
+    }
     
-    
-   
+      
 }
