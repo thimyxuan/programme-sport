@@ -18,8 +18,9 @@
         <img class="prog_photo" src="{{ programme.photoProgramme }}" alt="image">
 
         <div class="sport"> {{ programme.sport }} </div></i>
-        <div class="titre_prog">{{ programme.titre }}</div>
-        <div class="membre">proposé par {{ programme.membre.pseudo }}</div>
+        <div class="titre_prog">{{ programme.titre }} / semaine 1</div>
+        <div class="membre">proposé par <a href="{{ path('profil') }}">{{ programme.membre.pseudo }}</a></div>
+
 
         <!-- Menu Recap (table) -->
         <ul class="recap">
