@@ -36,6 +36,10 @@ class MembreRepository extends RepositoryAbstract {
                 : null // création
             ;
         $this->persist($data, $where);
+        
+        if (empty($membre->getId())) {
+            $membre->setId($this->db->lastInsertId());
+        }
     }
     
     

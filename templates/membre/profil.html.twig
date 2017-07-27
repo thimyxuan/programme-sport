@@ -43,7 +43,6 @@
 	            <p>Mes programmes</p>
 	        </div> 
                     {% for programme in programmes %}
-                        {{ programme.membreId }}
 	            <div class="container-profil-bis">
 			<div class="col-left">
 		            	<div class="sport-profil">{{ programme.sport }}</div>
@@ -60,7 +59,7 @@
 					</div>
 
 					<div class="col-right">
-						<img src="{{ asset('image//fitness.jpg') }}" alt="logo">
+						<img src="{{ programme.photoProgramme }}" alt="logo">
 					</div>
 					<br>
 
