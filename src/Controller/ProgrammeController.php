@@ -61,17 +61,14 @@ class ProgrammeController extends ControllerAbstract
         $errors = [];
         
         $membre_id = $this->app['user.manager']->getUser()->getId();
-        echo '<pre>'; print_r($membre_id = $this->app['user.manager']->getUser()->getId()); echo '</pre>';
         
         if ($_POST) {
             
             
             if(!empty($_POST))
             {
-                //$membre_id = $this->app['user.manager']->getUser()->getId();
                 $membre = $this->app['user.manager']->getUser();
               
-                // echo '<pre>'; print_r($membre_id = $this->app['user.manager']->getUser()->getId()); echo '</pre>';
                 $objectif->setId($_POST['objectif_id']);
                 $programme
                     ->setTitre($_POST['titre'])
@@ -86,7 +83,7 @@ class ProgrammeController extends ControllerAbstract
                 
                 if(!empty($_FILES['photo_programme']['name'])) {
 
-                    $nom_photo_programme = str_replace(' ', '_', $_POST['titre']) . '_' . $_FILES['photo_programme']['name']; // ondéfinit le nom de la photo
+                    $nom_photo_programme = str_replace(array(' ', '/', '\\'), '_', $_POST['titre']) . '_' . $_FILES['photo_programme']['name']; // ondéfinit le nom de la photo
                     // on définit le nom complet de la photo. Nous nous servirons de cette variable pour enregistrer 
                     // le chemin complet de la photo en BDD puisqu'on ne garde jamais la photo, mais le lien en bdd
                     $photo_bdd_programme = "http://localhost/programme-sport/web/photo/$nom_photo_programme";
@@ -120,13 +117,7 @@ class ProgrammeController extends ControllerAbstract
                         if (isset($_POST['jour'][$index]['exercice'])) {
                             
                             foreach ($_POST['jour'][$index]['exercice'] as $ind => $formExercice) {
-                                
-//                                if (isset($formExercice)) {
-//                                    $index_modif = count($formExercice);
-//                                } else {
-//                                    $index_modif = 1;
-//                                }
-                                
+                               
                                 $exercice = new Exercice();
                                 
                                 $exercice
@@ -159,7 +150,6 @@ class ProgrammeController extends ControllerAbstract
                                 }
                                 
                                 if(!empty($_FILES['jour']['name'][$index]['exercice'][$ind]['photo'])) {
-                                    var_dump($_FILES['jour']['name'][$index]['exercice'][$ind]['photo']);
                                     $nom_photo_exercice = str_replace(' ', '_', $formExercice['titre']) . '_' . $_FILES['jour']['name'][$index]['exercice'][$ind]['photo']; // ondéfinit le nom de la photo
                                     // on définit le nom complet de la photo. Nous nous servirons de cette variable pour enregistrer 
                                     // le chemin complet de la photo en BDD puisqu'on ne garde jamais la photo, mais le lien en bdd
@@ -329,7 +319,6 @@ class ProgrammeController extends ControllerAbstract
 
             else
             {
-                var_dump($errors);
                 $msg='<strong>Le formulaire contient des erreurs</strong>';
                 $msg .= '<br>' . implode('<br>', $errors);
                 // on utilise IMPLODE car on stock les erreurs dans un array errors=[];
@@ -347,7 +336,6 @@ class ProgrammeController extends ControllerAbstract
             
             
         }
-        //echo 'photoProgramme <pre>'; print_r($programme->getPhotoProgramme());echo '</pre>';
         
         $membre = $this->app['user.manager']->getUser();
         

@@ -1731,7 +1731,7 @@ figcaption>a>p{
     /* GENERAL ********************************/
     header{
         height:95px;
-        background:background: rgba(30,45,53,0.7);
+        background: rgba(30,45,53,0.7);
     }    
     header #navbar-principale{
         text-align:center;       
@@ -1871,7 +1871,7 @@ figcaption>a>p{
         width:100%;          
     }
     .table-admin tr th,
-    .table-admin tr td,{
+    .table-admin tr td{
         font-size:4vw;
     }
     
