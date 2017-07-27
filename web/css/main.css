@@ -924,7 +924,7 @@ figcaption>a>p{
             margin : 0 0 20px 0;
     }
     /* trait devient bleu quand clique */
-    input[type="texte"]:focus,input[type="email"]:focus{
+    input[type="texte"]:focus,input[type="email"]:focus,input[type="password"]:focus{
             border-bottom : solid 1.7px #2979ff;
     }
 
