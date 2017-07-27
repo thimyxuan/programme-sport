@@ -924,7 +924,7 @@ figcaption>a>p{
             margin : 0 0 20px 0;
     }
     /* trait devient bleu quand clique */
-    input[type="texte"]:focus,input[type="email"]:focus{
+    input[type="texte"]:focus,input[type="email"]:focus,input[type="password"]:focus{
             border-bottom : solid 1.7px #2979ff;
     }
 
@@ -1432,11 +1432,12 @@ figcaption>a>p{
 			position:relative;
 			transform: translateY(5%);
 			float: right;
-			width: 30%;
+			width: 29%;
 		}
 		.col-right>img{
-			width: 100%;
+			width: 99%;
 			border-radius: 10px;
+
 		}
 		.date-publication{
 			width: 100%;
@@ -1507,7 +1508,7 @@ figcaption>a>p{
             margin:5px auto;
             padding:1px;
             font-size:5vw;
-            background:rgba(255,255,255,0.6);
+            background:rgba(255,255,255,0.6);git
             
         }	
         .zone2{

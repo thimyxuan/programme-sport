@@ -21,6 +21,7 @@
         <div class="titre_prog">{{ programme.titre }} / semaine 1</div>
         <div class="membre">proposé par <a href="{{ path('profil') }}">{{ programme.membre.pseudo }}</a></div>
 
+
         <!-- Menu Recap (table) -->
         <ul class="recap">
             <li class="recap_image"><img src="{{ asset('image/objectif.jpg') }}"><p class="menu_prog">{{ programme.objectif.titre }}</p></li>
@@ -32,13 +33,13 @@
         <!-- ETOILES DE COMMENTAIRE A AJOUTER -->
         
         <!-- séparateur -->
-	<div class="border"><hr></div>
+	<div class="border"></div>
         
-        <!-- LISTE MATERIEL -->	
+        {#<!-- LISTE MATERIEL -->	
         <div class="materiel-titre">Matériel</div>
             <ul class="materiel">
                 <li>- un tapis</li>
-            </ul>
+            </ul>#}
         
         <!-- MENU DES JOURS -->	
         <section>
