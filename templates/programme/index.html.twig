@@ -15,7 +15,7 @@
     <div class="container-programme">
         
     <!-- INFOS DU PROGRAMME -->
-        <img class="prog_photo" src="{{ asset('image/fitness.jpg') }}" alt="image">
+        <img class="prog_photo" src="{{ programme.photoProgramme }}" alt="image">
 
         <div class="sport"> {{ programme.sport }} </div></i>
         <div class="titre_prog">{{ programme.titre }} / semaine 1</div>
@@ -115,7 +115,7 @@
                         </li>
 
                         <li class="colonne3">
-                                <img src="{{ asset('image/squatbase.jpg') }}">
+                                <img src="{{ exercices[index][i].photo }}">
                             </li>
                         </ul>
                         

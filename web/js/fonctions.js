@@ -1,3 +1,4 @@
+// Fonction permettant d'ajouter un exercice dans le jour du programme
 $(document).ready(function(){
     
     
@@ -26,5 +27,21 @@ $(document).ready(function(){
     });
 });
 
+// Fonction qui masque la div exercices du formulaire programme quand on change le statut du jour 'entrainement/repos'
+$(document).ready(function(e){
+    $('.jour_statut').change(function(){
+        var $this = $(this);
+        var $exercices = $this.closest('.sub-menu').find('.exercices');
+        
+        if ($this.val() == 'repos') {
+            $exercices.hide();
+        } else {
+            $exercices.show();
+        }
+    });
+    
+    
+});
 
-$(".content:contains('Salut')").html("Bonjour");
+
+//$(".content:contains('Salut')").html("Bonjour");

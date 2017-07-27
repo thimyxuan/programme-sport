@@ -253,7 +253,7 @@
                 <!-- NOM JOURS -->
                 <ul>
                     
-                    {% for i in 1..2 %}
+                    {% for i in 1..7 %}
                         
                         <li class="jour jour{{ i }}">
                             
@@ -274,13 +274,12 @@
                                 </select>
                             </div> 
                             <div class="exercices"> 
-                            {#{% if jours[i-1] is defined %}
-                            {% set j = (jours[i-1])|length %} 
-                            {{ dump(j) }}
+                            {% if exercices[i-1] is defined and exercices[i-1]|length != 0 %}
+                                {% set nbExercices = exercices[i-1]|length %} 
                             {% else %}
-                            {% set j = 1 %}
-                            {% endif %}#}
-                            {% for j in 1..1 %}
+                                {% set nbExercices = 1 %}
+                            {% endif %}
+                            {% for j in 1..nbExercices %}
                                 <div class="exercice">
                                 <!-- exercice -->
                                 <h2>Exercice {{ j }}</h2>
