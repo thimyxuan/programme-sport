@@ -41,7 +41,7 @@
                 </div>
                 <br>                
 
-                <p class="date-publication">Publié le {#{{ programme.dateEnregistrement }}#}</p>
+                <p class="date-publication">Publié le {{ programme.datePublication|date('d-m-Y H:i:s') }}</p>
 
                 <div class="bandeau"></div>        
             </div>
