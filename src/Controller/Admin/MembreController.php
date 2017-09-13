@@ -47,8 +47,7 @@ class MembreController extends ControllerAbstract {
                     ->setEmail($_POST['email'])    
                     ->setCivilite($_POST['civilite']) 
                     ->setAvatar($_POST['avatar'])
-                    ->setDateEnregistrement(new \DateTime($dbMembre['date_enregistrement']))
-                    ->setStatut($_POST['avatar'])
+                    ->setStatut($_POST['statut'])
             ;            
             
             if(empty($_POST['nom']))
