@@ -13,35 +13,46 @@
         <div class="container-profil-deb">
             <p>Les programmes pour <strong>{{ objectif }}</strong></p>
         </div>
-
-        {% for programme in programmes %}
-
+        
+        {% if programmes is empty %}
             <div class="container-profil-bis">
                 <div class="col-left">
-                    <div class="sport-profil">{{ programme.sport }}</div>
-                    <div class="titre-prog-profil">{{ programme.titre }}</div>
-
-                        <!-- Menu Recap (table) -->
-                        <ul class="recap-list">
-                            <li class="recap_image"><img src="{{ asset('image//objectif.jpg') }}"><p class="menu_prog">{{ programme.objectif }}</p></li>
-                            <li class="recap_image"><img src="{{ asset('image//level.jpg') }}"><p class="menu_prog">{{ programme.difficulte }}</p></li>
-                            <li class="recap_image"><img src="{{ asset('image//time.jpg') }}"><p class="menu_prog">{{ programme.duree }}</p></li>
-                            <li class="recap_image"><img src="{{ asset('image//altere.jpg') }}"><p class="menu_prog">{{ programme.materiel }}</p></li>
-                            <li class="recap_image"><img src="{{ asset('image/oeil.png') }}"><p class="menu_prog"><a href="{{ path('programme', {id: programme.id}) }}">Voir le programme</a></p></li>
-                        </ul>
+                    <div class="sport-profil">Aucun programme</div>
                 </div>
-
-                <div class="col-right">
-                        <img src="{{ programme.photoProgramme }}" alt="logo">
-                </div>
-                <br>
-
-                <p class="date-publication">Publié le {#{{ programme.dateEnregistrement }}#}</p>
-
-                <div class="bandeau"></div>        
             </div>
+        
+        {% else %}          
 
-        {% endfor %}
+            {% for programme in programmes %}
+
+                <div class="container-profil-bis">
+                    <div class="col-left">
+                        <div class="sport-profil">{{ programme.sport }}</div>
+                        <div class="titre-prog-profil">{{ programme.titre }}</div>
+
+                            <!-- Menu Recap (table) -->
+                            <ul class="recap-list">
+                                <li class="recap_image"><img src="{{ asset('image//objectif.jpg') }}"><p class="menu_prog">{{ programme.objectif }}</p></li>
+                                <li class="recap_image"><img src="{{ asset('image//level.jpg') }}"><p class="menu_prog">{{ programme.difficulte }}</p></li>
+                                <li class="recap_image"><img src="{{ asset('image//time.jpg') }}"><p class="menu_prog">{{ programme.duree }} semaine(s)</p></li>
+                                <li class="recap_image"><img src="{{ asset('image//altere.jpg') }}"><p class="menu_prog">{{ programme.materiel }}</p></li>
+                                <li class="recap_image"><img src="{{ asset('image/oeil.png') }}"><p class="menu_prog"><a href="{{ path('programme', {id: programme.id}) }}">Voir le programme</a></p></li>
+                            </ul>
+                    </div>
+
+                    <div class="col-right">
+                            <img src="{{ programme.photoProgramme }}" alt="logo">
+                    </div>
+                    <br>
+
+                    <p class="date-publication">Publié le {{ programme.datePublication|date('d-m-Y') }} par {{ programme.membre.pseudo|capitalize }}</p>
+
+                    <div class="bandeau"></div>        
+                </div>
+
+            {% endfor %}
+        
+        {% endif %}
 
         <div class="container-profil-fin"></div>	
     </div>

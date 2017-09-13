@@ -29,8 +29,7 @@ class ProgrammeController extends ControllerAbstract
            [
            'programme'=>$programme,
            'jours' => $jours,
-           'exercices' => $allExercices,
-           'membre' => $membre
+           'exercices' => $allExercices,          
            ]
         );
         
