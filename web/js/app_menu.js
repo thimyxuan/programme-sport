@@ -28,7 +28,7 @@ $(function(){
 		$('.sub-menu-j7').slideToggle(400);
 		e.stopPropagation();		
 		});
-	$('.html').on('click',function(e){
+	$('html').on('click',function(e){
 		e.stopPropagation();		
 		});
 

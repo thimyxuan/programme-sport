@@ -200,8 +200,8 @@ class Programme
      * @return DateTime
      */
     public function getDatePublication() {
-    return $this->datePublication;
-    }
+        return $this->datePublication;
+        }
     
      
     

@@ -66,6 +66,14 @@ class Membre {
      */
     private $dateEnregistrement;
     
+    /**
+     * 
+     */
+    public function __construct() 
+    {
+        $this->dateEnregistrement = new DateTime();
+    }
+    
     
     /**** GETTERS ****/
     
@@ -110,7 +118,7 @@ class Membre {
      * @return DateTime
      */
     public function getDateEnregistrement() {
-    return $this->dateEnregistrement;
+        return $this->dateEnregistrement;
     }
 
     
@@ -169,7 +177,7 @@ class Membre {
      */
     public function setDateEnregistrement(DateTime $dateEnregistrement) {
         $this->dateEnregistrement = $dateEnregistrement;
-    return $this;
+        return $this;
     }
 
     public function isAdmin() {

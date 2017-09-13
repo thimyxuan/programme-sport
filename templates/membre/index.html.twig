@@ -51,7 +51,7 @@
                                             <ul class="recap-list">
                                                     <li class="recap_image"><img src="{{ asset('image/objectif.jpg') }}"><p class="menu_prog">{{ programme.objectif }}</p></li>
                                                     <li class="recap_image"><img src="{{ asset('image/level.jpg') }}"><p class="menu_prog">{{ programme.difficulte }}</p></li>
-                                                    <li class="recap_image"><img src="{{ asset('image/time.jpg') }}"><p class="menu_prog">{{ programme.duree }} semaine(s)</p></li>
+                                                    <li class="recap_image"><img src="{{ asset('image/time.jpg') }}"><p class="menu_prog">{{ programme.duree }}</p></li>
                                                     <li class="recap_image"><img src="{{ asset('image/altere.jpg') }}"><p class="menu_prog">{{ programme.materiel }}</p></li>
                                                     <li class="recap_image"><img src="{{ asset('image/oeil.png') }}"><p class="menu_prog"><a href="{{ path('programme', {id: programme.id}) }}">Voir le programme</a></p></li>
                                             </ul>
@@ -62,7 +62,7 @@
 					</div>
 					<br>
 
-                                            <p class="date-publication">Publié le {{ programme.datePublication|date('d-m-Y  H:i') }}</p>
+                                            <p class="date-publication">Publié le {{ programme.datePublication|date('d-m-Y') }}</p>
 
                                             <div class="bandeau"></div>
 				</div>
@@ -74,3 +74,4 @@
     
     
 {% endblock %}
+
