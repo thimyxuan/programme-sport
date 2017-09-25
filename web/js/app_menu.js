@@ -1,5 +1,6 @@
 
 $(function(){
+        $('.sub-menu').hide();
 	$('.j1').on('click',function(e){
 		$('.sub-menu-j1').slideToggle(400);
 		e.stopPropagation();		
