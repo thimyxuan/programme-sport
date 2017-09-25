@@ -19,7 +19,7 @@
 
         <div class="sport"> {{ programme.sport }} </div></i>
         <div class="titre_prog">{{ programme.titre }} / semaine 1</div>
-        <div class="membre">proposé par <a href="{{ path('profil') }}">{{ programme.membre.pseudo }}</a></div>
+        <div class="membre">proposé par <a href="{{ path('membre', {id: programme.membre.id}) }}">{{ programme.membre.pseudo|capitalize }}</a></div>
 
 
         <!-- Menu Recap (table) -->

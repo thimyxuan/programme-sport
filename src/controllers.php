@@ -36,6 +36,11 @@ $app
     ->bind('search')
 ;
 
+$app
+    ->match('/membres/{id}', 'membre.controller:indexAction')
+    ->bind('membre')
+;
+
 /* USER */
 $app
     ->match('/inscription', 'membre.controller:registerAction') // on prend match() car contiendra un formulaire d'inscription

@@ -182,7 +182,7 @@
             <label>Titre du programme :</label>
             <input type="text" name="titre" value="{{ programme.titre }}" placeholder="... donnez un titre">
         </div>
-        <div class="membre">proposé par {{ membre.pseudo }}</div>
+            <div class="membre">proposé par <em>{{ membre.pseudo|capitalize }}</em></div>
         
         <!-- Menu Recap (table) -->
         <ul class="recap recap_li_prog">

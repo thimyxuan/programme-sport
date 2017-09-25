@@ -27,8 +27,8 @@ class MembreRepository extends RepositoryAbstract {
                 'civilite'=>$membre->getCivilite(),
                 'statut'=>$membre->getStatut(),
                 'mdp'=>$membre->getMdp(),     
-                'avatar'=>$membre->getAvatar()//,
-                //'date_enregistrement'=>$membre->getDateEnregistrement()->format('Y-m-d H:i:s')
+                'avatar'=>$membre->getAvatar(),
+                'date_enregistrement'=>$membre->getDateEnregistrement()->format('Y-m-d H:i:s')
                 ];
         
         $where = !empty($membre->getId())

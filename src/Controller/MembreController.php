@@ -128,15 +128,15 @@ class MembreController extends ControllerAbstract {
         {
             $email = $_POST['email'];
             
-            $membre = $this->app['membre.repository']->findByEmail($email);   
+            $membre = $this->app['membre.repository']->findByEmail($email);
             
             if(!is_null($membre))
             {
-                if($this->app['user.manager']->verifyPassword($_POST['mdp'], $membre->getMdp()))
-                {
+                //if($this->app['user.manager']->verifyPassword($_POST['mdp'], $membre->getMdp()))
+                //{
                     $this->app['user.manager']->login($membre);
-                    return $this->redirectRoute('profil');
-                }                
+                    return $this->redirectRoute('profil');                    
+                //}                
             }            
             $this->addFlashMessage('Identification incorrecte', 'error');
         }
@@ -156,7 +156,7 @@ class MembreController extends ControllerAbstract {
         return $this->redirectRoute('homepage');
     }
 
-//      Détails du membre (profil)    
+//      Détails du membre connecté (Mon profil)    
     public function membreDetailAction() {
         
         $membre = $this->app['user.manager']->getUser();
@@ -170,6 +170,22 @@ class MembreController extends ControllerAbstract {
             ]
             );
     }
+    
+//      Détails d'un autre profil
+    public function indexAction($id) 
+    {
+        $membre = $this->app['membre.repository']->findById($id);
+        
+        $programmes = $this->app['programme.repository']->findByMembre($membre);
+        
+        return $this->render(
+            'membre/index.html.twig',
+            [
+                'membre'=>$membre,
+                'programmes'=>$programmes
+            ]
+            );
+    }   
     
     
 }
