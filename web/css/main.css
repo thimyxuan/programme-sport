@@ -1168,6 +1168,9 @@ figcaption>a>p{
 		.container-inputs input[type="texte"],input[type="email"],input[type="password"]{
 			width: 100%;
 		}
+                .container-inputs input[type="text"]:focus,input[type="email"]:focus,input[type="password"]:focus{
+			border-bottom : solid 1.7px #2979ff;
+		}
                 
 
 /******************************** FORMULAIRE D'INSCRIPTION **************************************/
@@ -1183,22 +1186,22 @@ figcaption>a>p{
 
 		.container-inputs div:nth-child(3){
 			width: 40%;
-			float: right;
+			float: left;
 			padding-left: 0;
 		}
 		.container-inputs div:nth-child(4){
 			width: 40%;
-			float: left;
+			float: right;
 			padding-left: 0;
 		}
 		.container-inputs div:nth-child(5){
 			width: 40%;
-			float: right;
+			float: left;
 			padding-left: 0;
 		}
 		.container-inputs div:nth-child(6){
 			width: 40%;
-			float: left;
+			float: right;
 			padding-left: 0;
 		}
 
